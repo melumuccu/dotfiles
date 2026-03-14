@@ -1,0 +1,501 @@
+ZSH_DISABLE_COMPFIX=true
+
+# ================================================================================================== 
+# キーバインド
+# ================================================================================================== 
+
+# ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
+bindkey '^R' history-incremental-pattern-search-backward
+
+
+
+
+
+
+# ================================================================================================== 
+# 補完
+# ================================================================================================== 
+
+# git補完ツールへのパス(https://dev.macha795.com/zsh-prompt-customize/)
+fpath=(~/.zsh/completion $fpath)
+
+# 補完機能を有効にする
+autoload -Uz compinit
+compinit -u
+
+# 補完で小文字でも大文字にマッチさせる
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# ../ の後は今いるディレクトリを補完しない
+zstyle ':completion:*' ignore-parents parent pwd ..
+
+# sudo の後ろでコマンド名を補完する
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+
+# ps コマンドのプロセス名補完
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
+
+
+
+
+
+
+
+# ================================================================================================== 
+# プロンプト
+# ================================================================================================== 
+
+# MEMO: FontはDejaVu Sans Mono Powerlineにしている(gitのブランチ記号を表示させるため)
+# https://dev.macha795.com/zsh-prompt-customize/#toc3
+
+# 同時に起動しているzshの間でhistoryを共有する
+setopt share_history
+
+# 同じコマンドをhistoryに残さない
+setopt hist_ignore_all_dups
+
+# gitのbranchをプロンプトに表示する
+setopt PROMPT_SUBST
+source ~/.zsh/.git-prompt.sh
+
+# プロンプト
+PROMPT=""$'\n'"%F{051}%~%f %F{red}$(__git_ps1 "%s" )%f "$'\n'"$ "
+
+
+
+
+
+# ================================================================================================== 
+# fzf
+# ================================================================================================== 
+
+## Git
+
+### ブランチをチェックアウト
+fgc() {
+  local branches branch
+  branches=$(git --no-pager branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+### コミットをチェックアウト
+fgcc() {
+  local commits commit
+  commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
+  commit=$(echo "$commits" | fzf --tac +s +m -e) &&
+  git checkout $(echo "$commit" | sed "s/ .*//")
+}
+
+## NPM
+
+### run script
+fnr() {
+  local script
+  script=$(cat package.json | jq -r '.scripts | keys[] ' | sort | fzf) && npm run $(echo "$script")
+}
+
+## File System
+### ひとつ下の階層にcd
+fcd() {
+  DIR=`find * -maxdepth 0 -type d -print 2> /dev/null | fzf-tmux` \
+    && cd "$DIR"
+}
+
+
+
+
+
+# ================================================================================================== 
+# alias
+# ================================================================================================== 
+
+# 修正後は以下のコマンドで反映
+alias so='source ~/.zshrc'
+
+# ls強化(eza)
+alias ls='eza -l --no-filesize --no-time --no-user --git -s type -A -h'
+
+#cdしたらls
+cdls ()
+{
+    \cd "$@" && ls
+}
+alias cd="cdls"
+
+
+# 通信速度計測
+alias net='networkQuality'
+ 
+
+#Homebrew
+export HOMEBREW_NO_AUTO_UPDATE=1 # 勝手に全体アップデート走らせるのは困りものなので設定を切っておく(開発環境が壊れる...)
+
+alias b='brew'
+alias bi='brew install'
+alias bui='brew uninstall'
+alias bu='brew update'
+alias bug='brew upgrade'
+alias bl='brew list'
+alias bs='brew search'
+alias bbd='brew bundle dump'
+
+# chezmoi
+alias c="chezmoi"
+
+# mise (<- make, just)
+alias make="mise run"
+alias mr="mise run"
+
+# ffmpegによる変換
+## .mov => .gif($1: 対象ファイルの絶対パス)
+movtogif() {
+  filepath="$1" # ファイルパス
+  dirpath=$(dirname ${filepath}) # パス部
+  fileNameExcludeExtension=$(basename ${filepath} .mov) # 拡張子を削除したファイル名
+  if [ ! -d ${dirpath}/output ]; then
+    mkdir ${dirpath}/output
+  fi
+  outputFile=${dirpath}/output/${fileNameExcludeExtension}.gif
+  ffmpeg -i ${filepath} -r 12 ${outputFile}
+  open -a /Applications/Google\ Chrome.app ${outputFile}
+}
+
+
+
+#pnpm
+alias ni='pnpm install'
+alias nui='pnpm uninstall'
+alias nr='pnpm run'
+
+# git
+
+## チェックアウト
+alias gc='git checkout'
+alias _gc='git branch | peco | xargs -IXXX git checkout XXX; source ~/.zshrc; git pull'
+alias gcb='git checkout -b'
+
+## ブランチ
+alias gb='git branch'
+alias gba='git fetch --prune && git branch -a'
+
+### ブランチの削除
+alias _gbd='git branch | peco | xargs git branch -d'
+
+## ステージ
+alias gaa='git add -A'
+
+## コミット
+### 20210603 テンプレートを使うため、"-m"オプションを削除した
+alias gcm='git commit'
+alias gca='git commit --amend'
+
+## リベース
+### 何個遡るか指定してリベースのスタート(引数に遡りたい数を指定)
+alias grih='(){git rebase -i HEAD~$1}'
+
+### コンティニュー
+alias grc='git rebase --continue'
+
+## プッシュ
+alias gps='git push'
+
+## プル
+#alias gpl='git pull'
+# リモート側で '/'区切りの謎branch命名がある場合の問題への対応でbranch名を明示してpullするよう修正
+alias gpl='git symbolic-ref --short HEAD | xargs -I {} git pull origin {}'
+
+## スタッシュ
+### push
+alias gs='git stash -u'
+alias gsp='git stash pop'
+
+### apply
+alias _gsa='git stash list | peco | awk -F '\'':'\'' '\''{print $1}'\''  | xargs -IXXX git stash apply XXX'
+### 特定ファイルのみのapply
+alias _gsaf='git stash list | peco | awk -F '\'':'\'' '\''{print $1}'\''  | xargs -IXXX git checkout XXX'
+
+### drop
+alias _gsd='git stash list | peco | awk -F '\'':'\'' '\''{print $1}'\''  | xargs -IXXX git stash drop XXX'
+
+### list
+alias gsl='git stash list'
+
+### show
+alias _gss='git stash list | peco | awk -F '\'':'\'' '\''{print $1}'\''  | xargs -IXXX git stash show XXX'
+
+
+## プルーン
+alias gp='git remote prune origin'
+
+## インデックスの更新
+### ワークツリー監視対象から外す
+alias guisw='git update-index --skip-worktree'
+### ワークツリー監視対象とする
+alias guinsw='git update-index --no-skip-worktree'
+### 監視対象外としたファイルの一覧を表示
+alias guils='git ls-files -t | grep ^S'
+
+## リセット
+alias grs='git reset --soft HEAD^'
+
+## チェリーピック
+alias gcp='git cherry-pick'
+
+## ログ
+alias gl='git log --oneline'
+
+## マージ
+alias gm='git merge'
+
+
+
+# docker
+alias d='docker'
+
+## Dockerイメージの作成
+alias db='docker build'
+
+## イメージの一覧を確認
+alias di='docker images -a'
+
+## コンテナのrun(生成&起動)
+alias dr='docker run'
+
+## コンテナの一覧
+alias dps='docker ps -a'
+
+## コンテナの削除
+alias _drm='docker rm -f $(dps --format "{{.Names}} {{.ID}}" | peco | awk "{print \$2}")'
+
+## イメージの削除
+alias _drmi='docker rmi $(docker images | peco | awk "{print \$3}")'
+
+## 起動済みのコンテナに入る
+alias de='docker exec -it'
+### (スーパーアプリ案件用)
+alias de-app='docker exec -it -w /home/www-data/laravel/push-batch/ app /bin/sh'
+alias de-local='docker exec -it localstack /bin/bash'
+alias de-mongo='docker exec -it mongodb /bin/bash'
+alias de-stub='docker exec -it -w /var/www/html/stub stub /bin/bash'
+
+## Docker compose
+alias dc='docker compose'
+### build
+alias dcb='docker compose build'
+### up (-d: デタッチ起動)
+alias dcu='docker compose up'
+### down
+alias dcd='docker compose down'
+### restart
+alias dcr='docker compose restart'
+
+# history with peco (＾r で起動)
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
+
+
+# ==================================================================================================
+# 環境変数設定など
+# ================================================================================================== 
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# HOMEBREW
+export PATH=$PATH:/opt/homebrew/bin
+
+# pnpm
+export PNPM_HOME="/Users/fujisawakoki/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+
+# ==================================================================================================
+# Tools
+# ================================================================================================== 
+
+# Image
+
+## .webp に変換
+function convertWebp() {
+    if [ "$#" -ne 1 ]; then
+        echo "使い方: webp <path_to_file>"
+        return 1
+    fi
+
+    INPUT="$1"
+
+    # ディレクトリかどうかをチェック
+    if [ -d "$INPUT" ]; then
+        # ディレクトリの中身を探索し、画像ファイルをwebp変換
+        find "$INPUT" -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" \) -exec bash -c '
+            for FILE; do
+                DIRNAME=$(dirname "$FILE")
+                BASENAME=$(basename "$FILE")
+                FILENAME="${BASENAME%.*}"
+                OUTPUT="$DIRNAME/$FILENAME.webp"
+
+                # すでにwebpかどうかチェック
+                if [ "${FILE##*.}" = "webp" ]; then
+                    echo "$FILE は既にwebp形式です。"
+                else
+                    # webpに変換
+                    cwebp "$FILE" -o "$OUTPUT"
+
+                    # 変換成功チェック
+                    if [ $? -eq 0 ]; then
+                        rm "$FILE"
+                        echo "$FILE をwebpに変換しました。"
+                    else
+                        echo "$FILE のwebp変換に失敗しました。"
+                    fi
+                fi
+            done
+        ' _ {} +
+    else
+        # 単一のファイルを処理
+        DIRNAME=$(dirname "$INPUT")
+        BASENAME=$(basename "$INPUT")
+        FILENAME="${BASENAME%.*}"
+        EXTENSION="${BASENAME##*.}"
+
+        if [ -z "$EXTENSION" ]; then
+            echo "ファイルの拡張子が特定できませんでした。"
+            return 1
+        fi
+
+        # すでにwebpかどうかチェック
+        if [ "$EXTENSION" = "webp" ]; then
+            echo "$INPUT は既にwebp形式です。"
+            return 1
+        fi
+
+        OUTPUT="$DIRNAME/$FILENAME.webp"
+
+        # webpに変換
+        cwebp "$INPUT" -o "$OUTPUT"
+
+        # 変換成功チェック
+        if [ $? -eq 0 ]; then
+            rm "$INPUT"
+            echo "$INPUT をwebpに変換しました。"
+        else
+            echo "$INPUT のwebp変換に失敗しました。"
+            return 1
+        fi
+    fi
+}
+
+alias cw='convertWebp'
+
+
+
+
+
+
+## .heic を .jpeg に変換
+function convertHeicToJpeg() {
+    if [ "$#" -ne 1 ]; then
+        echo "Usage: heictojpeg <path_to_file>"
+        return 1
+    fi
+
+    INPUT_FILE="$1"
+    DIRNAME=$(dirname "$INPUT_FILE")
+    BASENAME=$(basename "$INPUT_FILE")
+    FILENAME=$(echo "$BASENAME" | awk -F. '{print $1}')
+    EXTENSION=$(echo "$BASENAME" | awk -F. '{if (NF>1) {print tolower($NF)}}')
+
+    if [ "$EXTENSION" != "heic" ]; then
+        echo "The file is not a HEIC format."
+        return 1
+    fi
+
+    OUTPUT_FILE="$DIRNAME/$FILENAME.jpeg"
+
+    # Convert to jpeg format
+    magick convert "$INPUT_FILE" "$OUTPUT_FILE"
+
+    # Check if conversion was successful
+    if [ $? -eq 0 ]; then
+        echo "$INPUT_FILE has been converted to"
+	  echo "$OUTPUT_FILE"
+    else
+        echo "Failed to convert $INPUT_FILE to jpeg."
+        return 1
+    fi
+}
+
+alias ch='convertHeicToJpeg'
+
+
+
+## 画像のw, hを変換
+function WidthHeightConvert() {
+    if [ "$#" -lt 2 ]; then
+        echo "Usage: wh <path_to_image> <width> [height]"
+        return 1
+    fi
+
+    INPUT_FILE="$1"
+    WIDTH="$2"
+
+    # 第三引数としてheightが提供されたかチェック
+    if [ -n "$3" ]; then
+        # heightが提供された場合、強制的に比率を変更
+        HEIGHT="$3"
+        convert "$INPUT_FILE" -resize "${WIDTH}x${HEIGHT}!" "$INPUT_FILE"
+    else
+        # heightが提供されなかった場合、比率を維持
+        # 元の画像のアスペクト比を取得
+        ASPECT_RATIO=$(identify -format "%[fx:h/w]" "$INPUT_FILE")
+        # 新しい高さを計算
+        HEIGHT=$(echo "$WIDTH * $ASPECT_RATIO" | bc)
+        # 小数点以下を切り捨てて整数に
+        HEIGHT=${HEIGHT%.*}
+        convert "$INPUT_FILE" -resize "${WIDTH}x${HEIGHT}" "$INPUT_FILE"
+    fi
+
+    if [ $? -ne 0 ]; then
+        echo "Failed to resize $INPUT_FILE."
+        return 1
+    fi
+}
+
+alias wh='WidthHeightConvert'
+
+
+
+# ================================================================================================== 
+# MEMO
+# ================================================================================================== 
+
+# -g: グローバルエイリアス
+# 	=> 通常、先頭の文字列しかエイリアスとして展開されないが-gをつけることでどこでも展開される！
+# 	   (もちろん、既存のコマンドとかぶらないよう注意が必要。prefixをつけるなど(ex. @などを先頭につける)。
+#
+# 引数を取るエイリアス
+#   ex. alias hoge='(){git rebase -i HEAD~$1}'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/fujisawakoki/.cache/lm-studio/bin"
+
+# Added by Antigravity
+export PATH="/Users/fujisawakoki/.antigravity/antigravity/bin:$PATH"
