@@ -18,6 +18,11 @@
 ### GitHub CLI のインストールと認証
 
 1. 各OSのパッケージマネージャ（brew, apt, scoop等）で `gh` をインストール
+
+   ```bash
+   brew install gh
+   ```
+
 1. GitHub にログイン (SSH)
 
    ```bash
@@ -87,16 +92,12 @@
    export BW_SESSION=$(bw unlock --raw)
    ```
 
-> [MEMO]
->
-> - node 環境整ったら pnpm などで -g で `bw` をインストールし直しておくのが吉
-
-### memo: Bitwarden CLI の Util commands
+#### memo: Bitwarden CLI の Util commands
 
 - `bw sync`: Vault の最新状態を取得する
 - `bw list items --search "{__search_word__}" | jq`: アイテムの一覧を表示する (IDの取得に便利)
 
-### memo: Bitwarden を使ったシークレット管理の例
+#### memo: Bitwarden を使ったシークレット管理の例
 
 -> see: `dot_gitconfig.tmpl`
 
@@ -208,6 +209,14 @@ chezmoi add --symlink ~/.vimrc
 ```bash
 chezmoi cd
 mv dot_zshrc dot_zshrc.tmpl
+```
+
+### テンプレートの実行結果を確認する
+
+[例]
+
+```bash
+chezmoi execute-template < ~/.local/share/chezmoi/.chezmoiignore.tmpl
 ```
 
 ---
