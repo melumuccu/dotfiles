@@ -127,7 +127,6 @@ alias cd="cdls"
 
 # 通信速度計測
 alias net='networkQuality'
- 
 
 #Homebrew
 export HOMEBREW_NO_AUTO_UPDATE=1 # 勝手に全体アップデート走らせるのは困りものなので設定を切っておく(開発環境が壊れる...)
@@ -142,7 +141,15 @@ alias bs='brew search'
 alias bbd='brew bundle dump'
 
 # chezmoi
-alias c="chezmoi"
+alias cz='chezmoi'
+alias czad='chezmoi add'
+## chezmoi re-addは、すでに管理下にあるファイルを再度管理下に追加するコマンド。現在のマシンの状態を正としたい時に。
+alias czre='chezmoi re-add'
+alias czap='chezmoi apply'
+alias cze='chezmoi edit --apply'
+alias czd='chezmoi diff'
+# chezmoi updateは、chezmoiのGitリポジトリからpullして、管理下のファイルを更新するコマンド。他のマシンで行った変更を反映させるために使用する。
+alias czpl='chezmoi update'
 
 # mise (<- make, just)
 alias make="mise run"
