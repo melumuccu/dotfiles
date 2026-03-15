@@ -139,6 +139,12 @@ chezmoi edit ~/.zshrc
 1. 自動的に実ファイルへ反映 (`apply`) され、`commit` されます。
    1. `git push` は手動で行う必要があります。テンプレート管理しているファイルの内容を誤って公開するリスクを回避するためです。
 
+### 管理対象に追加
+
+```bash
+chezmoi add <PATH>
+```
+
 ### 他のマシンでの変更を取り込む
 
 ```bash
@@ -151,6 +157,18 @@ chezmoi update
 
 ```bash
 chezmoi add --template ~/.zshrc
+```
+
+### 管理漏れがないか確認する
+
+```bash
+chezmoi diff
+```
+
+### 管理漏れがあったら更新
+
+```bash
+chezmoi add <PATH>
 ```
 
 ### シンボリックリンクの管理
