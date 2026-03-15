@@ -96,6 +96,10 @@
 - `bw sync`: Vault の最新状態を取得する
 - `bw list items --search "{__search_word__}" | jq`: アイテムの一覧を表示する (IDの取得に便利)
 
+### memo: Bitwarden を使ったシークレット管理の例
+
+-> see: `dot_gitconfig.tmpl`
+
 ### chezmoi のインストール
 
 - Mac
