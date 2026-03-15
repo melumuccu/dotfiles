@@ -1,0 +1,107 @@
+{
+	"#p extend": {
+		"prefix": "p",
+		"body": [
+			"# DEBUG",
+			"p \"#===============TEST_$CLIPBOARD\"",
+			"p $CLIPBOARD.class",
+			"p $CLIPBOARD",
+			"",
+		],
+		"description": "#Rails log info と同じ"
+	},
+	"#Rails log": {
+		"prefix": "log",
+		"body": [
+			"# DEBUG",
+			"Rails.logger.info \"#===============TEST_$CLIPBOARD\"",
+			"Rails.logger.info $CLIPBOARD.class",
+			"Rails.logger.info $CLIPBOARD",
+			"",
+		],
+		"description": "#Rails log info と同じ"
+	},
+	"#Rails log info": {
+		"prefix": "info",
+		"body": [
+			"# DEBUG",
+			"Rails.logger.info \"#===============TEST_$CLIPBOARD\"",
+			"Rails.logger.info $CLIPBOARD.class",
+			"Rails.logger.info $CLIPBOARD",
+			"",
+		],
+	},
+	"#Rails log error": {
+		"prefix": "error",
+		"body": [
+			"# DEBUG",
+			"Rails.logger.error \"#===============TEST_$CLIPBOARD\"",
+			"Rails.logger.error $CLIPBOARD.class",
+			"Rails.logger.error $CLIPBOARD",
+			"",
+		],
+	},
+	"#Rails log warn": {
+		"prefix": "warn",
+		"body": [
+			"# DEBUG",
+			"Rails.logger.warn \"#===============TEST_$CLIPBOARD\"",
+			"Rails.logger.warn $CLIPBOARD.class",
+			"Rails.logger.warn $CLIPBOARD",
+			"",
+		],
+	},
+	//================================Model用ログ
+	"#p extend(Model)": {
+		"prefix": "mp",
+		"body": [
+			"# DEBUG",
+			"p \"#===============TEST_$CLIPBOARD\"",
+			"p $CLIPBOARD.class",
+			"p JSON.parse($CLIPBOARD.to_json)",
+			"",
+		],
+		"description": "#Rails log info と同じ"
+	},
+	"#Rails log(Model)": {
+		"prefix": "mlog",
+		"body": [
+			"# DEBUG",
+			"Rails.logger.info \"#===============TEST_$CLIPBOARD\"",
+			"Rails.logger.info $CLIPBOARD.class",
+			"Rails.logger.info JSON.parse($CLIPBOARD.to_json)",
+			"",
+		],
+		"description": "#Rails log info と同じ"
+	},
+	"#Rails log info(Model)": {
+		"prefix": "minfo",
+		"body": [
+			"# DEBUG",
+			"Rails.logger.info \"#===============TEST_$CLIPBOARD\"",
+			"Rails.logger.info $CLIPBOARD.class",
+			"Rails.logger.info JSON.parse($CLIPBOARD.to_json)",
+			"",
+		],
+	},
+	"#Rails log error(Model)": {
+		"prefix": "merror",
+		"body": [
+			"# DEBUG",
+			"Rails.logger.error \"#===============TEST_$CLIPBOARD\"",
+			"Rails.logger.error $CLIPBOARD.class",
+			"Rails.logger.error JSON.parse($CLIPBOARD.to_json)",
+			"",
+		],
+	},
+	"#Rails log warn(Model)": {
+		"prefix": "mwarn",
+		"body": [
+			"# DEBUG",
+			"Rails.logger.warn \"#===============TEST_$CLIPBOARD\"",
+			"Rails.logger.warn $CLIPBOARD.class",
+			"Rails.logger.warn JSON.parse($CLIPBOARD.to_json)",
+			"",
+		],
+	}
+}

@@ -1,0 +1,63 @@
+{
+  "test": {
+    "prefix": "test",
+    "body": [
+      "$TM_FILENAME_BASE"
+    ],
+  },
+  "#スニペット雛形": {
+    "prefix": "snippets",
+    "body": [
+      "\"${1:label}\": {",
+      "\t\"prefix\": \"${2:prefix}\",",
+      "\t\"body\": [",
+      "\t\t\"$3\"",
+      "\t],",
+      "\t\"description\": \"${4:任意}\"",
+      "},$0"
+    ],
+    "description": "snippets"
+  },
+  //==================================================
+  // コメント
+  //==================================================
+  "#block comment": {
+    "prefix": "comment",
+    "body": [
+      "$BLOCK_COMMENT_START ${1:comment} $BLOCK_COMMENT_END"
+    ]
+  },
+  "#line comment": {
+    "prefix": "comment",
+    "body": [
+      "$LINE_COMMENT ${1:comment}"
+    ]
+  },
+  "Prettier ignore": {
+		"prefix": "prettier-ignore",
+		"body": "$BLOCK_COMMENT_START prettier-ignore $BLOCK_COMMENT_END"
+	},
+  "#TODO": {
+    "prefix": "todo",
+    "body": "$LINE_COMMENT TODO ${1:comment}"
+  },
+  "#MEMO": {
+    "prefix": "memo",
+    "body": "$LINE_COMMENT MEMO ${1:comment}"
+  },
+  "#DEBUG": {
+    "prefix": "debug",
+    "body": "$LINE_COMMENT DEBUG ${1:comment}"
+  },
+  "#FIXME": {
+    "prefix": "fixme",
+    "body": "$LINE_COMMENT FIXME ${1:comment}"
+  },
+  //==================================================
+  // .blade.php
+  //==================================================
+  "#bladeのtodo用": {
+    "prefix": "todo-blade",
+    "body": "<p style=\"font-size: 6px; color: red;\">(TODO $1)</p>"
+  },
+}

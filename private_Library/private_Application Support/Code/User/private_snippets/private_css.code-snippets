@@ -1,0 +1,167 @@
+{
+	// 以下、全てのスコープは css に関連するもの
+	/**
+	 * flex 関連
+	 */
+	"my 'flex'": {
+		"body": [
+			"display: flex;",
+			"flex-direction: column;$1",
+			"gap: $2rem;",
+			"align-items: center;",
+			"justify-content: center;",
+		],
+		"prefix": "my flex",
+		"scope": "css,scss"
+	},
+	/**
+	 * grid 関連
+	 */
+	"my 'grid'": {
+		"body": [
+			"display: grid;",
+			"gap: $1rem;",
+			"place-items: $2center;",
+			"place-content: $3center;",
+		],
+		"prefix": "my grid",
+		"scope": "css,scss"
+	},
+	"my 'grid' (detail)": {
+		"body": [
+			"display: grid;",
+			"gap: ${1:row(≡)間gap}rem ${2:column(〣)間gap}rem;",
+			"place-items: ${3:align(Y軸)} ${4:justify(X軸)};",
+			"place-content: ${5:align(Y軸)} ${6:justify(X軸)};",
+		],
+		"prefix": "my grid (detail)",
+		"scope": "css,scss"
+	},
+	"my 'grid-auto-template'": {
+		"body": [
+			"grid-auto-rows: ${1: row};",
+			"grid-auto-columns: ${2: column};",
+		],
+		"prefix": "my grid-auto-template",
+		"scope": "css,scss"
+	},
+	"my 'grid-row-column'": {
+		"body": [
+			"grid-column: $1/span $2;",
+			"grid-row: $3/$4;",
+		],
+		"prefix": "my grid-row-column",
+		"scope": "css,scss"
+	},
+	"my 'grid-template'": {
+		"body": [
+			"display: grid;",
+			"/* prettier-ignore */",
+			"grid-template:",
+			"  '... ........... ...' 2rem",
+			"  '... catch-copy  ...' 1fr",
+			"  '... ........... ...' 2rem",
+			"  '... plan-detail ...' 1fr",
+			"  '... ........... ...' 2rem",
+			"  / 3rem 1fr 3rem;",
+		],
+		"prefix": "my grid-template",
+		"scope": "css,scss"
+	},
+	"my 'grid-template-rows-columns'": {
+		"body": [
+			"grid-template-rows: ${1: row};",
+			"grid-template-columns: ${2: column};",
+		],
+		"prefix": "my grid-template-rows-columns",
+		"scope": "css,scss"
+	},
+	"my 'gridで横並び'": {
+		"body": [
+			"display: grid;",
+			"grid-auto-flow: column;",
+			"gap: ${1}rem;",
+		],
+		"prefix": "my gridで横並び",
+		"scope": "css,scss"
+	},
+	/**
+	 * その他
+	 */
+	"my 'x行目以降省略'": {
+		"body": [
+			"// 長い場合は省略させる",
+			"display: -webkit-box;",
+			"overflow: hidden;",
+			"-webkit-box-orient: vertical;",
+			"-webkit-line-clamp: $1;"
+		],
+		"prefix": "my omit-x-lines",
+		"scope": "css,scss"
+	},
+	"my big comment": {
+		"body": [
+			"/* ================================",
+			" $1",
+			"================================ */",
+		],
+		"prefix": "my big comment",
+		"scope": "css,scss"
+	},
+	"my border": {
+		"body": [
+			"border: $1px solid #$2;",
+			"border-radius: $3px;",
+		],
+		"prefix": "my border",
+		"scope": "css,scss"
+	},
+	"my color-mix": {
+		"body": [
+			"color-mix(in srgb, ${1:color} ${2:50%}, transparent)",
+		],
+		"prefix": "my color-mix",
+		"scope": "css,scss"
+	},
+	"my color-mix2(シンプルだが、全体的に上手く効かない。ブラウザの挙動？)": {
+		"body": [
+			"rgb(from ${1:color} r g b / ${2:50%})",
+		],
+		"prefix": "my color-mix2",
+		"scope": "css,scss"
+	},
+	"my position absolute center": {
+		"body": [
+			"position: absolute;",
+			"top: 50%;",
+			"left: 50%;",
+			"transform: translate(-50%, -50%);",
+		],
+		"description": "親に対して上下左右中央に配置する",
+		"prefix": "my position absolute center",
+		"scope": "css,scss"
+	},
+	"my simple scroll": {
+		"body": [
+			"overflow-y: auto;",
+			"max-height: $1px;"
+		],
+		"prefix": "my simple scroll",
+		"scope": "css,scss"
+	},
+	"my width&height": {
+		"body": [
+			"width: $1%;",
+			"height: $2%;"
+		],
+		"prefix": "my width&height",
+		"scope": "css,scss"
+	},
+	"my 画面幅いっぱい - margin-inline": {
+		"body": [
+			"margin-inline: calc(50% - 50vi)",
+		],
+		"prefix": "my 画面幅いっぱい - margin-inline",
+		"scope": "css,scss"
+	}
+}

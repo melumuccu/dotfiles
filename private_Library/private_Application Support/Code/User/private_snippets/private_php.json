@@ -1,0 +1,34 @@
+{
+	"todo": {
+		"prefix": "todo",
+		"body": [
+			"// TODO ",
+		],
+	},
+	"fixme": {
+		"prefix": "fixme",
+		"body": [
+			"// FIXME ",
+		],
+	},
+	"#var_export": {
+		"prefix": "log",
+		"body": "var_export($1 . \"\\n\");"
+	},
+	"#log_extended": {
+		"prefix": "log",
+		"body": [
+			"echo '$1 = ';",
+			"var_export($2);",
+			"echo \"\\n\";",
+			"echo \"\\n\";"
+		]
+	},
+	"#Log::debug": {
+		"prefix": "log",
+		"body": [
+			"Log::debug('$1');",
+			"Log::debug($2);",
+		]
+	},
+}

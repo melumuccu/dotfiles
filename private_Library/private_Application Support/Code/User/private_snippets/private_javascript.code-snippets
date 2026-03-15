@@ -1,0 +1,144 @@
+{
+	// 以下、全てのスコープは Javascript に関連するもの
+	// -------- no check関連
+	"#Typescript type No check": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "typescript_type_nocheck",
+		"body": "// @ts-nocheck "
+	},
+	"#Eslint disable next line": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "eslint_1_line",
+		"body": "// eslint-disable-next-line "
+	},
+	"#Eslint disable scope": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "eslint_scope",
+		"body": [
+			"/* eslint-disable */",
+			"/* eslint-enable */"
+		]
+	},
+	"#Eslint disable file": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "eslint_file",
+		"body": "/* eslint-disable */"
+	},
+	"#Prettier ignore": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "prettier-ignore",
+		"body": "// prettier-ignore"
+	},
+	// -------- 基本
+	"#Method": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "method",
+		"body": [
+			"/**",
+			" * $1",
+			" */",
+			"$2($3) {",
+			"  $0",
+			"}"
+		]
+	},
+	"#subscribe": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": ".subscribe",
+		"body": [
+			".subscribe(",
+			"\tresponse => {",
+			"\t\t$1",
+			"\t},",
+			"\terror => {",
+			"\t\t$2",
+			"\t})"
+		]
+	},
+	"#import": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "import",
+		"body": [
+			"import { $2 } from '$1';"
+		]
+	},
+	"#import(補完)": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "import(補完)",
+		"body": [
+			"import { $1 }"
+		]
+	},
+	"#private": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "private",
+		"body": [
+			"private $1: $2, "
+		]
+	},
+	// -------- コンソール
+	"#console.table": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "table",
+		"body": [
+			"// DEBUG",
+			"console.log(\"TEST_$CLIPBOARD: \");",
+			"console.table($CLIPBOARD);",
+			"",
+		]
+	},
+	"#console.log": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "log",
+		"body": [
+			"// DEBUG",
+			"console.log(\"TEST_$CLIPBOARD: \");",
+			"console.log($CLIPBOARD);",
+			"",
+		]
+	},
+	// -------- 型定義
+	"#type string": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": ": string",
+		"body": [
+			": string"
+		]
+	},
+	"#type number": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": ": number",
+		"body": [
+			": number"
+		]
+	},
+	"#type boolean": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": ": boolean",
+		"body": [
+			": boolean"
+		]
+	},
+	// --------- コメント
+	"#debug": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "debug",
+		"body": [
+			"// DEBUG "
+		]
+	},
+	"#todo": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "todo",
+		"body": [
+			"// TODO "
+		]
+	},
+	"#memo": {
+		"scope": "javascript, typescript, vue, javascriptreact, typescriptreact astro",
+		"prefix": "memo",
+		"body": [
+			"// MEMO "
+		]
+	},
+}

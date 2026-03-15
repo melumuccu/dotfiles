@@ -1,0 +1,21 @@
+{
+	"todo": {
+		"prefix": "todo",
+		"body": [
+			"<!-- TODO_藤澤 $0 -->",
+		],
+		"description": "todo of html"
+	},
+	"Prettier ignore": {
+		"prefix": "prettier-ignore",
+		"body": "<!-- prettier-ignore -->"
+	},
+	"Prettier ignore all attribute": {
+		"prefix": "prettier-ignore-all-attribute",
+		"body": "<!-- prettier-ignore-attribute -->"
+	},
+	"Prettier ignore selected attribute": {
+		"prefix": "prettier-ignore-selected-attribute",
+		"body": "<!-- prettier-ignore-attribute (ex.カッコは外さず属性名を入れる) -->"
+	},
+}

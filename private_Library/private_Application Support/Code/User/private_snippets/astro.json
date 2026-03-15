@@ -1,0 +1,25 @@
+{
+	"my astro component": {
+		"body": [
+			"---",
+			"import type { ComponentProps } from 'astro/types';",
+			"",
+			"type Props = {",
+			"  class?: string | string[]",
+			"}",
+			"const { class: className = [], ...rest } = Astro.props",
+			"---",
+			"",
+			"<div class:list={[\"${TM_FILENAME_BASE/(^[A-Z][a-z]*|[a-z])([A-Z])?/${1:/downcase}${2:+-}${2:/downcase}/g}\", className]} {...rest}>",
+			"  <p>test</p>",
+			"</div>",
+			"",
+			"<style>",
+			"  .${TM_FILENAME_BASE/(^[A-Z][a-z]*|[a-z])([A-Z])?/${1:/downcase}${2:+-}${2:/downcase}/g} {",
+			"    $1",
+			"  }",
+			"</style>",
+		],
+		"prefix": "my astro component"
+	}
+}

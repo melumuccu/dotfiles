@@ -1,0 +1,10 @@
+{
+	// 以下、全てのスコープは マークアップ に関連するもの
+	"my width&height": {
+		"scope": "html,vue,javascriptreact,typescriptreact",
+		"prefix": "width&height",
+		"body": [
+			"width=\"$1\" height=\"$2\"",
+		]
+	},
+}

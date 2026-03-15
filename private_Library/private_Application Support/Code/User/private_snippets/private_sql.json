@@ -1,0 +1,62 @@
+{
+	"#SELECT": {
+		"prefix": "select",
+		"body": [
+			"SELECT",
+			"  ${1:対象カラム}",
+			"FROM",
+			"  ${2:対象テーブル}",
+			"WHERE",
+			"  ${3:条件}",
+			";",
+		]
+	},
+	"#INSERT INTO": {
+		"prefix": "insert",
+		"body": [
+			"INSERT INTO",
+			"  ${1:対象テーブル}(${2:対象カラム})",
+			"VALUES",
+			"  ('${3:value}')",
+			";",
+		]
+	},
+	"#UPDATE": {
+		"prefix": "update",
+		"body": [
+			"UPDATE",
+			"  ${1:対象テーブル}",
+			"SET",
+			"  ${2:対象カラム} = '${3:value}'",
+			"WHERE",
+			"  ${4:条件}",
+			";"
+		]
+	},
+	"#DELETE": {
+		"prefix": "delete",
+		"body": [
+			"DELETE FROM",
+			"  ${1:対象テーブル}",
+			"WHERE",
+			"  ${2:条件}",
+			";"
+		]
+	},
+	"#DROP TABLE": {
+		"prefix": "drop",
+		"body": [
+			"DROP TABLE IF EXISTS",
+			"  ${1:対象テーブル}",
+			";"
+		]
+	},
+	"#TRUNCATE TABLE": {
+		"prefix": "truncate",
+		"body": [
+			"TRUNCATE TABLE",
+			"  ${1:対象テーブル}",
+			";"
+		]
+	},
+}
