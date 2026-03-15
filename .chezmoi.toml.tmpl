@@ -1,0 +1,13 @@
+{{- $editor := "code" -}}
+{{- if eq .chezmoi.os "windows" -}}
+    {{- $editor = "code.cmd" -}}
+{{- end -}}
+
+[edit]
+    command = {{ $editor | quote }}
+    args = ["--wait"]
+    apply = true
+
+[git]
+    autoCommit = true
+    autoPush = true
