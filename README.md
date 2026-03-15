@@ -4,7 +4,8 @@
 
 ## 🚀 特徴
 
-- **フルオート同期**: `chezmoi edit` で保存し VS Code のタブを閉じると、自動で `apply` & `git commit` & `git push` が走ります。
+- **自動同期**: `chezmoi edit` で保存し VS Code のタブを閉じると、自動で `apply` & `git commit` が走ります。
+  - `git push` は手動で行うことで、テンプレート管理しているファイルの内容を誤って公開するリスクを回避しています。
 - **マルチプラットフォーム対応**: Mac, Linux, Windows (WSL) で同一のリポジトリを使用可能。
 - **テンプレート管理**: OSごとの差異（エディタのパスやエイリアス）をテンプレート機能で吸収します。
 
@@ -39,6 +40,8 @@
    ```
 
 ### Bitwarden CLI のインストールと認証
+
+[公式Docs](https://bitwarden.com/help/cli/)
 
 1. 公式サイトから `bw` をインストール
    1. see: https://bitwarden.com/help/cli/#download-and-install
@@ -88,6 +91,11 @@
 >
 > - node 環境整ったら pnpm などで -g で `bw` をインストールし直しておくのが吉
 
+### memo: Bitwarden CLI の Util commands
+
+- `bw sync`: Vault の最新状態を取得する
+- `bw list items --search "{__search_word__}" | jq`: アイテムの一覧を表示する (IDの取得に便利)
+
 ### chezmoi のインストール
 
 - Mac
@@ -123,7 +131,8 @@ chezmoi edit ~/.zshrc
 
 1. VS Code が立ち上がります。
 1. 編集して保存し、**VS Code のタブを閉じます**。
-1. 自動的に実ファイルへ反映 (`apply`) され、GitHub へ `push` されます。
+1. 自動的に実ファイルへ反映 (`apply`) され、`commit` されます。
+   1. `git push` は手動で行う必要があります。テンプレート管理しているファイルの内容を誤って公開するリスクを回避するためです。
 
 ### 他のマシンでの変更を取り込む
 
@@ -206,7 +215,7 @@ mv dot_zshrc dot_zshrc.tmpl
 ### 設定ファイルの更新方法
 
 ```bash
-chezmoi edit-config
+code ~/.local/share/chezmoi/.chezmoi.toml.tmpl
 ```
 
 ### 動作設定 (`.chezmoi.toml.tmpl`)
@@ -214,7 +223,7 @@ chezmoi edit-config
 ソースディレクトリの直下に配置されているこのファイルが、`chezmoi` の挙動を制御します。
 
 - `edit.apply = true`: 編集完了時に即座に反映。
-- `git.autoCommit / autoPush = true`: Git操作を完全自動化。
+- `git.autoCommit = true`: 自動コミット。
 
 ### OSごとの出し分け
 

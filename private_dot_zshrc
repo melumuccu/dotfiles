@@ -140,6 +140,7 @@ alias bl='brew list'
 alias bs='brew search'
 alias bbd='brew bundle dump'
 
+
 # chezmoi
 alias cz='chezmoi'
 alias czad='chezmoi add'
@@ -148,8 +149,11 @@ alias czre='chezmoi re-add'
 alias czap='chezmoi apply'
 alias cze='chezmoi edit --apply'
 alias czd='chezmoi diff'
-# chezmoi updateは、chezmoiのGitリポジトリからpullして、管理下のファイルを更新するコマンド。他のマシンで行った変更を反映させるために使用する。
+## MEMO: テンプレート設定して秘匿したい情報を管理する時に auto push にしておくと怖いのでエイリアス設定して我慢しておく
+alias czps='chezmoi git -- push'
+## chezmoi updateは、chezmoiのGitリポジトリからpullして、管理下のファイルを更新するコマンド。他のマシンで行った変更を反映させるために使用する。
 alias czpl='chezmoi update'
+
 
 # mise (<- make, just)
 alias make="mise run"
