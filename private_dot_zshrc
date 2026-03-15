@@ -115,7 +115,17 @@ fcd() {
 alias so='source ~/.zshrc'
 
 # ls強化(eza)
-alias ls='eza -l --no-filesize --no-time --no-user --git -s type -A -h'
+## --oneline: ファイルやディレクトリを1行ずつ表示します。
+## --long: 詳細表示。パーミッション、サイズ、更新日時などを表示します。
+## --no-time: ファイルの更新日時を表示しません。
+## --no-user: ファイルの所有者を表示しません。
+## --binary: サイズをバイナリ単位（KB、MB、GBなど）で表示します。
+## --git: Gitリポジトリ内のファイルに対して、変更の有無を表示します。
+## --almost-all: 通常のlsコマンドの-aオプションと同様に、すべてのファイルを表示しますが、.と..は表示しません。
+## --header: ディレクトリの内容を表示する前に、ディレクトリの名前を表示します。
+## --group-directories-first: ディレクトリをファイルより先に表示します。
+## --ignore-glob: 指定したパターンに一致するファイルを表示しないようにします。
+alias ls='eza --oneline --long --no-time --no-user --binary --git --almost-all --header --group-directories-first --ignore-glob .DS_Store'
 
 #cdしたらls
 cdls ()
