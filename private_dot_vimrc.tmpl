@@ -23,9 +23,13 @@ set showcmd
 set ttymouse=sgr
 
 " Yanc時にclipboardにもコピーする
+{{ if eq .chezmoi.os "darwin" -}}
+set clipboard=unnamed
+{{ else if eq .chezmoi.os "linux" -}}
 if has("clipboard")
-  set clipboard=unnamed
+  set clipboard=unnamedplus
 endif
+{{ end }}
 
 "=====================================入力系
 " 入力モードでF9, F10を無効化（何もしない）-> IME切り替えに使用するため
@@ -33,10 +37,11 @@ inoremap <F9> <Nop>
 inoremap <F10> <Nop>
 
 " ====================================文字化け解消
-" (Linux環境用)
-" set encoding=utf-8
-" set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
-" set fileformats=unix,dos,mac
+{{ if eq .chezmoi.os "linux" -}}
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileformats=unix,dos,mac
+{{ end }}
 
 " ====================================見た目系
 
