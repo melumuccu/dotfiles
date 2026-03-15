@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>528</string>
+	<key>AMApplicationVersion</key>
+	<string>2.10</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>2.1.1</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Finder</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>itemType</key>
+					<dict/>
+					<key>predicate</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array/>
+				<key>AMSelectedInputType</key>
+				<string>com.apple.cocoa.path</string>
+				<key>AMSelectedOutputType</key>
+				<string>com.apple.cocoa.path</string>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Filter Finder Items 2.action</string>
+				<key>ActionName</key>
+				<string>Finder項目にフィルタを適用</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>itemType</key>
+					<string>com.apple.cocoa.path</string>
+					<key>predicate</key>
+					<data>
+					YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25Z
+					JGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGG
+					oF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290
+					gAGvEBYLDBMYICorLTQ4PT5BRUlOT1JZXWFj
+					VSRudWxs0w0ODxAREl8QF05TQ29tcG91bmRQ
+					cmVkaWNhdGVUeXBlXxAPTlNTdWJwcmVkaWNh
+					dGVzViRjbGFzcxABgAKAFdIUDxUXWk5TLm9i
+					amVjdHOhFoADgBTUDxkaGxwdHh9fEBFOU1Jp
+					Z2h0RXhwcmVzc2lvbl8QEE5TTGVmdEV4cHJl
+					c3Npb25fEBNOU1ByZWRpY2F0ZU9wZXJhdG9y
+					gBOADoAEgBHVISIjJA8lJicoKVlOU09wZXJh
+					bmReTlNTZWxlY3Rvck5hbWVfEBBOU0V4cHJl
+					c3Npb25UeXBlW05TQXJndW1lbnRzgAaABRAD
+					gAiADVx2YWx1ZUZvcktleTrSIw8QLIAH0i4v
+					MDFaJGNsYXNzbmFtZVgkY2xhc3Nlc18QEE5T
+					U2VsZkV4cHJlc3Npb26jMDIzXE5TRXhwcmVz
+					c2lvblhOU09iamVjdNIUDzU3oTaACYAM0w8j
+					OTo7PFlOU0tleVBhdGiACxAKgApUa2luZNIu
+					Lz9AXxAcTlNLZXlQYXRoU3BlY2lmaWVyRXhw
+					cmVzc2lvbqM/MjPSLi9CQ15OU011dGFibGVB
+					cnJheaNCRDNXTlNBcnJhedIuL0ZHXxATTlNL
+					ZXlQYXRoRXhwcmVzc2lvbqRGSDIzXxAUTlNG
+					dW5jdGlvbkV4cHJlc3Npb27TSiMPS0xNXxAP
+					TlNDb25zdGFudFZhbHVlgA8QAIAQEATSLi9Q
+					UV8QGU5TQ29uc3RhbnRWYWx1ZUV4cHJlc3Np
+					b26jUDIz1Q9TVFVWV0xYTE5aTlNNb2RpZmll
+					clhOU05lZ2F0ZVlOU09wdGlvbnNeTlNPcGVy
+					YXRvclR5cGWAEgjSLi9aW18QG05TRXF1YWxp
+					dHlQcmVkaWNhdGVPcGVyYXRvcqNaXDNfEBNO
+					U1ByZWRpY2F0ZU9wZXJhdG9y0i4vXl9fEBVO
+					U0NvbXBhcmlzb25QcmVkaWNhdGWjXmAzW05T
+					UHJlZGljYXRl0i4vRGKiRDPSLi9kZV8QE05T
+					Q29tcG91bmRQcmVkaWNhdGWjZGAzAAgAEQAa
+					ACQAKQAyADcASQBMAFEAUwBsAHIAeQCTAKUA
+					rACuALAAsgC3AMIAxADGAMgA0QDlAPgBDgEQ
+					ARIBFAEWASEBKwE6AU0BWQFbAV0BXwFhAWMB
+					cAF1AXcBfAGHAZABowGnAbQBvQHCAcQBxgHI
+					Ac8B2QHbAd0B3wHkAekCCAIMAhECIAIkAiwC
+					MQJHAkwCYwJqAnwCfgKAAoIChAKJAqUCqQK0
+					Ar8CyALSAuEC4wLkAukDBwMLAyEDJgM+A0ID
+					TgNTA1YDWwNxAAAAAAAAAgEAAAAAAAAAZgAA
+					AAAAAAAAAAAAAAAAA3U=
+					</data>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.FilterFinderItems2</string>
+				<key>CFBundleVersion</key>
+				<string>2.1.1</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryFilesAndFolders</string>
+				</array>
+				<key>Class Name</key>
+				<string>Filter_Finder_Items_2</string>
+				<key>InputUUID</key>
+				<string>474716AB-6270-4594-9C9C-16AA7CD2357B</string>
+				<key>Keywords</key>
+				<array/>
+				<key>OutputUUID</key>
+				<string>54914AA9-A4F3-4E8C-9318-E0EE649207D3</string>
+				<key>UUID</key>
+				<string>6D128EAB-9501-43EE-B242-B14221283530</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Finder</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>com.apple.cocoa.path</string>
+						<key>name</key>
+						<string>itemType</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<data>
+						</data>
+						<key>name</key>
+						<string>predicate</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>472.500000:243.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Filter Finder Items 2.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>v.1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>variableUUID</key>
+					<dict>
+						<key>isPathPopUp</key>
+						<false/>
+						<key>selectedVariableUUID</key>
+						<string>0DD4AF54-2620-4741-A8CD-913F1ED6218D</string>
+						<key>variableUUIDsInMenu</key>
+						<array/>
+					</dict>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array/>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Set Value of Variable.action</string>
+				<key>ActionName</key>
+				<string>変数の値を設定</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>variableUUID</key>
+					<string>0DD4AF54-2620-4741-A8CD-913F1ED6218D</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.SetValueofVariable</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>Set_Value_of_Variable</string>
+				<key>InputUUID</key>
+				<string>9FF2DE51-0DB6-4439-B957-F3BC5AF7AAEA</string>
+				<key>Keywords</key>
+				<array>
+					<string>変数</string>
+					<string>バインド</string>
+					<string>入力</string>
+					<string>出力</string>
+					<string>記憶装置</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>189FEBCD-A148-4258-B423-392E5C649BAE</string>
+				<key>UUID</key>
+				<string>98D7AB78-2D84-4F70-BD87-21DCA521E160</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>variableUUID</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>472.500000:346.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.1.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Finder</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>fileNames</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Get Specified Finder Items.action</string>
+				<key>ActionName</key>
+				<string>指定されたFinder項目を取得</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>fileNames</key>
+					<array>
+						<string>~/Library/CloudStorage/GoogleDrive-koki_fujisawa@hacksaw.work/共有ドライブ/大庚会 with HACKsaw/⭐ファイル名変更</string>
+					</array>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.SpecifiedFiles</string>
+				<key>CFBundleVersion</key>
+				<string>1.1.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryFilesAndFolders</string>
+				</array>
+				<key>Class Name</key>
+				<string>SpecifiedFilesAction</string>
+				<key>IgnoresInput</key>
+				<false/>
+				<key>InputUUID</key>
+				<string>03137A8B-733F-429D-AE8C-46F861F8D43B</string>
+				<key>Keywords</key>
+				<array>
+					<string>ファイル</string>
+					<string>選択</string>
+					<string>検索</string>
+					<string>取得</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>4EABAF12-E565-40EA-98D3-807B8B7E5ECE</string>
+				<key>ShowWhenRun</key>
+				<false/>
+				<key>UUID</key>
+				<string>7446ECE0-2F0F-46F7-888D-3477D231C91E</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Finder</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<array/>
+						<key>name</key>
+						<string>fileNames</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>472.500000:583.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Get Specified Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>v.1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>variableUUID</key>
+					<dict>
+						<key>isPathPopUp</key>
+						<false/>
+						<key>selectedVariableUUID</key>
+						<string>0DD4AF54-2620-4741-A8CD-913F1ED6218D</string>
+						<key>variableUUIDsInMenu</key>
+						<array/>
+					</dict>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array/>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Get Value of Variable.action</string>
+				<key>ActionName</key>
+				<string>変数の値を取得</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>variableUUID</key>
+					<string>0DD4AF54-2620-4741-A8CD-913F1ED6218D</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.GetValueofVariable</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>Get_Value_of_Variable</string>
+				<key>IgnoresInput</key>
+				<false/>
+				<key>InputUUID</key>
+				<string>86E062CC-BD6D-4C3F-842C-71F51DB8D3C2</string>
+				<key>Keywords</key>
+				<array>
+					<string>変数</string>
+					<string>バインド</string>
+					<string>入力</string>
+					<string>出力</string>
+					<string>記憶装置</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>E75552ED-A2A6-4D2E-91A5-EB5940D41A90</string>
+				<key>UUID</key>
+				<string>4C4CE182-D477-498B-808C-35DC97F0DFBA</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>variableUUID</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>472.500000:685.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Get Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>2.0.3</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<dict/>
+					<key>CheckedForUserDefaultShell</key>
+					<dict/>
+					<key>inputMethod</key>
+					<dict/>
+					<key>shell</key>
+					<dict/>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run Shell Script.action</string>
+				<key>ActionName</key>
+				<string>シェルスクリプトを実行</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<string>#==================================
+# 環境設定
+#==================================
+
+# ‼️ターミナルの実行環境を再現するため、PATHを明示的に設定する(echo $PATH)
+export PATH="/Users/fujisawakoki/projects/lib/miniconda3/bin:/Users/fujisawakoki/Library/pnpm:/Users/fujisawakoki/.nvm/versions/node/v22.11.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Library/Java/JavaVirtualMachines/temurin-21.jdk"
+
+### --- 監視フォルダのパス --- ###
+# Automatorから渡された引数を変数に格納
+WATCHED_FOLDER="$1" # 第1引数: 監視フォルダのパス
+# 第1引数を引数リストから削除
+shift
+
+
+### --- ログ関連 --- ###
+# ログ用ディレクトリ・ファイルを定義
+LOG_DIR="$WATCHED_FOLDER/logs"
+LOG_FILE="$LOG_DIR/image_organizer-$(date '+%Y-%m-%d_%H-%M-%S').log"
+mkdir -p "$LOG_DIR"
+touch "$LOG_FILE"
+
+# ログをファイルに書き込むための関数を定義します
+log() {
+  # 現在の日時とログメッセージをファイルに追記します
+  echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" &gt;&gt; "$LOG_FILE"
+}
+
+### --- 結果出力先 --- ###
+DEST_DIR="$WATCHED_FOLDER/✅ファイル名変更済み"
+mkdir -p "$DEST_DIR"
+
+### --- ここまでの変数をログ出力 --- ###
+log "WATCHED_FOLDER: $WATCHED_FOLDER"
+log "LOG_DIR: $LOG_DIR"
+log "LOG_FILE: $LOG_FILE"
+log "DEST_DIR: $DEST_DIR"
+
+
+#==================================
+# メイン処理
+#==================================
+# 残りの全引数（画像ファイルのパス）内で、同じファイルパスが複数回渡されることがあるため、重複を排除して配列に格納
+declare -a SOURCE_FILES=()
+while IFS= read -r line; do
+  if [[ ! " ${SOURCE_FILES[@]} " =~ " ${line} " ]]; then
+    SOURCE_FILES+=("$line")
+  fi
+done &lt; &lt;(printf "%s\n" "$@")
+
+# SOURCE_FILES をログに出力
+log "SOURCE_FILES: ${SOURCE_FILES[*]}"
+
+# 残りの全引数（画像ファイルのパス）を一つずつループ処理
+for SOURCE_FILE in "${SOURCE_FILES[@]}"; do
+  log "======== メイン処理実行開始 ========"
+  log "処理対象ファイル: $SOURCE_FILE"
+
+  # ファイルが存在しない場合はエラーを記録して終了
+  if [ ! -f "$SOURCE_FILE" ]; then
+    log "🚨 エラー: 対象ファイルが見つかりません。処理を中断します。"
+    continue
+  fi
+
+  # 必要な情報を変数に格納
+  ORIGINAL_FILENAME=$(basename "$SOURCE_FILE")
+  EXTENSION="${ORIGINAL_FILENAME##*.}"
+  log "元ファイル名: $ORIGINAL_FILENAME"
+  log "拡張子: $EXTENSION"
+
+  # クラウド(GoogleDriveなど)から強制的にDLを促すためファイルにアクセスする(open以外のあらゆるコマンド試したけど、どれもDLされなかった...！)
+  open "$SOURCE_FILE"
+
+  # $PATH が通っていれば gemini コマンドを直接使用可能なはず(which gemini で確認)
+  GEMINI_CMD="gemini"
+  # Gemini CLIによるファイル名生成プロンプト
+  PROMPT="@$SOURCE_FILE この画像の内容を最も的確に表す、ファイル名として適切な日本語の名称を考えてください。例: '走る犬', '夕焼けの海辺', '会議の様子'。名称のみをテキストで返してください。"
+
+  log "PROMPT: $PROMPT"
+  log "Gemini APIへの問い合わせを開始します..."
+
+  # Gemini CLIを実行し、結果を記録
+  GENERATED_NAME=$("$GEMINI_CMD" -p "$PROMPT")
+  log "Gemini APIからの応答(生データ): '$GENERATED_NAME'"
+
+  # `Loadedcachedcredentials.`、`Loaded cached credentials.`、改行などが返答に含まれることが多々あるため、これを除去
+  GENERATED_NAME=$(echo "$GENERATED_NAME" | sed 's/Loadedcachedcredentials\.//g')
+  GENERATED_NAME=$(echo "$GENERATED_NAME" | sed 's/Loaded cached credentials\.//g')
+  GENERATED_NAME=$(echo "$GENERATED_NAME" | sed 's/\n//g') # 改行を削除
+  GENERATED_NAME=$(echo "$GENERATED_NAME" | sed 's/^\s*//;s/\s*$//') # 前後の空白を削除
+  log "Gemini APIからの応答(整形後): '$GENERATED_NAME'"
+
+  # 名称が取得できなかった場合はエラーを記録して終了
+  if [ -z "$GENERATED_NAME" ]; then
+      log "🚨 エラー: Geminiからの名称取得に失敗しました。応答が空です。"
+      continue
+  fi
+
+  # ファイル名として使えるように整形
+  SANITIZED_NAME=$(echo "$GENERATED_NAME" | tr -d '[:space:]' | tr ' ' '_')
+  log "整形後のファイル名部分: $SANITIZED_NAME"
+
+  # ファイルのリネームと移動
+  TODAY=$(date "+%Y-%m-%d")
+  NEW_FILENAME="${TODAY}_${SANITIZED_NAME}.${EXTENSION}"
+  log "最終的なファイル名: $NEW_FILENAME"
+
+  # mvコマンドを実行
+  log "ファイル移動・リネームを実行します: mv '$SOURCE_FILE' '$DEST_DIR/$NEW_FILENAME'"
+  mv "$SOURCE_FILE" "$DEST_DIR/$NEW_FILENAME"
+
+  log "✅ 成功: 処理が正常に完了しました。"
+done
+log "======== フォルダアクション実行終了 ========"
+</string>
+					<key>CheckedForUserDefaultShell</key>
+					<true/>
+					<key>inputMethod</key>
+					<integer>1</integer>
+					<key>shell</key>
+					<string>/bin/zsh</string>
+					<key>source</key>
+					<string></string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.RunShellScript</string>
+				<key>CFBundleVersion</key>
+				<string>2.0.3</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunShellScriptAction</string>
+				<key>InputUUID</key>
+				<string>3D258F4E-2ADE-4967-9582-338797F43C4E</string>
+				<key>Keywords</key>
+				<array>
+					<string>シェル</string>
+					<string>スクリプト</string>
+					<string>コマンド</string>
+					<string>実行</string>
+					<string>UNIX</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>0E6EBA06-727B-4CDE-B52B-626F9F19FB2E</string>
+				<key>UUID</key>
+				<string>3F23C789-5A94-4BEC-9CDB-038F6FF420B8</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>inputMethod</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<false/>
+						<key>name</key>
+						<string>CheckedForUserDefaultShell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>COMMAND_STRING</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string>/bin/sh</string>
+						<key>name</key>
+						<string>shell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>472.500000:1993.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>7EF09709-0200-467A-B74E-9C7AD0CACD38</key>
+		<dict>
+			<key>from</key>
+			<string>7446ECE0-2F0F-46F7-888D-3477D231C91E - 7446ECE0-2F0F-46F7-888D-3477D231C91E</string>
+			<key>to</key>
+			<string>4C4CE182-D477-498B-808C-35DC97F0DFBA - 4C4CE182-D477-498B-808C-35DC97F0DFBA</string>
+		</dict>
+		<key>8718C748-3A0C-40F6-B6B4-143692227408</key>
+		<dict>
+			<key>from</key>
+			<string>98D7AB78-2D84-4F70-BD87-21DCA521E160 - 98D7AB78-2D84-4F70-BD87-21DCA521E160</string>
+			<key>to</key>
+			<string>7446ECE0-2F0F-46F7-888D-3477D231C91E - 7446ECE0-2F0F-46F7-888D-3477D231C91E</string>
+		</dict>
+		<key>BBDF2EC4-F1B3-45CD-AD23-AA32570B86AC</key>
+		<dict>
+			<key>from</key>
+			<string>6D128EAB-9501-43EE-B242-B14221283530 - 6D128EAB-9501-43EE-B242-B14221283530</string>
+			<key>to</key>
+			<string>98D7AB78-2D84-4F70-BD87-21DCA521E160 - 98D7AB78-2D84-4F70-BD87-21DCA521E160</string>
+		</dict>
+		<key>C950DBF8-9B20-457F-B6E0-0FAE06840445</key>
+		<dict>
+			<key>from</key>
+			<string>4C4CE182-D477-498B-808C-35DC97F0DFBA - 4C4CE182-D477-498B-808C-35DC97F0DFBA</string>
+			<key>to</key>
+			<string>3F23C789-5A94-4BEC-9CDB-038F6FF420B8 - 3F23C789-5A94-4BEC-9CDB-038F6FF420B8</string>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<array>
+		<dict>
+			<key>UUID</key>
+			<string>0DD4AF54-2620-4741-A8CD-913F1ED6218D</string>
+			<key>identifier</key>
+			<string>com.apple.Automator.Variable.Storage</string>
+			<key>name</key>
+			<string>SourceFile</string>
+		</dict>
+	</array>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>folderActionFolderPath</key>
+		<string>~/Library/CloudStorage/GoogleDrive-koki_fujisawa@hacksaw.work/共有ドライブ/大庚会 with HACKsaw/⭐ファイル名変更</string>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.folderAction</string>
+	</dict>
+</dict>
+</plist>
