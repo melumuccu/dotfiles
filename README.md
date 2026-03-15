@@ -38,6 +38,56 @@
    ssh -T git@github.com
    ```
 
+### Bitwarden CLI のインストールと認証
+
+1. 公式サイトから `bw` をインストール
+   1. see: https://bitwarden.com/help/cli/#download-and-install
+1. checksum を検証
+   1. see: https://bitwarden.com/help/security-faqs/#q-how-do-i-validate-the-checksum-of-a-bitwarden-app
+
+   ```
+   sha256sum {ダウンロードした zip のpath}
+   ```
+
+   1. 出力されたハッシュ値が、公式サイトで公開されている SHA256 チェックサムと一致することを確認する
+      1. `bw` は `https://github.com/bitwarden/clients/releases` で SHA256 チェックサムが公開されている
+
+1. zip展開
+1. 展開された `bw` バイナリをパスの通った適当な場所に移動（例: `/usr/local/bin`）
+
+   ```bash
+   sudo mv {`bw` バイナリのPATH} /usr/local/bin/
+   ```
+
+1. `bw` バイナリの権限許可
+
+   ```bash
+   chmod +x /usr/local/bin/bw
+   ```
+
+1. Bitwarden CLI でログイン
+
+   ```bash
+   $ bw login
+   ```
+
+   > Could not find dir, "/Users/fujisawakoki/Library/Application Support/Bitwarden CLI"; > creating it instead.
+   > Could not find data file, "/Users/fujisawakoki/Library/Application Support/Bitwarden > CLI/data.json"; creating it instead.
+   > ? Email address: [hidden]
+   > ? Master password: [hidden]
+   > ? Two-step login code: [hidden]
+   > You are logged in!
+
+1. 払い出されたセッションを環境変数に保存
+
+   ```bash
+   export BW_SESSION=$(bw unlock --raw)
+   ```
+
+> [MEMO]
+>
+> - node 環境整ったら pnpm などで -g で `bw` をインストールし直しておくのが吉
+
 ### chezmoi のインストール
 
 - Mac
@@ -152,6 +202,12 @@ mv dot_zshrc dot_zshrc.tmpl
 ## ⚙️ 核心の設定構造
 
 本リポジトリでは `chezmoi` 自体の設定も管理しています。
+
+### 設定ファイルの更新方法
+
+```bash
+chezmoi edit-config
+```
 
 ### 動作設定 (`.chezmoi.toml.tmpl`)
 
