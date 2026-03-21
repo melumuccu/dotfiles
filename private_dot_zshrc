@@ -150,6 +150,8 @@ alias bl='brew list'
 alias bs='brew search'
 alias bbd='brew bundle dump'
 
+# bitwarden
+alias bwul='export BW_SESSION=$(bw unlock --raw)'
 
 # chezmoi
 alias cz='chezmoi'
