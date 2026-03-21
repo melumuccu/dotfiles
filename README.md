@@ -127,6 +127,18 @@ chezmoi init --apply --ssh melumuccu/dotfiles
 
 ## 📝 日常の操作
 
+### Bitwarden のセッションを更新する
+
+```bash
+export BW_SESSION=$(bw unlock --raw)
+```
+
+### Bitwarden のセッションを破棄する (作業が終わったら毎回これを打つ)
+
+```bash
+bw lock
+```
+
 ### ファイルを編集する
 
 ```bash
