@@ -5,7 +5,14 @@
 
 [edit]
     command = {{ $editor | quote }}
-    args = ["--wait", "--merge", "{{ .Destination }}", "{{ .Target }}", "{{ .Source }}", "{{ .Source }}"]
+    args = [
+        "--wait", 
+        "--merge", 
+        '{{ "{{ .Destination }}" }}', 
+        '{{ "{{ .Target }}" }}', 
+        '{{ "{{ .Source }}" }}', 
+        '{{ "{{ .Source }}" }}'
+    ]
     apply = true
 
 [git]
