@@ -238,7 +238,7 @@
         "source.sort.json": "explicit"
     },
     "editor.copyWithSyntaxHighlighting": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "oxc.oxc-vscode",
     "editor.dragAndDrop": false,
     "editor.fontSize": 15,
     "editor.formatOnSave": true,
@@ -363,6 +363,8 @@
         "https://rainbowflesh.github.io/css/rose-pine-moon.css",
         "https://rainbowflesh.github.io/css/rose-pine.css"
     ],
+    "oxc.enable.oxfmt": true,
+    "oxc.enable.oxlint": true,
     "Prettier-SQL.expressionWidth": 120,
     "Prettier-SQL.keywordCase": "upper",
     "Prettier-SQL.SQLFlavourOverride": "postgresql",
