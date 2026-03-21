@@ -156,6 +156,7 @@ alias czpl='chezmoi update'
 
 
 # mise (<- make, just)
+eval "$(mise activate zsh)"
 alias make="mise run"
 alias mr="mise run"
 
