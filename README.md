@@ -123,6 +123,15 @@ sh -c "$(curl -fsLS get.chezmoi.io)"
 chezmoi init --apply --ssh melumuccu/dotfiles
 ```
 
+### (任意) 特定のディレクトリにシンボリックリンクを貼る
+
+- Why?: Raycast などのランチャーからアクセスしやすくするため
+- ex. projects ディレクトリにリンクを貼る場合
+
+```bash
+ln -s ~/.local/share/chezmoi ~/projects/chezmoi
+```
+
 ---
 
 ## 📝 日常の操作
