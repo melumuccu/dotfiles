@@ -1,33 +1,14 @@
 {
   "version": 3,
   "skills": {
-    "skill-creator": {
-      "source": "anthropics/skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/anthropics/skills.git",
-      "skillPath": "skills/skill-creator/SKILL.md",
-      "skillFolderHash": "98a510d1cfef9f82c3b1eec200229ca68725e613",
-      "pluginName": "example-skills",
-      "installedAt": "2026-03-15T07:01:52.812Z",
-      "updatedAt": "2026-03-15T07:01:52.812Z"
-    },
-    "find-skills": {
-      "source": "vercel-labs/skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/vercel-labs/skills.git",
-      "skillPath": "skills/find-skills/SKILL.md",
-      "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
-      "installedAt": "2026-03-15T07:02:25.358Z",
-      "updatedAt": "2026-03-15T07:02:25.358Z"
-    },
     "kf-git-commit-日本語コミットメッセージ": {
       "source": "melumuccu/ai",
       "sourceType": "github",
       "sourceUrl": "https://github.com/melumuccu/ai.git",
       "skillPath": ".agents/skills/kf-git-commit-日本語コミットメッセージ/SKILL.md",
       "skillFolderHash": "ba1f7c73136b15a1e9574a54e9aad2c7b7043f0f",
-      "installedAt": "2026-03-21T15:10:48.157Z",
-      "updatedAt": "2026-03-21T15:12:27.121Z"
+      "installedAt": "2026-03-21T16:37:40.389Z",
+      "updatedAt": "2026-03-21T16:37:40.389Z"
     },
     "kf-markdown-list-番号付き手順相互参照": {
       "source": "melumuccu/ai",
@@ -35,8 +16,8 @@
       "sourceUrl": "https://github.com/melumuccu/ai.git",
       "skillPath": ".agents/skills/kf-markdown-list-番号付き手順相互参照/SKILL.md",
       "skillFolderHash": "09fb91c421fad51755111f2a3bfd57f5dd8b4fa2",
-      "installedAt": "2026-03-21T15:10:48.553Z",
-      "updatedAt": "2026-03-21T15:12:27.519Z"
+      "installedAt": "2026-03-21T16:37:40.966Z",
+      "updatedAt": "2026-03-21T16:37:40.966Z"
     },
     "kf-skill-naming-作成整理規約": {
       "source": "melumuccu/ai",
@@ -44,8 +25,27 @@
       "sourceUrl": "https://github.com/melumuccu/ai.git",
       "skillPath": ".agents/skills/kf-skill-naming-作成整理規約/SKILL.md",
       "skillFolderHash": "30a92d1a272f52daca27e579203ac382c1249573",
-      "installedAt": "2026-03-21T15:10:48.924Z",
-      "updatedAt": "2026-03-21T15:12:27.895Z"
+      "installedAt": "2026-03-21T16:37:41.338Z",
+      "updatedAt": "2026-03-21T16:37:41.338Z"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "skillFolderHash": "98a510d1cfef9f82c3b1eec200229ca68725e613",
+      "pluginName": "example-skills",
+      "installedAt": "2026-03-21T16:37:53.946Z",
+      "updatedAt": "2026-03-21T16:37:53.946Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
+      "installedAt": "2026-03-21T16:38:02.275Z",
+      "updatedAt": "2026-03-21T16:38:02.275Z"
     }
   },
   "dismissed": {
