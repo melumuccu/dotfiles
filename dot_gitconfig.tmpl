@@ -1,11 +1,56 @@
+# 参考: https://blog.gitbutler.com/how-git-core-devs-configure-git
 [user]
-	name = {{ (bitwardenFields "item" "97078a5b-3219-4929-a1fd-b40e0068775a").user_name.value }}
-	email = {{ (bitwardenFields "item" "97078a5b-3219-4929-a1fd-b40e0068775a").user_email.value }}
-[push]
-	autoSetupRemote = true
-[pull]
-	ff = true
-[color]
-	ui = true
+        name = {{ (bitwardenFields "item" "97078a5b-3219-4929-a1fd-b40e0068775a").user_name.value }}
+        email = {{ (bitwardenFields "item" "97078a5b-3219-4929-a1fd-b40e0068775a").user_email.value }}
 [core]
-	editor = vim
+        excludesfile = ~/.gitignore
+        editor = vim
+[init]
+        defaultBranch = main
+[branch]
+        sort = -committerdate
+[tag]
+        sort = version:refname
+[diff]
+        algorithm = histogram
+        # diff.colorMoved: 移動した行の色付け方法。plain: 移動を単純表示で強調する。
+        colorMoved = plain
+        # diff.mnemonicPrefix: diff のプレフィックスを a/b ではなく意味のある表記にする。
+        mnemonicPrefix = true
+        # diff.renames: 名前変更を差分として追跡する。
+        renames = true
+[pull]
+        # pull.ff: pull 時に fast-forward 可能な場合だけそのまま進める。
+        ff = true
+        # pull.rebase: pull 時の既定動作を merge ではなく rebase にする。
+        rebase = true
+[push]
+        # push.default: push 対象の既定決定方法。simple: 同名の upstream ブランチへ安全に push する。
+        default = simple
+        # push.autoSetupRemote: 初回 push 時に upstream を自動設定する。
+        autoSetupRemote = true
+        # push.followTags: push 対象コミットに到達可能な注釈付き tag も一緒に push する。
+        followTags = true
+[fetch]
+        # fetch.prune: リモートで削除済みの追跡ブランチを fetch 時にローカルからも掃除する。
+        prune = true
+        # fetch.pruneTags: リモートで削除済みの tag を fetch 時にローカルからも掃除する。
+        pruneTags = true
+        # fetch.all: 既定で全リモートを fetch 対象にする。
+        all = true
+
+[commit]
+        # commit.verbose: コミットメッセージ編集時に差分を本文下部へ表示する。
+        verbose = true
+[rebase]
+        # rebase.autoSquash: fixup!/squash! コミットを rebase -i 時に自動で並べ替えてまとめる。
+        autoSquash = true
+        # rebase.autoStash: rebase 前に未コミット変更を自動退避し、完了後に戻す。
+        autoStash = true
+        # rebase.updateRefs: rebase で書き換えたコミットを指す他ブランチ参照も更新する。
+        updateRefs = true
+[rerere]
+        # rerere.enabled: 以前解決した競合の解決結果を記録し再利用する。
+        enabled = true
+        # rerere.autoupdate: 記録済み解決を index/worktree に自動反映する。
+        autoupdate = true
