@@ -1,1 +1,32 @@
+# macOS
 .DS_Store
+.AppleDouble
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# WSL
+*Zone.Identifier
+
+# ログ・一時ファイルなど
+*.log
+*.tmp
+*.temp
+
+# ビルド成果物・依存関係など
+bin/
+node_modules/
+tmp/
+
+# 環境変数や機密情報など
+.env
+!.env.example
+*.secret
+*.key
+*.pem
+*.crt
+cookies.*
