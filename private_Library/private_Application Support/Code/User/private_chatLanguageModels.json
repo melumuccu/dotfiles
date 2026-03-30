@@ -1,1 +1,11 @@
-[]
+[
+	{
+		"name": "Copilot",
+		"vendor": "copilot",
+		"settings": {
+			"gpt-5.4": {
+				"reasoningEffort": "high"
+			}
+		}
+	}
+]
