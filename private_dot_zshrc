@@ -151,16 +151,21 @@ alias bs='brew search'
 alias bbd='brew bundle dump'
 
 # bitwarden
+# 再 source 時に古い alias 定義が残っていても関数定義で失敗しないようにする
 unalias bwul cz 2>/dev/null
+
+# Bitwarden を unlock して、払い出されたセッションを現在の shell に保存する
 bwul() {
     export BW_SESSION="$(bw unlock --raw)" || return 1
 }
 
+# BW_SESSION が存在し、かつ実際に Bitwarden API 呼び出しに使えるかを確認する
 _bw_session_is_valid() {
     [[ -n "$BW_SESSION" ]] || return 1
     bw --nointeraction --session "$BW_SESSION" list items --search __bw_session_probe__ >/dev/null 2>&1
 }
 
+# 有効な BW_SESSION がなければ再 unlock して、chezmoi 実行前に利用可能な状態へそろえる
 _bw_ensure_session() {
     _bw_session_is_valid && return 0
     bwul || return 1
@@ -168,6 +173,7 @@ _bw_ensure_session() {
 }
 
 # chezmoi
+# Bitwarden 連携が必要な chezmoi コマンドだけを、このラッパー経由で実行する
 cz() {
     _bw_ensure_session || return 1
     chezmoi "$@"
