@@ -1,33 +1,6 @@
 {
   "version": 3,
   "skills": {
-    "kf-git-commit-日本語コミットメッセージ": {
-      "source": "melumuccu/ai",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/melumuccu/ai.git",
-      "skillPath": ".agents/skills/kf-git-commit-日本語コミットメッセージ/SKILL.md",
-      "skillFolderHash": "ba1f7c73136b15a1e9574a54e9aad2c7b7043f0f",
-      "installedAt": "2026-03-21T16:37:40.389Z",
-      "updatedAt": "2026-03-21T16:37:40.389Z"
-    },
-    "kf-markdown-list-番号付き手順相互参照": {
-      "source": "melumuccu/ai",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/melumuccu/ai.git",
-      "skillPath": ".agents/skills/kf-markdown-list-番号付き手順相互参照/SKILL.md",
-      "skillFolderHash": "09fb91c421fad51755111f2a3bfd57f5dd8b4fa2",
-      "installedAt": "2026-03-21T16:37:40.966Z",
-      "updatedAt": "2026-03-21T16:37:40.966Z"
-    },
-    "kf-skill-naming-作成整理規約": {
-      "source": "melumuccu/ai",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/melumuccu/ai.git",
-      "skillPath": ".agents/skills/kf-skill-naming-作成整理規約/SKILL.md",
-      "skillFolderHash": "30a92d1a272f52daca27e579203ac382c1249573",
-      "installedAt": "2026-03-21T16:37:41.338Z",
-      "updatedAt": "2026-03-21T16:37:41.338Z"
-    },
     "skill-creator": {
       "source": "anthropics/skills",
       "sourceType": "github",
@@ -46,6 +19,51 @@
       "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
       "installedAt": "2026-03-21T16:38:02.275Z",
       "updatedAt": "2026-03-21T16:38:02.275Z"
+    },
+    "kf-agent-research-report-only-unless-approved": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-agent-research-report-only-unless-approved/SKILL.md",
+      "skillFolderHash": "97b8b2613590de9afa0f5bb4bd7ce68e7c1b46ef",
+      "installedAt": "2026-03-30T11:51:01.953Z",
+      "updatedAt": "2026-03-30T11:51:01.953Z"
+    },
+    "kf-git-commit-japanese-commit-message": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-git-commit-japanese-commit-message/SKILL.md",
+      "skillFolderHash": "692818e8016d8f325785b730e40bd5d1091c0f65",
+      "installedAt": "2026-03-30T11:51:02.374Z",
+      "updatedAt": "2026-03-30T11:51:02.374Z"
+    },
+    "kf-markdown-list-ordered-list-cross-reference": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-markdown-list-ordered-list-cross-reference/SKILL.md",
+      "skillFolderHash": "8135767af710f488ae302a053f3f99487dc812a3",
+      "installedAt": "2026-03-30T11:51:03.048Z",
+      "updatedAt": "2026-03-30T11:51:03.048Z"
+    },
+    "kf-skill-naming-creation-organization-rules": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-skill-naming-creation-organization-rules/SKILL.md",
+      "skillFolderHash": "9ce6a790ca7ad6d522e57c6e28acfa00d2e1ab00",
+      "installedAt": "2026-03-30T11:51:03.457Z",
+      "updatedAt": "2026-03-30T11:51:03.457Z"
+    },
+    "prompt-builder": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/github/awesome-copilot.git",
+      "skillPath": "skills/prompt-builder/SKILL.md",
+      "skillFolderHash": "303a08be1132184366d4dc62abaa1ca2b9a41a21",
+      "installedAt": "2026-03-30T11:51:54.167Z",
+      "updatedAt": "2026-03-30T11:51:54.167Z"
     }
   },
   "dismissed": {
