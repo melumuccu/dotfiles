@@ -5,7 +5,7 @@
 ## 🚀 特徴
 
 - **自動同期**: `chezmoi edit` で保存し VS Code のタブを閉じると、自動で `apply` & `git commit` が走ります。
-  - `git push` は手動で行うことで、テンプレート管理しているファイルの内容を誤って公開するリスクを回避しています。
+    - `git push` は手動で行うことで、テンプレート管理しているファイルの内容を誤って公開するリスクを回避しています。
 - **マルチプラットフォーム対応**: Mac, Linux, Windows (WSL) で同一のリポジトリを使用可能。
 - **テンプレート管理**: OSごとの差異（エディタのパスやエイリアス）をテンプレート機能で吸収します。
 
@@ -76,7 +76,7 @@
 1. Bitwarden CLI でログイン
 
    ```bash
-   $ bw login
+   bw login
    ```
 
    > Could not find dir, "/Users/fujisawakoki/Library/Application Support/Bitwarden CLI"; > creating it instead.
@@ -275,6 +275,7 @@ code ~/.local/share/chezmoi/.chezmoi.toml.tmpl
 ソースディレクトリの直下に配置されているこのファイルが、`chezmoi` の挙動を制御します。
 
 - `edit.apply = true`: 編集完了時に即座に反映。
+- `merge.command` / `merge.args`: `chezmoi merge` の競合解決を VS Code で開く。
 - `git.autoCommit = true`: 自動コミット。
 
 ### OSごとの出し分け

@@ -4,9 +4,32 @@
 {{- end -}}
 
 [edit]
-    command = {{ $editor | quote }}
+    command = "{{ $editor }}"
     args = ["--wait"]
     apply = true
+
+[merge]
+{{- if eq .chezmoi.os "windows" }}
+    command = "powershell.exe"
+    args = [
+        "-NoProfile",
+        "-Command",
+        ' $target = $args[0]; $destination = $args[1]; $source = $args[2]; $base = "$target.base"; Copy-Item -LiteralPath $target -Destination $base; if ($?) { & "{{ $editor }}" --new-window --wait --merge $destination $target $base $source }',
+        "{{ `{{ .Target }}` }}",
+        "{{ `{{ .Destination }}` }}",
+        "{{ `{{ .Source }}` }}",
+    ]
+{{- else }}
+    command = "bash"
+    args = [
+        "-c",
+        'target="$1"; destination="$2"; source="$3"; base="${target}.base"; cp "$target" "$base" && "{{ $editor }}" --new-window --wait --merge "$destination" "$target" "$base" "$source"',
+        "bash",
+        "{{ `{{ .Target }}` }}",
+        "{{ `{{ .Destination }}` }}",
+        "{{ `{{ .Source }}` }}",
+    ]
+{{- end }}
 
 [git]
     autoCommit = true

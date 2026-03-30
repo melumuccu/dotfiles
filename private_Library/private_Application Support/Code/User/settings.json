@@ -11,10 +11,11 @@
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "[makefile]": {
-        "editor.defaultFormatter": "ms-vscode.cpptools"
-    },
     "[markdown]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.markdownlint": "explicit"
+        },
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
         "editor.insertSpaces": true,
         "editor.quickSuggestions": {
             "comments": "on",
@@ -70,9 +71,28 @@
     ],
     "breadcrumbs.symbolPath": "off",
     "chat.editing.confirmEditRequestRetry": false,
-    "codestream.email": "kouki.fujisawa@tnsgrp.com",
-    "codic.ACCESS_TOKEN": "fbFHiwwLifljU6e3x7toyQMS6IFyI2q3GN",
-    "codic.case": "camelCase",
+    "chat.tools.urls.autoApprove": {
+        "https://code.visualstudio.com": true,
+        "https://github.com/microsoft/vscode/wiki/*": true,
+        "https://*.google.com": true,
+        "https://developers.cloudflare.com": true,
+        "https://docs.immich.app": true,
+        "https://github.com": true,
+        "https://immich.app": {
+            "approveRequest": true,
+            "approveResponse": false
+        },
+        "https://tailscale.com": true,
+        "https://authjs.dev": true,
+        "https://lucia-auth.com": {
+            "approveRequest": true,
+            "approveResponse": false
+        },
+        "https://www.better-auth.com": {
+            "approveRequest": true,
+            "approveResponse": false
+        }
+    },
     "cSpell.enabledFileTypes": {
         "asciidoc": true,
         "c": true,
@@ -130,7 +150,9 @@
         "autoincrement",
         "AVAX",
         "Badens",
+        "Bento",
         "bignumber",
+        "BIGSERIAL",
         "bitbank",
         "BITBANK",
         "bitbankcc",
@@ -138,6 +160,7 @@
         "bitwarden",
         "BTCUSDT",
         "bugsnag",
+        "Bybit",
         "camaieu",
         "Catchcopy",
         "cdate",
@@ -156,18 +179,21 @@
         "DMARC",
         "Donan",
         "dotenv",
+        "elif",
         "esthe",
         "ETHUSDT",
         "Eyecatch",
         "fontsize",
         "fontweight",
         "frontmatter",
+        "fujisawakoki",
         "gantt",
         "googlemaps",
         "goryokaku",
         "grayscale",
         "Hatena",
         "hrefs",
+        "IMMICH",
         "IOTX",
         "Kaku",
         "Kanban",
@@ -181,6 +207,8 @@
         "noopener",
         "noreferrer",
         "notionhq",
+        "Noto",
+        "nums",
         "Nuxt",
         "occu",
         "offersbluegray",
@@ -208,23 +236,19 @@
         "shansui",
         "stylelint",
         "Suica",
+        "supabase",
         "svgr",
         "tanstack",
         "Tiktok",
         "valibot",
+        "VARCHAR",
         "webp",
         "worktree",
         "XRPUSDT"
     ],
     "css.validate": false,
     "csv.enabled": false,
-    "cursor.cpp.disabledLanguages": [
-        "plaintext",
-        "scminput"
-    ],
-    "cursor.cpp.enablePartialAccepts": true,
     "debug.console.wordWrap": false,
-    "debug.javascript.suggestPrettyPrinting": false,
     "diffEditor.codeLens": true,
     "diffEditor.ignoreTrimWhitespace": true,
     "diffEditor.maxComputationTime": 0,
@@ -232,22 +256,23 @@
     "editor.acceptSuggestionOnEnter": "on",
     "editor.accessibilitySupport": "off",
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit",
+        "source.fixAll.oxc": "always",
         "source.fixAll.sortJSON": "explicit",
         "source.fixAll.stylelint": "explicit",
+        "source.format.oxc": "always",
         "source.sort.json": "explicit"
     },
     "editor.copyWithSyntaxHighlighting": false,
     "editor.defaultFormatter": "oxc.oxc-vscode",
     "editor.dragAndDrop": false,
     "editor.fontSize": 15,
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false, // oxc で先にフォーマットする設定のために disable にする (editor.codeActionsOnSave で設定)
+    "editor.formatOnSaveMode": "file",
     "editor.gotoLocation.multipleDeclarations": "goto",
     "editor.guides.bracketPairs": true,
     "editor.inlineSuggest.enabled": true,
     "editor.linkedEditing": true,
     "editor.minimap.enabled": false,
-    "editor.multiDocumentOccurrencesHighlight": true,
     "editor.pasteAs.preferences": [
         "text.updateImports"
     ],
@@ -296,12 +321,6 @@
         "**/.git": false
     },
     "files.insertFinalNewline": true,
-    "geminicodeassist.inlineSuggestions.enableAuto": false,
-    "geminicodeassist.verboseLogging": true,
-    "genieai.promptPrefix.addComments": "Output a Japanese method comment for the following code, with the comment enclosed in a code block.",
-    "genieai.promptPrefix.explain": "Just add Japanese code comments that explain the following code(Output in code block)",
-    "genieai.promptPrefix.findProblems": "Find problems with the following code(explain by Japanese)",
-    "genieai.promptPrefix.optimize": "Optimize the following code(explain by Japanese)",
     "git.autofetch": true,
     "git.confirmSync": false,
     "git.openRepositoryInParentFolders": "never",
@@ -317,6 +336,8 @@
         "yaml": true
     },
     "github.copilot.nextEditSuggestions.enabled": true, // preview: NES
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-4.1",
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.scopes": [],
     "gitlens.views.commits.files.layout": "list",
@@ -325,25 +346,16 @@
     "gitlens.views.commits.showBranchComparison": false,
     "gitlens.views.showRelativeDateMarkers": false,
     "html.format.enable": false,
-    "htmlhint.options": {
-        "id-class-value": false
-    },
     "http.systemCertificatesNode": true,
-    "intelephense.diagnostics.undefinedConstants": false,
-    "intelephense.diagnostics.undefinedFunctions": false,
-    "intelephense.diagnostics.undefinedMethods": false,
-    "intelephense.diagnostics.undefinedProperties": false,
-    "intelephense.diagnostics.undefinedTypes": false,
-    "java.configuration.checkProjectSettingsExclusions": false,
-    "javascript.suggest.completeFunctionCalls": true,
-    "javascript.suggest.paths": false,
-    "javascript.updateImportsOnFileMove.enabled": "always",
+    "js/ts.suggest.completeFunctionCalls": true,
+    "js/ts.suggest.paths": false,
+    "js/ts.tsserver.tracing.enabled": true,
+    "js/ts.updateImportsOnFileMove.enabled": "always",
     "json.schemas": [],
     "launch": {
         "compounds": [],
         "configurations": []
     },
-    "liveServer.settings.donotShowInfoMsg": true,
     "markdown-pdf.outputDirectory": "output",
     "markdown-pdf.outputDirectoryRelativePathFile": true,
     "markdown-preview-enhanced.enablePreviewZenMode": false,
@@ -363,52 +375,36 @@
         "https://rainbowflesh.github.io/css/rose-pine-moon.css",
         "https://rainbowflesh.github.io/css/rose-pine.css"
     ],
+    "markdownlint.config": {
+        "default": true,
+        "MD007": {
+            "indent": 4 // リストのインデントをスペース4つに設定
+        },
+        "MD024": false, // 同一レベルの見出しの重複を許可
+        "MD029": {
+            "style": "one" // すべてのリスト番号を "1." に強制する設定
+        },
+        "MD033": false, // HTML タグの使用を許可
+        "MD034": false, // 不要なエスケープ文字の使用を許可
+        "MD036": false, // 複数の連続する空行を許可
+        "MD041": false, // ファイルの最初の行が見出しであることを要求するルールを無効化 (フロントマター対策)
+        "MD047": false, // ファイルの最後に改行を要求するルールを無効化 (markdown-pdf でエクスポートした際に余分な改行が入るのを防止)
+        "MD048": false // ファイルの最初に改行を要求するルールを無効化 (フロントマター対策)
+    },
     "oxc.enable.oxfmt": true,
     "oxc.enable.oxlint": true,
+    "oxc.path.oxfmt": "/Users/fujisawakoki/Library/pnpm/oxfmt", // pnpm で oxfmt をグローバルインストールしている前提 (pnpm install -g oxfmt)
+    "oxc.path.oxlint": "/Users/fujisawakoki/Library/pnpm/oxlint", // pnpm で oxlint をグローバルインストールしている前提 (pnpm install -g oxlint)
     "Prettier-SQL.expressionWidth": 120,
     "Prettier-SQL.keywordCase": "upper",
     "Prettier-SQL.SQLFlavourOverride": "postgresql",
-    "roo-cline.allowedCommands": [
-        "git log",
-        "git diff",
-        "git show",
-        "pnpm test",
-        "git status",
-        "pnpm build",
-        "mkdir",
-        "npm test",
-        "tsc"
-    ],
-    "roo-cline.deniedCommands": [],
     "search.useGlobalIgnoreFiles": true,
     "security.workspace.trust.untrustedFiles": "open",
-    "sortJSON.excludedPaths": [
-        "Users/fujisawakoki/Library/Application Support/Cursor/User/snippets"
-    ],
-    "sortJSON.orderOverride": [
-        "workbench.startupEditor"
-    ],
-    "sortJSON.orderUnderride": [
-        "auto-close-tag.activationOnLanguage",
-        "cSpell.userWords"
-    ],
-    "sql-formatter.linesBetweenQueries": 3,
-    "sql-formatter.uppercase": true,
-    "sshfs.configs": [
-        {
-            "host": "localhost",
-            "name": "ssh-virtualbox-vuecli3",
-            "password": "test-alpine",
-            "root": "~",
-            "username": "root"
-        }
-    ],
     "stylelint.packageManager": "pnpm",
     "stylelint.validate": [
         "css",
         "astro"
     ],
-    "svelte.enable-ts-plugin": true,
     "svg.preview.mode": "svg",
     "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.fontSize": 14,
@@ -438,15 +434,9 @@
         }
     ],
     "turboConsoleLog.delimiterInsideMessage": "=>",
-    "turboConsoleLog.includeFileNameAndLineNum": true,
     "turboConsoleLog.insertEmptyLineAfterLogMessage": true,
-    "typescript.suggest.completeFunctionCalls": true,
-    "typescript.tsserver.enableTracing": true,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "vim.vimrc.enable": true,
-    "vim.vimrc.path": "~/.vim/.vimrc",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "window.commandCenter": 1,
+    "window.commandCenter": true,
+    "window.zoomLevel": 2,
     "workbench.activityBar.location": "top",
     "workbench.colorCustomizations": {
         "contrastActiveBorder": "#0493e6",
@@ -457,7 +447,7 @@
         "tab.unfocusedActiveBackground": "#350d46",
         "titleBar.border": "#ea11c6"
     },
-    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.colorTheme": "Dark Modern",
     "workbench.editor.doubleClickTabToToggleEditorGroupSizes": "maximize",
     "workbench.editor.openPositioning": "last",
     "workbench.editor.splitInGroupLayout": "vertical",
