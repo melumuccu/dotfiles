@@ -151,20 +151,38 @@ alias bs='brew search'
 alias bbd='brew bundle dump'
 
 # bitwarden
-alias bwul='export BW_SESSION=$(bw unlock --raw)'
+unalias bwul cz 2>/dev/null
+bwul() {
+    export BW_SESSION="$(bw unlock --raw)" || return 1
+}
+
+_bw_session_is_valid() {
+    [[ -n "$BW_SESSION" ]] || return 1
+    bw --nointeraction --session "$BW_SESSION" list items --search __bw_session_probe__ >/dev/null 2>&1
+}
+
+_bw_ensure_session() {
+    _bw_session_is_valid && return 0
+    bwul || return 1
+    _bw_session_is_valid
+}
 
 # chezmoi
-alias cz='chezmoi'
-alias czad='chezmoi add'
+cz() {
+    _bw_ensure_session || return 1
+    chezmoi "$@"
+}
+
+alias czad='cz add'
 ## chezmoi re-addは、すでに管理下にあるファイルを再度管理下に追加するコマンド。現在のマシンの状態を正としたい時に。
-alias czre='chezmoi re-add'
-alias czap='chezmoi apply'
-alias cze='chezmoi edit --apply'
-alias czd='chezmoi diff'
+alias czre='cz re-add'
+alias czap='cz apply'
+alias czed='cz edit --apply'
+alias czdi='cz diff'
 ## MEMO: テンプレート設定して秘匿したい情報を管理する時に auto push にしておくと怖いのでエイリアス設定して我慢しておく
-alias czps='chezmoi git -- push'
+alias czps='cz git -- push'
 ## chezmoi updateは、chezmoiのGitリポジトリからpullして、管理下のファイルを更新するコマンド。他のマシンで行った変更を反映させるために使用する。
-alias czpl='chezmoi update'
+alias czpl='cz update'
 
 
 # mise (<- make, just)
