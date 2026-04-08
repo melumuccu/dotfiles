@@ -72,22 +72,22 @@
     "breadcrumbs.symbolPath": "off",
     "chat.editing.confirmEditRequestRetry": false,
     "chat.tools.urls.autoApprove": {
-        "https://code.visualstudio.com": true,
-        "https://github.com/microsoft/vscode/wiki/*": true,
         "https://*.google.com": true,
+        "https://authjs.dev": true,
+        "https://code.visualstudio.com": true,
         "https://developers.cloudflare.com": true,
         "https://docs.immich.app": true,
         "https://github.com": true,
+        "https://github.com/microsoft/vscode/wiki/*": true,
         "https://immich.app": {
             "approveRequest": true,
             "approveResponse": false
         },
-        "https://tailscale.com": true,
-        "https://authjs.dev": true,
         "https://lucia-auth.com": {
             "approveRequest": true,
             "approveResponse": false
         },
+        "https://tailscale.com": true,
         "https://www.better-auth.com": {
             "approveRequest": true,
             "approveResponse": false
@@ -406,10 +406,40 @@
         "astro"
     ],
     "svg.preview.mode": "svg",
+    "terminal.integrated.defaultProfile.osx": "fish",
     "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.fontSize": 14,
+    "terminal.integrated.profiles.osx": {
+        "bash": {
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal-bash",
+            "path": "bash"
+        },
+        "fish": {
+            "args": [
+                "-l"
+            ],
+            "path": "/opt/homebrew/bin/fish"
+        },
+        "pwsh": {
+            "icon": "terminal-powershell",
+            "path": "pwsh"
+        },
+        "tmux": {
+            "icon": "terminal-tmux",
+            "path": "tmux"
+        },
+        "zsh": {
+            "args": [
+                "-l"
+            ],
+            "path": "zsh"
+        }
+    },
     "terminal.integrated.scrollback": 50000,
-    "terminal.integrated.sendKeybindingsToShell": true,
+    "terminal.integrated.sendKeybindingsToShell": false, // true にすると fish でペーストできない問題が発生する
     "terminal.integrated.tabs.enabled": true,
     "todohighlight.keywords": [
         {
