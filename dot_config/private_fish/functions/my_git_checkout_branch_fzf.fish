@@ -5,7 +5,7 @@ function my_git_checkout_branch_fzf
     test -n "$branch"
     or return 1
 
-    git checkout -- $branch
+    git checkout $branch
     or return 1
 
     git pull

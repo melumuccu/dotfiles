@@ -6,5 +6,5 @@ function my_git_checkout_commit
     test -n "$commit"
     or return 1
 
-    git checkout -- $commit
+    git checkout $commit
 end

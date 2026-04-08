@@ -6,5 +6,5 @@ function my_git_checkout_branch
     test -n "$branch"
     or return 1
 
-    git checkout -- $branch
+    git checkout $branch
 end
