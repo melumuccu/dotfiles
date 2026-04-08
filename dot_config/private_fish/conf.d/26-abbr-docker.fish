@@ -1,0 +1,17 @@
+if status is-interactive
+    abbr --add d 'docker'
+    abbr --add db 'docker build'
+    abbr --add di 'docker images -a'
+    abbr --add dr 'docker run'
+    abbr --add dps 'docker ps -a'
+    abbr --add de 'docker exec -it'
+    abbr --add de-app 'docker exec -it -w /home/www-data/laravel/push-batch/ app /bin/sh'
+    abbr --add de-local 'docker exec -it localstack /bin/bash'
+    abbr --add de-mongo 'docker exec -it mongodb /bin/bash'
+    abbr --add de-stub 'docker exec -it -w /var/www/html/stub stub /bin/bash'
+    abbr --add dc 'docker compose'
+    abbr --add dcb 'docker compose build'
+    abbr --add dcu 'docker compose up'
+    abbr --add dcd 'docker compose down'
+    abbr --add dcr 'docker compose restart'
+end
