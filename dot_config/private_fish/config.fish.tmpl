@@ -12,4 +12,6 @@ if status is-interactive
     set -g __fish_git_prompt_char_untrackedfiles ' [untracked]' # Git管理外の新しいファイル
     set -g __fish_git_prompt_char_upstream_ahead ' ↑' # ローカルがリモートより進んでいる
     set -g __fish_git_prompt_char_upstream_behind ' ↓' # ローカルがリモートより遅れている
+
+    set -gx GROQ_API_KEY {{ (bitwarden "item" "e79a6e8f-3dd0-40f9-97f2-b426005176e3").login.password }}
 end
