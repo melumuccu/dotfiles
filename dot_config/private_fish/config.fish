@@ -1,0 +1,15 @@
+if status is-interactive
+    #====================================
+    # Gitプロンプトの詳細設定
+    #====================================
+    set -g __fish_git_prompt_show_informative_status 1 # 有効化（ブランチ名だけでなく、ステータス情報を計算して表示する）
+    set -g __fish_git_prompt_showcolorhints 1 # 色付け（ステージング状態などを色で区別する）
+    set -g __fish_git_prompt_char_stateseparator ' ' # ステータス記号の間の区切り文字（スペース1つ）
+
+    # === 各ステータスに対応する記号の設定
+    set -g __fish_git_prompt_char_dirtystate ' [dirty]' # ファイルに変更がある（まだ git add していない）
+    set -g __fish_git_prompt_char_stagedstate ' [staged]' # ステージング済み
+    set -g __fish_git_prompt_char_untrackedfiles ' [untracked]' # Git管理外の新しいファイル
+    set -g __fish_git_prompt_char_upstream_ahead ' ↑' # ローカルがリモートより進んでいる
+    set -g __fish_git_prompt_char_upstream_behind ' ↓' # ローカルがリモートより遅れている
+end
