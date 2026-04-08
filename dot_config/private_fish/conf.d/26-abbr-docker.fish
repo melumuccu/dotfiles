@@ -4,6 +4,8 @@ if status is-interactive
     abbr --add di 'docker images -a'
     abbr --add dr 'docker run'
     abbr --add dps 'docker ps -a'
+    abbr --add _drm 'my_docker_rm_peco'
+    abbr --add _drmi 'my_docker_rmi_peco'
     abbr --add de 'docker exec -it'
     abbr --add de-app 'docker exec -it -w /home/www-data/laravel/push-batch/ app /bin/sh'
     abbr --add de-local 'docker exec -it localstack /bin/bash'
