@@ -34,9 +34,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/melumuccu/ai.git",
       "skillPath": ".agents/skills/kf-git-commit-japanese-commit-message/SKILL.md",
-      "skillFolderHash": "692818e8016d8f325785b730e40bd5d1091c0f65",
+      "skillFolderHash": "1f43e36d7ad6cf36d10d42f1590d15c83b174216",
       "installedAt": "2026-03-30T11:51:02.374Z",
-      "updatedAt": "2026-03-30T11:51:02.374Z"
+      "updatedAt": "2026-04-08T08:23:36.623Z"
     },
     "kf-markdown-list-ordered-list-cross-reference": {
       "source": "melumuccu/ai",

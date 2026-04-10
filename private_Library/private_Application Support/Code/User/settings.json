@@ -75,6 +75,7 @@
         "https://*.google.com": true,
         "https://authjs.dev": true,
         "https://code.visualstudio.com": true,
+        "https://containers.dev": true,
         "https://developers.cloudflare.com": true,
         "https://docs.immich.app": true,
         "https://github.com": true,
@@ -204,6 +205,7 @@
         "MONOQLO",
         "Mypage",
         "nextjs",
+        "Nicorepo",
         "noopener",
         "noreferrer",
         "notionhq",
@@ -249,10 +251,12 @@
     "css.validate": false,
     "csv.enabled": false,
     "debug.console.wordWrap": false,
+    "dev.containers.copyGitConfig": false, // ホストの Git 設定をコンテナにコピーしない（dotfiles repo から取得するため不要）
     "diffEditor.codeLens": true,
     "diffEditor.ignoreTrimWhitespace": true,
     "diffEditor.maxComputationTime": 0,
     "diffEditor.renderSideBySideInlineBreakpoint": 1,
+    "dotfiles.repository": "melumuccu/dotfiles",
     "editor.acceptSuggestionOnEnter": "on",
     "editor.accessibilitySupport": "off",
     "editor.codeActionsOnSave": {
@@ -482,5 +486,25 @@
     "workbench.editor.openPositioning": "last",
     "workbench.editor.splitInGroupLayout": "vertical",
     "workbench.editor.tabSizing": "shrink",
-    "xml.format.legacy": true
+    "xml.format.legacy": true,
+    "dev.containers.defaultExtensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.vscode-pull-request-github",
+        "oxc.oxc-vscode",
+        "formulahendry.auto-rename-tag",
+        "wmaurer.change-case",
+        "streetsidesoftware.code-spell-checker",
+        "nemesv.copy-file-name",
+        " mhutchie.git-graph",
+        "eamodio.gitlens",
+        "ms-ceintl.vscode-language-pack-ja",
+        "shd101wyy.markdown-preview-enhanced",
+        "davidanson.vscode-markdownlint",
+        "christian-kohler.path-intellisense",
+        "yoavbls.pretty-ts-errors",
+        "stylelint.vscode-stylelint",
+        "wayou.vscode-todo-highlight",
+        "shardulm94.trailing-spaces"
+    ]
 }

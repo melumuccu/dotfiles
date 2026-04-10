@@ -427,7 +427,7 @@
     "command": "roo-cline.settingsButtonClicked"
   },
   {
-    "key": "ctrl+=",
+    "key": "cmd+]",
     "command": "workbench.action.navigateForward",
     "when": "canNavigateForward"
   },
@@ -449,5 +449,35 @@
   {
     "key": "cmd+t",
     "command": "-workbench.action.showAllSymbols"
+  },
+  {
+    "key": "cmd+[",
+    "command": "workbench.action.browser.goBack",
+    "when": "browserCanGoBack && activeEditor == 'workbench.editor.browser'"
+  },
+  {
+    "key": "cmd+left",
+    "command": "-workbench.action.browser.goBack",
+    "when": "browserCanGoBack && activeEditor == 'workbench.editor.browser'"
+  },
+  {
+    "key": "cmd+[",
+    "command": "-editor.action.outdentLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+]",
+    "command": "-editor.action.indentLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+[",
+    "command": "workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "-workbench.action.navigateBack",
+    "when": "canNavigateBack"
   }
 ]
