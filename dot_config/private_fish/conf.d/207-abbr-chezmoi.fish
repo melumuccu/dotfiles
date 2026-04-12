@@ -7,4 +7,5 @@ if status is-interactive
     abbr --add czdi 'my_chezmoi diff'
     abbr --add czps 'my_chezmoi git -- push'
     abbr --add czpl 'my_chezmoi update'
+    abbr --add czrm 'my_chezmoi forget'
 end
