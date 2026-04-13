@@ -70,6 +70,7 @@
     "chat.editing.confirmEditRequestRetry": false,
     "chat.tools.terminal.backgroundNotifications": true,
     "chat.tools.urls.autoApprove": {
+        "https://*.better-auth.com": true,
         "https://*.chrome.com": true,
         "https://*.claude.com": true,
         "https://*.google.com": true,
@@ -95,8 +96,7 @@
         "https://raw.githubusercontent.com/vercel-labs": true,
         "https://tailscale.com": true,
         "https://www.better-auth.com": {
-            "approveRequest": true,
-            "approveResponse": false
+            "approveRequest": true
         }
     },
     "cSpell.enabledFileTypes": {
