@@ -64,6 +64,126 @@
       "skillFolderHash": "303a08be1132184366d4dc62abaa1ca2b9a41a21",
       "installedAt": "2026-03-30T11:51:54.167Z",
       "updatedAt": "2026-03-30T11:51:54.167Z"
+    },
+    "kf-g-agent-research-report-only-unless-approved": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-agent-research-report-only-unless-approved/SKILL.md",
+      "skillFolderHash": "eefd5c00d63e24a8b295a6f517adbcc8ad994e51",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:06.606Z",
+      "updatedAt": "2026-04-13T14:35:06.606Z"
+    },
+    "kf-g-css-flex-grid": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-css-flex-grid/SKILL.md",
+      "skillFolderHash": "bc53a91daedbae541a7e9ded45672e038f27b17e",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:07.049Z",
+      "updatedAt": "2026-04-13T14:35:07.049Z"
+    },
+    "kf-g-css-spacing-gap-margin-rules": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-css-spacing-gap-margin-rules/SKILL.md",
+      "skillFolderHash": "a680014f56693a30327109dae7f2ec71425299fa",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:07.464Z",
+      "updatedAt": "2026-04-13T14:35:07.464Z"
+    },
+    "kf-g-css-tak-animations": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-css-tak-animations/SKILL.md",
+      "skillFolderHash": "7a2a49d6a1bfcce5aea649cf821c34fab69b87ee",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:07.910Z",
+      "updatedAt": "2026-04-13T14:35:07.910Z"
+    },
+    "kf-g-css-tak-design-system-terminology": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-css-tak-design-system-terminology/SKILL.md",
+      "skillFolderHash": "7b5da667a86e63e48f0b201b621461909faa281f",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:08.343Z",
+      "updatedAt": "2026-04-13T14:35:08.343Z"
+    },
+    "kf-g-css-tak-font-size-text-zoom": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-css-tak-font-size-text-zoom/SKILL.md",
+      "skillFolderHash": "45802ba910a39ac2a30848364ac9c37a85cf40d8",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:08.759Z",
+      "updatedAt": "2026-04-13T14:35:08.759Z"
+    },
+    "kf-g-css-tak-responsive-rules": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-css-tak-responsive-rules/SKILL.md",
+      "skillFolderHash": "05dbab270f2fb7137375e287844663e545559e38",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:09.188Z",
+      "updatedAt": "2026-04-13T14:35:09.188Z"
+    },
+    "kf-g-css-tak-typography": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-css-tak-typography/SKILL.md",
+      "skillFolderHash": "0a63c209090be6f5f64892dea9cad9d14821aa0c",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:09.606Z",
+      "updatedAt": "2026-04-13T14:35:09.606Z"
+    },
+    "kf-g-git-commit-japanese-commit-message": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-git-commit-japanese-commit-message/SKILL.md",
+      "skillFolderHash": "1e72f35fe17ba1c1be178480c7ce4552c607d22c",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:10.037Z",
+      "updatedAt": "2026-04-13T14:35:10.037Z"
+    },
+    "kf-g-project-bootstrap-new-project-rules": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-project-bootstrap-new-project-rules/SKILL.md",
+      "skillFolderHash": "d6c7024c29e47f8f40a7925ed1e5fa1eebda581d",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:10.553Z",
+      "updatedAt": "2026-04-13T14:35:10.553Z"
+    },
+    "kf-g-skill-naming-creation-organization-rules": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-skill-naming-creation-organization-rules/SKILL.md",
+      "skillFolderHash": "0487764cdf26b8dc717d987f3234a479dc012d24",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:11.083Z",
+      "updatedAt": "2026-04-13T14:35:11.083Z"
+    },
+    "kf-g-writing-japanese-concise-structured-response": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-writing-japanese-concise-structured-response/SKILL.md",
+      "skillFolderHash": "641529d8f0a12c904b75ba629d972ed028346668",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-04-13T14:35:11.631Z",
+      "updatedAt": "2026-04-13T14:35:11.631Z"
     }
   },
   "dismissed": {

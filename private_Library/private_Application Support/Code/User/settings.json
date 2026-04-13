@@ -36,9 +36,6 @@
     "[ruby]": {
         "editor.wordSeparators": "`~@#%^&*()=+[{]}\\|;:'\",.<>?"
     },
-    "[sql]": {
-        "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
-    },
     "[xml]": {
         "editor.defaultFormatter": "redhat.vscode-xml"
     },
@@ -71,13 +68,18 @@
     ],
     "breadcrumbs.symbolPath": "off",
     "chat.editing.confirmEditRequestRetry": false,
+    "chat.tools.terminal.backgroundNotifications": true,
     "chat.tools.urls.autoApprove": {
+        "https://*.chrome.com": true,
+        "https://*.claude.com": true,
         "https://*.google.com": true,
+        "https://*.mozilla.org": true,
         "https://authjs.dev": true,
         "https://code.visualstudio.com": true,
         "https://containers.dev": true,
         "https://developers.cloudflare.com": true,
         "https://docs.immich.app": true,
+        "https://gist.githubusercontent.com/tak-dcxi": true,
         "https://github.com": true,
         "https://github.com/microsoft/vscode/wiki/*": true,
         "https://immich.app": {
@@ -88,6 +90,9 @@
             "approveRequest": true,
             "approveResponse": false
         },
+        "https://mise.jdx.dev": true,
+        "https://pnpm.io": true,
+        "https://raw.githubusercontent.com/vercel-labs": true,
         "https://tailscale.com": true,
         "https://www.better-auth.com": {
             "approveRequest": true,
@@ -252,6 +257,26 @@
     "csv.enabled": false,
     "debug.console.wordWrap": false,
     "dev.containers.copyGitConfig": false, // ホストの Git 設定をコンテナにコピーしない（dotfiles repo から取得するため不要）
+    "dev.containers.defaultExtensions": [
+        "GitHub.copilot", // GitHub Copilot (コード補完)
+        "GitHub.copilot-chat", // GitHub Copilot Chat
+        "GitHub.vscode-pull-request-github", // GitHub Pull Requests and Issues (GitHub 連携)
+        "oxc.oxc-vscode", // Oxc (コードフォーマッタとリンター)
+        "formulahendry.auto-rename-tag", // Auto Rename Tag (HTML タグの自動ペア編集)
+        "wmaurer.change-case", // Change Case (選択範囲の文字列の大文字・小文字変換)
+        "streetsidesoftware.code-spell-checker", // Code Spell Checker (スペルチェック)
+        "nemesv.copy-file-name", // Copy File Name (ファイル名のコピー)
+        "mhutchie.git-graph", // Git Graph (Git 履歴の可視化)
+        "eamodio.gitlens", // GitLens (Git 履歴の強化)
+        "ms-ceintl.vscode-language-pack-ja", // Japanese Language Pack for Visual Studio Code (日本語化)
+        "shd101wyy.markdown-preview-enhanced", // Markdown Preview Enhanced (Markdown プレビューの強化)
+        "davidanson.vscode-markdownlint", // markdownlint (Markdown の静的解析)
+        "christian-kohler.path-intellisense", // Path Intellisense (ファイルパスの補完)
+        "yoavbls.pretty-ts-errors", // Pretty TypeScript Errors (TypeScript エラーの見やすい表示)
+        "stylelint.vscode-stylelint", // Stylelint (CSS の静的解析)
+        "wayou.vscode-todo-highlight", // todo Highlight (todo コメントの強調表示)
+        "shardulm94.trailing-spaces" // Trailing Spaces (行末の不要なスペースの強調表示)
+    ],
     "diffEditor.codeLens": true,
     "diffEditor.ignoreTrimWhitespace": true,
     "diffEditor.maxComputationTime": 0,
@@ -472,6 +497,7 @@
     "window.commandCenter": true,
     "window.zoomLevel": 2,
     "workbench.activityBar.location": "top",
+    "workbench.browser.enableChatTools": true,
     "workbench.colorCustomizations": {
         "contrastActiveBorder": "#0493e6",
         "editorGroup.border": "#1481c0",
@@ -486,25 +512,5 @@
     "workbench.editor.openPositioning": "last",
     "workbench.editor.splitInGroupLayout": "vertical",
     "workbench.editor.tabSizing": "shrink",
-    "xml.format.legacy": true,
-    "dev.containers.defaultExtensions": [
-        "GitHub.copilot",
-        "GitHub.copilot-chat",
-        "GitHub.vscode-pull-request-github",
-        "oxc.oxc-vscode",
-        "formulahendry.auto-rename-tag",
-        "wmaurer.change-case",
-        "streetsidesoftware.code-spell-checker",
-        "nemesv.copy-file-name",
-        " mhutchie.git-graph",
-        "eamodio.gitlens",
-        "ms-ceintl.vscode-language-pack-ja",
-        "shd101wyy.markdown-preview-enhanced",
-        "davidanson.vscode-markdownlint",
-        "christian-kohler.path-intellisense",
-        "yoavbls.pretty-ts-errors",
-        "stylelint.vscode-stylelint",
-        "wayou.vscode-todo-highlight",
-        "shardulm94.trailing-spaces"
-    ]
+    "xml.format.legacy": true
 }
