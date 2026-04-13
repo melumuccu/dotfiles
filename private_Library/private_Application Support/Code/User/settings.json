@@ -68,6 +68,9 @@
     ],
     "breadcrumbs.symbolPath": "off",
     "chat.editing.confirmEditRequestRetry": false,
+    "chat.promptFilesLocations": {
+        ".agents/prompts": true
+    },
     "chat.tools.terminal.backgroundNotifications": true,
     "chat.tools.urls.autoApprove": {
         "https://*.better-auth.com": true,
