@@ -10,12 +10,12 @@
 			"type": "stdio"
 		},
 		"Stitch": {
-			"url": "https://stitch.googleapis.com/mcp",
-      "type": "http",
       "headers": {
         "Accept": "application/json",
         "X-Goog-Api-Key": "{{ (bitwarden "item" "9c540dac-f378-4197-a378-b42a0037ae4c").login.password }}"
-      }
+      },
+      "type": "http",
+			"url": "https://stitch.googleapis.com/mcp"
 		}
 	}
 }
