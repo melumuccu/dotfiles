@@ -5,6 +5,9 @@
 		"settings": {
 			"gpt-5.4-mini": {
 				"reasoningEffort": "xhigh"
+			},
+			"gpt-5.4": {
+				"reasoningEffort": "xhigh"
 			}
 		}
 	}

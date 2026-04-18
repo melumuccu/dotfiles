@@ -518,5 +518,12 @@
     "workbench.editor.tabSizing": "shrink",
     "xml.format.legacy": true,
     "github.copilot.chat.agentDebugLog.fileLogging.enabled": true,
-    "chat.tools.confirmationCarousel.enabled": true
+    "chat.tools.confirmationCarousel.enabled": true,
+    "chat.mcp.autostart": "never",
+    "chat.instructionsFilesLocations": {
+        ".agents/instructions": true
+    },
+    "chat.agentFilesLocations": {
+        ".agents/agents": true
+    }
 }

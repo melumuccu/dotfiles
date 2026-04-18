@@ -86,20 +86,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/melumuccu/ai.git",
       "skillPath": ".agents/skills/kf-g-git-commit-japanese-commit-message/SKILL.md",
-      "skillFolderHash": "1e72f35fe17ba1c1be178480c7ce4552c607d22c",
-      "pluginName": "kf-skills",
+      "skillFolderHash": "1a0af2f47d412479069063bf18592cea7ebab174",
       "installedAt": "2026-04-13T14:55:14.769Z",
-      "updatedAt": "2026-04-13T14:55:14.769Z"
+      "updatedAt": "2026-04-18T14:48:10.336Z"
     },
     "kf-g-project-bootstrap-new-project-rules": {
       "source": "melumuccu/ai",
       "sourceType": "github",
       "sourceUrl": "https://github.com/melumuccu/ai.git",
       "skillPath": ".agents/skills/kf-g-project-bootstrap-new-project-rules/SKILL.md",
-      "skillFolderHash": "d6c7024c29e47f8f40a7925ed1e5fa1eebda581d",
-      "pluginName": "kf-skills",
+      "skillFolderHash": "b5520e05f3a5029694ed5c81dcccc5a607d432ed",
       "installedAt": "2026-04-13T14:55:15.211Z",
-      "updatedAt": "2026-04-13T14:55:15.211Z"
+      "updatedAt": "2026-04-18T14:48:12.301Z"
     },
     "kf-g-skill-naming-creation-organization-rules": {
       "source": "melumuccu/ai",
