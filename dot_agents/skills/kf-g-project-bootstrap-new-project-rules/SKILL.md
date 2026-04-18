@@ -7,6 +7,7 @@ description: Use this skill when starting a new project and defining baseline re
 
 この skill は、PJ を新規に立ち上げるときの初期方針を揃えるためのものです。
 まず devcontainer と mise を土台に置き、その上で frontend は pnpm + Vite+ + kiso.css を標準にします。
+加えて、secret scan は gitleaks を GitHub Action と pre-commit の両方で組み込みます。
 
 ## この skill を使う場面
 
@@ -15,6 +16,7 @@ description: Use this skill when starting a new project and defining baseline re
 - devcontainer や mise を含む開発基盤を最初から整える
 - frontend の標準 toolchain を決める
 - pnpm の supply chain 対策を初期設定へ組み込みたい
+- secret scan を初期設定へ組み込みたい
 
 ## 基本方針
 
@@ -23,6 +25,7 @@ description: Use this skill when starting a new project and defining baseline re
 1. frontend の package manager は pnpm に固定する。
 1. frontend の build / dev / check / test は Vite+ の流れに寄せる。
 1. reset css は kiso.css を pnpm で導入する。
+1. secret scan は gitleaks を GitHub Action と pre-commit の両方で組み込む。
 
 ## 作業手順
 
@@ -31,8 +34,10 @@ description: Use this skill when starting a new project and defining baseline re
 1. user settings で既に効いている値と、PJ 固有で必要な値を切り分ける。
 1. `.devcontainer/` と `mise.toml` を先に設計する。
 1. frontend がある場合は `pnpm-workspace.yaml` を作り、pnpm のセキュリティ設定を先に入れる。
+1. gitleaks の GitHub Action と pre-commit 設定を追加する。
 1. Vite+ を前提に scaffold と日常コマンドを決める。
 1. kiso.css を導入し、エントリ側で最初に読み込む。
+1. `pre-commit install` を実行して local hook を有効化する。
 1. 最後に `mise run` 系 task で install / dev / check / test / build を揃える。
 
 ## PJ全体
@@ -82,6 +87,12 @@ description: Use this skill when starting a new project and defining baseline re
 - 同じ version 情報を Dockerfile と `mise.toml` の両方に持たない。
 - Dockerfile へ version を直書きするのは、base image の都合で避けられない場合だけにする。
 - 日常コマンドは shell script の散在より `mise run` を優先する。
+
+### 5. secret scan は gitleaks で標準化する
+
+- GitHub Action と pre-commit の設定は、`gitleaks/gitleaks` の README を参照して組む。
+- `GITLEAKS_LICENSE` は個人アカウント利用を前提に不要とし、既定では設定しない。Organization 向け要件が明確な場合だけ別途検討する。
+- local の macOS では `gitleaks` と `pre-commit` が brew で install 済みかつ PATH が通っている前提でよいが、devcontainer 環境では別途 install が必要なため、PJ 側で devcontainer からも実行できるように整える。
 
 ## フロントエンド
 
@@ -139,7 +150,9 @@ onlyBuiltDependencies: []
 frontend を含む新規 PJ では、少なくとも次を用意する。
 
 - `.devcontainer/devcontainer.json`
+- `.github/workflows/gitleaks.yml`
 - `mise.toml`
+- `.pre-commit-config.yaml`
 - `pnpm-workspace.yaml`
 - `package.json` の `packageManager`
 - kiso.css を読み込む entry 側の style または import
@@ -157,6 +170,9 @@ frontend を含む新規 PJ では、少なくとも次を用意する。
 - devcontainer を作成したか。
 - user settings の `dev.containers.*`, `dotfiles.*` を確認したか。
 - `mise.toml` が tools / env / tasks の中心になっているか。
+- `.github/workflows/gitleaks.yml` で公式 gitleaks action を設定したか。
+- `.pre-commit-config.yaml` に gitleaks hook を入れ、`pre-commit install` を実行したか。
+- GitHub Action に `GITHUB_TOKEN` を渡し、`GITLEAKS_LICENSE` を不要な既定値として扱っているか。
 - frontend なら package manager が pnpm に固定されているか。
 - `pnpm-workspace.yaml` に `minimumReleaseAge: 10080` を入れたか。
 - Vite+ のコマンド群に寄せた構成になっているか。
