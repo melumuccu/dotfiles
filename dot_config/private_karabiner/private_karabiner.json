@@ -4,7 +4,32 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "左Optionで英数、右Optionでかな（単独押し時のみ）",
+                        "description": "左コマンドで英数、右コマンドでかな（単独押し時のみ）",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_command",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
+                                "to": [{ "key_code": "left_command" }],
+                                "to_if_alone": [{ "key_code": "japanese_eisuu" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "right_command",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
+                                "to": [{ "key_code": "right_command" }],
+                                "to_if_alone": [{ "key_code": "japanese_kana" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "f9で英数、f10でかな（単独押し時のみ）",
                         "manipulators": [
                             {
                                 "from": {
@@ -275,18 +300,24 @@
                     },
                     "simple_modifications": [
                         {
-                            "from": { "key_code": "left_control" },
-                            "to": [{ "key_code": "left_command" }]
-                        },
-                        {
                             "from": { "key_code": "left_command" },
                             "to": [{ "key_code": "left_control" }]
+                        },
+                        {
+                            "from": { "key_code": "left_control" },
+                            "to": [{ "key_code": "left_command" }]
                         }
                     ]
                 }
             ],
             "name": "Default profile",
             "selected": true,
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "caps_lock" },
+                    "to": [{ "key_code": "left_command" }]
+                }
+            ],
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "keyboard_type_v2": "ansi"
