@@ -16,4 +16,7 @@ if status is-interactive
     if command -q mise
         mise activate fish | source
     end
+    if test -d /opt/homebrew/bin
+        eval (/opt/homebrew/bin/brew shellenv)
+    end
 end
