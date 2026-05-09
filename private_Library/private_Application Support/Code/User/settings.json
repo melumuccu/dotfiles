@@ -73,19 +73,19 @@
     },
     "chat.tools.terminal.backgroundNotifications": true,
     "chat.tools.urls.autoApprove": {
+        "https://code.visualstudio.com": true,
+        "https://github.com/microsoft/vscode/wiki/*": true,
         "https://*.better-auth.com": true,
         "https://*.chrome.com": true,
         "https://*.claude.com": true,
         "https://*.google.com": true,
         "https://*.mozilla.org": true,
         "https://authjs.dev": true,
-        "https://code.visualstudio.com": true,
         "https://containers.dev": true,
         "https://developers.cloudflare.com": true,
         "https://docs.immich.app": true,
         "https://gist.githubusercontent.com/tak-dcxi": true,
         "https://github.com": true,
-        "https://github.com/microsoft/vscode/wiki/*": true,
         "https://immich.app": {
             "approveRequest": true,
             "approveResponse": false
@@ -100,6 +100,10 @@
         "https://tailscale.com": true,
         "https://www.better-auth.com": {
             "approveRequest": true
+        },
+        "https://ngrok.com": {
+            "approveRequest": false,
+            "approveResponse": true
         }
     },
     "cSpell.enabledFileTypes": {
@@ -244,7 +248,6 @@
         "sfmono",
         "shadcn",
         "shansui",
-        "shellenv",
         "stylelint",
         "Suica",
         "supabase",
@@ -519,11 +522,6 @@
     "xml.format.legacy": true,
     "github.copilot.chat.agentDebugLog.fileLogging.enabled": true,
     "chat.tools.confirmationCarousel.enabled": true,
-    "chat.mcp.autostart": "never",
-    "chat.instructionsFilesLocations": {
-        ".agents/instructions": true
-    },
-    "chat.agentFilesLocations": {
-        ".agents/agents": true
-    }
+    "svelte.enable-ts-plugin": true,
+    "chat.permissions.default": "autoApprove"
 }
