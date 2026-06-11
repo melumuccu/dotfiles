@@ -86,10 +86,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/melumuccu/ai.git",
       "skillPath": ".agents/skills/kf-g-git-commit-japanese-commit-message/SKILL.md",
-      "skillFolderHash": "1a0af2f47d412479069063bf18592cea7ebab174",
+      "skillFolderHash": "bf81df94f5424371fbd9f1e4c2db923bfca554f6",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:14.769Z",
-      "updatedAt": "2026-05-09T09:24:49.026Z"
+      "updatedAt": "2026-05-11T06:56:36.255Z"
     },
     "kf-g-project-bootstrap-new-project-rules": {
       "source": "melumuccu/ai",

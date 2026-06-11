@@ -21,6 +21,7 @@ Desktop.ini
 bin/
 node_modules/
 tmp/
+*.egg-info/
 
 # 環境変数や機密情報など
 .env

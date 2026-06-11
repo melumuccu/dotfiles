@@ -1,6 +1,6 @@
 ---
 name: kf-g-git-commit-japanese-commit-message
-description: Create and format commit messages with a fixed 5-character prefix and a Japanese subject. Use this skill when drafting commit message proposals, reformatting existing messages, choosing a prefix, deciding the appropriate type from the changes, or when the user asks you to commit.
+description: Create and format commit messages with a fixed 5-character prefix and a Japanese subject. Always use this skill whenever the user asks to commit, wants a commit message, needs a commit message reformatted, wants help choosing a prefix or commit type from the changes, or uses short prompts like "commit", "commit plz".
 ---
 
 # 5文字プレフィックスの日本語コミットメッセージ

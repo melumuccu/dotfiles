@@ -13,9 +13,10 @@
     },
     "[markdown]": {
         "editor.codeActionsOnSave": {
-            "source.fixAll.markdownlint": "explicit"
+            "source.fixAll.markdownlint": "explicit" // markdownlint での自動修正を有効化
         },
-        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+        "editor.defaultFormatter": "oxc.oxc-vscode", // テーブル整形などはこっちに任せる
+        "editor.formatOnSave": true,
         "editor.insertSpaces": true,
         "editor.quickSuggestions": {
             "comments": "on",
@@ -68,24 +69,25 @@
     ],
     "breadcrumbs.symbolPath": "off",
     "chat.editing.confirmEditRequestRetry": false,
+    "chat.permissions.default": "autoApprove",
     "chat.promptFilesLocations": {
         ".agents/prompts": true
     },
-    "chat.tools.terminal.backgroundNotifications": true,
+    "chat.tools.confirmationCarousel.enabled": true,
     "chat.tools.urls.autoApprove": {
-        "https://code.visualstudio.com": true,
-        "https://github.com/microsoft/vscode/wiki/*": true,
         "https://*.better-auth.com": true,
         "https://*.chrome.com": true,
         "https://*.claude.com": true,
         "https://*.google.com": true,
         "https://*.mozilla.org": true,
         "https://authjs.dev": true,
+        "https://code.visualstudio.com": true,
         "https://containers.dev": true,
         "https://developers.cloudflare.com": true,
         "https://docs.immich.app": true,
         "https://gist.githubusercontent.com/tak-dcxi": true,
         "https://github.com": true,
+        "https://github.com/microsoft/vscode/wiki/*": true,
         "https://immich.app": {
             "approveRequest": true,
             "approveResponse": false
@@ -95,15 +97,15 @@
             "approveResponse": false
         },
         "https://mise.jdx.dev": true,
+        "https://ngrok.com": {
+            "approveRequest": false,
+            "approveResponse": true
+        },
         "https://pnpm.io": true,
         "https://raw.githubusercontent.com/vercel-labs": true,
         "https://tailscale.com": true,
         "https://www.better-auth.com": {
             "approveRequest": true
-        },
-        "https://ngrok.com": {
-            "approveRequest": false,
-            "approveResponse": true
         }
     },
     "cSpell.enabledFileTypes": {
@@ -162,6 +164,7 @@
         "attrait",
         "autoincrement",
         "AVAX",
+        "Backblaze",
         "Badens",
         "Bento",
         "bignumber",
@@ -240,6 +243,7 @@
         "qryptobits",
         "quic",
         "Rakuten",
+        "rclone",
         "respawn",
         "Revcella",
         "RONTA",
@@ -354,13 +358,15 @@
         "*.toml": "ini"
     },
     "files.exclude": {
-        "**/.git": false
+        "**/.git": false,
+        "**/*.egg-info": true
     },
     "files.insertFinalNewline": true,
     "git.autofetch": true,
     "git.confirmSync": false,
     "git.openRepositoryInParentFolders": "never",
     "git.suggestSmartCommit": false,
+    "github.copilot.chat.agentDebugLog.fileLogging.enabled": true,
     "github.copilot.enable": {
         "*": true,
         "astro": true,
@@ -441,6 +447,7 @@
         "css",
         "astro"
     ],
+    "svelte.enable-ts-plugin": true,
     "svg.preview.mode": "svg",
     "terminal.integrated.defaultProfile.osx": "fish",
     "terminal.integrated.enableMultiLinePasteWarning": "never",
@@ -520,8 +527,5 @@
     "workbench.editor.splitInGroupLayout": "vertical",
     "workbench.editor.tabSizing": "shrink",
     "xml.format.legacy": true,
-    "github.copilot.chat.agentDebugLog.fileLogging.enabled": true,
-    "chat.tools.confirmationCarousel.enabled": true,
-    "svelte.enable-ts-plugin": true,
-    "chat.permissions.default": "autoApprove"
+    "hediet.vscode-drawio.resizeImages": null
 }
