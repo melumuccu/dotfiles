@@ -530,5 +530,6 @@
     "xml.format.legacy": true,
     "hediet.vscode-drawio.resizeImages": null,
     "chatgpt.reviewDelivery": "inline",
-    "chatgpt.composerEnterBehavior": "cmdIfMultiline"
+    "chatgpt.composerEnterBehavior": "cmdIfMultiline",
+    "chatgpt.commentCodeLensEnabled": false
 }
