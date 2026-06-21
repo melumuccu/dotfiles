@@ -34,6 +34,7 @@ description: Use this skill when starting a new project and defining baseline re
 1. user settings で既に効いている値と、PJ 固有で必要な値を切り分ける。
 1. `.devcontainer/` と `mise.toml` を先に設計する。
 1. frontend がある場合は `pnpm-workspace.yaml` を作り、pnpm のセキュリティ設定を先に入れる。
+1. `references/sample-files/` に該当するサンプルがあるか確認し、初期ファイル作成の起点にする。
 1. gitleaks の GitHub Action と pre-commit 設定を追加する。
 1. Vite+ を前提に scaffold と日常コマンドを決める。
 1. kiso.css を導入し、エントリ側で最初に読み込む。
@@ -88,7 +89,15 @@ description: Use this skill when starting a new project and defining baseline re
 - Dockerfile へ version を直書きするのは、base image の都合で避けられない場合だけにする。
 - 日常コマンドは shell script の散在より `mise run` を優先する。
 
-### 5. secret scan は gitleaks で標準化する
+### 5. サンプルファイルを初期ファイルの起点にする
+
+- `references/sample-files/` 配下は、新規 PJ に置く設定ファイルのサンプルとして扱う。
+- 生成対象と同じ相対パスや同じファイル名のサンプルがある場合は、まずその内容を読む。
+- サンプルがあるファイルは、ゼロから書き起こさず、サンプルを起点に PJ 固有の値だけ調整する。
+- サンプルの内容と本文ルールが食い違う場合は、本文ルールを優先し、必要ならサンプル側の更新も検討する。
+- サンプルがないファイルは、この skill の基本方針に従って新規作成する。
+
+### 6. secret scan は gitleaks で標準化する
 
 - GitHub Action と pre-commit の設定は、`gitleaks/gitleaks` の README を参照して組む。
 - `GITLEAKS_LICENSE` は個人アカウント利用を前提に不要とし、既定では設定しない。Organization 向け要件が明確な場合だけ別途検討する。
@@ -170,6 +179,7 @@ frontend を含む新規 PJ では、少なくとも次を用意する。
 - devcontainer を作成したか。
 - user settings の `dev.containers.*`, `dotfiles.*` を確認したか。
 - `mise.toml` が tools / env / tasks の中心になっているか。
+- `references/sample-files/` の該当サンプルを確認したか。
 - `.github/workflows/gitleaks.yml` で公式 gitleaks action を設定したか。
 - `.pre-commit-config.yaml` に gitleaks hook を入れ、`pre-commit install` を実行したか。
 - GitHub Action に `GITHUB_TOKEN` を渡し、`GITLEAKS_LICENSE` を不要な既定値として扱っているか。

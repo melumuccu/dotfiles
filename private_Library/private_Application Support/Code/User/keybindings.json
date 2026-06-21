@@ -301,10 +301,6 @@
     "when": "codestream:status == 'signedIn'"
   },
   {
-    "key": "shift+cmd+a",
-    "command": "workbench.view.extension.aws-explorer"
-  },
-  {
     "key": "shift+cmd+f12",
     "command": "-editor.action.peekImplementation",
     "when": "editorHasImplementationProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
@@ -479,5 +475,13 @@
     "key": "ctrl+-",
     "command": "-workbench.action.navigateBack",
     "when": "canNavigateBack"
+  },
+  {
+    "key": "shift+cmd+a",
+    "command": "chatgpt.addFileToThread"
+  },
+  {
+    "key": "shift+cmd+a",
+    "command": "chatgpt.addToThread"
   }
 ]
