@@ -1,0 +1,22 @@
+[tools]
+"aqua:gitleaks/gitleaks" = "latest"
+"aqua:pre-commit/pre-commit" = "latest"
+
+[tasks.install]
+description = "Install project tools"
+run = "mise install"
+
+[tasks."hooks:install"]
+description = "Install Git hooks for commits and pushes"
+run = "pre-commit install --hook-type pre-commit --hook-type pre-push"
+
+[tasks."hooks:run"]
+description = "Run configured hooks against the repository"
+run = '''
+pre-commit run --all-files --hook-stage pre-commit
+PRE_COMMIT_FROM_REF="$(git rev-parse --verify '@{u}')" PRE_COMMIT_TO_REF=HEAD pre-commit run gitleaks-push --hook-stage pre-push --all-files
+'''
+
+[tasks."secrets:scan"]
+description = "Scan git history for leaked secrets"
+run = "gitleaks git --redact --verbose ."

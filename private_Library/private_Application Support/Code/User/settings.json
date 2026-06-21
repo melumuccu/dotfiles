@@ -108,6 +108,9 @@
             "approveRequest": true
         }
     },
+    "chatgpt.commentCodeLensEnabled": false,
+    "chatgpt.composerEnterBehavior": "cmdIfMultiline",
+    "chatgpt.reviewDelivery": "inline",
     "cSpell.enabledFileTypes": {
         "asciidoc": true,
         "c": true,
@@ -257,7 +260,6 @@
         "stylelint",
         "Suica",
         "supabase",
-        "svgr",
         "tanstack",
         "Tiktok",
         "valibot",
@@ -389,6 +391,7 @@
     "gitlens.views.commits.pullRequests.showForBranches": false,
     "gitlens.views.commits.showBranchComparison": false,
     "gitlens.views.showRelativeDateMarkers": false,
+    "hediet.vscode-drawio.resizeImages": null,
     "html.format.enable": false,
     "http.systemCertificatesNode": true,
     "js/ts.suggest.completeFunctionCalls": true,
@@ -528,9 +531,5 @@
     "workbench.editor.openPositioning": "last",
     "workbench.editor.splitInGroupLayout": "vertical",
     "workbench.editor.tabSizing": "shrink",
-    "xml.format.legacy": true,
-    "hediet.vscode-drawio.resizeImages": null,
-    "chatgpt.reviewDelivery": "inline",
-    "chatgpt.composerEnterBehavior": "cmdIfMultiline",
-    "chatgpt.commentCodeLensEnabled": false
+    "xml.format.legacy": true
 }
