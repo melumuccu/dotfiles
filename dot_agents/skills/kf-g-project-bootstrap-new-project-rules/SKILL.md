@@ -7,7 +7,7 @@ description: Use this skill when starting a new project and defining baseline re
 
 この skill は、PJ を新規に立ち上げるときの初期方針を揃えるためのものです。
 まず devcontainer と mise を土台に置き、その上で frontend は pnpm + Vite+ + kiso.css を標準にします。
-加えて、secret scan は gitleaks を GitHub Action と pre-commit の両方で組み込みます。
+加えて、secret scan は gitleaks を GitHub Action と pre-commit framework の両方で組み込みます。
 
 ## この skill を使う場面
 
@@ -25,7 +25,7 @@ description: Use this skill when starting a new project and defining baseline re
 1. frontend の package manager は pnpm に固定する。
 1. frontend の build / dev / check / test は Vite+ の流れに寄せる。
 1. reset css は kiso.css を pnpm で導入する。
-1. secret scan は gitleaks を GitHub Action と pre-commit の両方で組み込む。
+1. secret scan は gitleaks を GitHub Action と pre-commit framework の両方で組み込む。
 
 ## 作業手順
 
@@ -34,11 +34,13 @@ description: Use this skill when starting a new project and defining baseline re
 1. user settings で既に効いている値と、PJ 固有で必要な値を切り分ける。
 1. `.devcontainer/` と `mise.toml` を先に設計する。
 1. frontend がある場合は `pnpm-workspace.yaml` を作り、pnpm のセキュリティ設定を先に入れる。
+1. `pre-commit` と `gitleaks` は `mise.toml` の `[tools]` へ入れ、`mise install` で導入する。
 1. `references/sample-files/` に該当するサンプルがあるか確認し、初期ファイル作成の起点にする。
-1. gitleaks の GitHub Action と pre-commit 設定を追加する。
+1. gitleaks の GitHub Action と `.pre-commit-config.yaml` を追加する。
 1. Vite+ を前提に scaffold と日常コマンドを決める。
 1. kiso.css を導入し、エントリ側で最初に読み込む。
-1. `pre-commit install` を実行して local hook を有効化する。
+1. `mise run hooks-install` で `pre-commit` と `pre-push` の local hook を有効化する。
+1. `pre-commit validate-config` と `pre-commit run --hook-stage pre-push` で hook 設定を検証する。
 1. 最後に `mise run` 系 task で install / dev / check / test / build を揃える。
 
 ## PJ全体
@@ -100,8 +102,21 @@ description: Use this skill when starting a new project and defining baseline re
 ### 6. secret scan は gitleaks で標準化する
 
 - GitHub Action と pre-commit の設定は、`gitleaks/gitleaks` の README を参照して組む。
+- `pre-commit` と `gitleaks` は brew ではなく `mise` で入れる。`mise install` を導入の基準にする。
 - `GITLEAKS_LICENSE` は個人アカウント利用を前提に不要とし、既定では設定しない。Organization 向け要件が明確な場合だけ別途検討する。
-- local の macOS では `gitleaks` と `pre-commit` が brew で install 済みかつ PATH が通っている前提でよいが、devcontainer 環境では別途 install が必要なため、PJ 側で devcontainer からも実行できるように整える。
+- local の macOS でも `mise install` を前提にし、devcontainer 環境でも同じ `mise` の導線で入るように整える。
+
+pre-commit framework の運用:
+
+- commit 前の検査と push 前の検査は分ける。
+- `.pre-commit-config.yaml` では、gitleaks hook を `pre-commit` 専用にする。
+- push 前に実行する hook は `pre-push` 専用にする。
+- 各 hook の `stages` を明示し、`pre-push` で同じ gitleaks が 2 回走らないようにする。
+- gitleaks hook は `stages: [pre-commit]` を基本にする。
+- push 用 hook は `stages: [pre-push]` を基本にする。
+- local hook の導入は、`pre-commit install` と `pre-commit install --hook-type pre-push` の両方を実行する。
+- hook 導入手順は `mise run hooks-install` にまとめる。
+- hook 設定の検証は `pre-commit validate-config` と `pre-commit run --hook-stage pre-push` で行う。
 
 ## フロントエンド
 
@@ -165,7 +180,7 @@ frontend を含む新規 PJ では、少なくとも次を用意する。
 - `pnpm-workspace.yaml`
 - `package.json` の `packageManager`
 - kiso.css を読み込む entry 側の style または import
-- `mise run` で叩ける install / dev / check / test / build task
+- `mise run` で叩ける install / dev / check / test / build / hooks-install task
 
 ## 出力方針
 
@@ -179,9 +194,12 @@ frontend を含む新規 PJ では、少なくとも次を用意する。
 - devcontainer を作成したか。
 - user settings の `dev.containers.*`, `dotfiles.*` を確認したか。
 - `mise.toml` が tools / env / tasks の中心になっているか。
+- `mise.toml` の `[tools]` に `pre-commit` と `gitleaks` を載せているか。
 - `references/sample-files/` の該当サンプルを確認したか。
 - `.github/workflows/gitleaks.yml` で公式 gitleaks action を設定したか。
-- `.pre-commit-config.yaml` に gitleaks hook を入れ、`pre-commit install` を実行したか。
+- `.pre-commit-config.yaml` で `pre-commit` 用 hook と `pre-push` 用 hook の `stages` を明示したか。
+- `mise run hooks-install` で `pre-commit install` と `pre-commit install --hook-type pre-push` の両方を実行できるか。
+- `pre-commit validate-config` と `pre-commit run --hook-stage pre-push` で hook 設定を検証したか。
 - GitHub Action に `GITHUB_TOKEN` を渡し、`GITLEAKS_LICENSE` を不要な既定値として扱っているか。
 - frontend なら package manager が pnpm に固定されているか。
 - `pnpm-workspace.yaml` に `minimumReleaseAge: 10080` を入れたか。
