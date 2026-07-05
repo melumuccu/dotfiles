@@ -264,6 +264,7 @@
         "Tiktok",
         "valibot",
         "VARCHAR",
+        "vite",
         "webp",
         "worktree",
         "XRPUSDT"
@@ -425,7 +426,7 @@
     "markdownlint.config": {
         "default": true,
         "MD007": {
-            "indent": 4 // リストのインデントをスペース4つに設定
+            "indent": 2 // リストのインデントをスペース2つに設定
         },
         "MD024": false, // 同一レベルの見出しの重複を許可
         "MD029": {

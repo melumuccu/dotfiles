@@ -224,6 +224,36 @@
       "skillFolderHash": "135651e262f271df6203b9e697c6981583644122",
       "installedAt": "2026-06-26T02:21:41.468Z",
       "updatedAt": "2026-06-26T02:21:41.468Z"
+    },
+    "kf-g-code-comment-why-only": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-code-comment-why-only/SKILL.md",
+      "skillFolderHash": "12308bbb6e6b48a919d082a8a6ddaf41ab03eb66",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-07-03T10:40:44.978Z",
+      "updatedAt": "2026-07-03T10:40:44.978Z"
+    },
+    "kf-g-git-commit-staged-only-rules": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-git-commit-staged-only-rules/SKILL.md",
+      "skillFolderHash": "94484f0f2afb7855140f2596384c84a9a72a8591",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-07-03T10:40:44.984Z",
+      "updatedAt": "2026-07-03T10:40:44.984Z"
+    },
+    "kf-g-dependency-library-selection-policy": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-dependency-library-selection-policy/SKILL.md",
+      "skillFolderHash": "f533d88d2eb8e676d00ab3b6f5151c39056b329b",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-07-03T10:40:44.985Z",
+      "updatedAt": "2026-07-03T10:40:44.985Z"
     }
   },
   "dismissed": {
