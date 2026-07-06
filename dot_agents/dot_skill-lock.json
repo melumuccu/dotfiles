@@ -9,7 +9,7 @@
       "skillFolderHash": "eefd5c00d63e24a8b295a6f517adbcc8ad994e51",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:11.258Z",
-      "updatedAt": "2026-06-21T13:28:56.428Z"
+      "updatedAt": "2026-07-06T08:04:15.745Z"
     },
     "kf-g-css-flex-grid": {
       "source": "melumuccu/ai",
@@ -19,7 +19,7 @@
       "skillFolderHash": "bc53a91daedbae541a7e9ded45672e038f27b17e",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:11.694Z",
-      "updatedAt": "2026-06-21T13:28:56.428Z"
+      "updatedAt": "2026-07-06T08:04:16.587Z"
     },
     "kf-g-css-spacing-gap-margin-rules": {
       "source": "melumuccu/ai",
@@ -29,7 +29,7 @@
       "skillFolderHash": "a680014f56693a30327109dae7f2ec71425299fa",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:12.140Z",
-      "updatedAt": "2026-06-21T13:28:56.429Z"
+      "updatedAt": "2026-07-06T08:04:17.065Z"
     },
     "kf-g-css-tak-animations": {
       "source": "melumuccu/ai",
@@ -39,7 +39,7 @@
       "skillFolderHash": "7a2a49d6a1bfcce5aea649cf821c34fab69b87ee",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:12.558Z",
-      "updatedAt": "2026-06-21T13:28:56.429Z"
+      "updatedAt": "2026-07-06T08:04:17.488Z"
     },
     "kf-g-css-tak-design-system-terminology": {
       "source": "melumuccu/ai",
@@ -49,7 +49,7 @@
       "skillFolderHash": "7b5da667a86e63e48f0b201b621461909faa281f",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:12.992Z",
-      "updatedAt": "2026-06-21T13:28:56.430Z"
+      "updatedAt": "2026-07-06T08:04:17.938Z"
     },
     "kf-g-css-tak-font-size-text-zoom": {
       "source": "melumuccu/ai",
@@ -59,7 +59,7 @@
       "skillFolderHash": "45802ba910a39ac2a30848364ac9c37a85cf40d8",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:13.407Z",
-      "updatedAt": "2026-06-21T13:28:56.430Z"
+      "updatedAt": "2026-07-06T08:04:18.372Z"
     },
     "kf-g-css-tak-responsive-rules": {
       "source": "melumuccu/ai",
@@ -69,7 +69,7 @@
       "skillFolderHash": "05dbab270f2fb7137375e287844663e545559e38",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:13.856Z",
-      "updatedAt": "2026-06-21T13:28:56.431Z"
+      "updatedAt": "2026-07-06T08:04:18.796Z"
     },
     "kf-g-css-tak-typography": {
       "source": "melumuccu/ai",
@@ -79,7 +79,7 @@
       "skillFolderHash": "0a63c209090be6f5f64892dea9cad9d14821aa0c",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:14.321Z",
-      "updatedAt": "2026-06-21T13:28:56.431Z"
+      "updatedAt": "2026-07-06T08:04:19.213Z"
     },
     "kf-g-git-commit-japanese-commit-message": {
       "source": "melumuccu/ai",
@@ -89,16 +89,17 @@
       "skillFolderHash": "bf81df94f5424371fbd9f1e4c2db923bfca554f6",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:14.769Z",
-      "updatedAt": "2026-06-21T13:28:56.432Z"
+      "updatedAt": "2026-07-06T08:04:20.534Z"
     },
     "kf-g-project-bootstrap-new-project-rules": {
       "source": "melumuccu/ai",
       "sourceType": "github",
       "sourceUrl": "https://github.com/melumuccu/ai.git",
       "skillPath": ".agents/skills/kf-g-project-bootstrap-new-project-rules/SKILL.md",
-      "skillFolderHash": "db072a6d060e56c8002b30af8aa7776cbcefb355",
+      "skillFolderHash": "dba540dfa3490437b4cfc3bf458db48e9ef2cc07",
+      "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:15.211Z",
-      "updatedAt": "2026-06-25T06:43:08.873Z"
+      "updatedAt": "2026-07-06T08:04:21.410Z"
     },
     "kf-g-skill-naming-creation-organization-rules": {
       "source": "melumuccu/ai",
@@ -108,7 +109,7 @@
       "skillFolderHash": "0487764cdf26b8dc717d987f3234a479dc012d24",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:15.624Z",
-      "updatedAt": "2026-06-21T13:28:56.433Z"
+      "updatedAt": "2026-07-06T08:04:21.858Z"
     },
     "kf-g-writing-japanese-concise-structured-response": {
       "source": "melumuccu/ai",
@@ -118,7 +119,7 @@
       "skillFolderHash": "641529d8f0a12c904b75ba629d972ed028346668",
       "pluginName": "kf-skills",
       "installedAt": "2026-04-13T14:55:16.140Z",
-      "updatedAt": "2026-06-21T13:28:56.433Z"
+      "updatedAt": "2026-07-06T08:04:23.163Z"
     },
     "skill-creator": {
       "source": "melumuccu/ai",
@@ -128,7 +129,7 @@
       "skillFolderHash": "c9dc8b0dd6270588ad39b533bb16d82cd42d737b",
       "pluginName": "external-skills",
       "installedAt": "2026-04-13T14:56:10.628Z",
-      "updatedAt": "2026-05-09T09:24:49.023Z"
+      "updatedAt": "2026-07-06T08:04:14.055Z"
     },
     "find-skills": {
       "source": "melumuccu/ai",
@@ -138,7 +139,7 @@
       "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
       "pluginName": "external-skills",
       "installedAt": "2026-04-13T14:56:22.667Z",
-      "updatedAt": "2026-05-09T09:24:49.023Z"
+      "updatedAt": "2026-07-06T08:04:10.153Z"
     },
     "prompt-builder": {
       "source": "melumuccu/ai",
@@ -148,7 +149,7 @@
       "skillFolderHash": "303a08be1132184366d4dc62abaa1ca2b9a41a21",
       "pluginName": "external-skills",
       "installedAt": "2026-04-13T14:57:28.867Z",
-      "updatedAt": "2026-05-09T09:24:49.023Z"
+      "updatedAt": "2026-07-06T08:04:13.638Z"
     },
     "tdd": {
       "source": "melumuccu/ai",
@@ -158,7 +159,7 @@
       "skillFolderHash": "75beb3030b4c979205dd771ff85ac600baeb68f4",
       "pluginName": "external-skills",
       "installedAt": "2026-05-02T22:55:01.699Z",
-      "updatedAt": "2026-05-09T09:24:49.023Z"
+      "updatedAt": "2026-07-06T08:04:15.319Z"
     },
     "docker-expert": {
       "source": "melumuccu/ai",
@@ -168,7 +169,7 @@
       "skillFolderHash": "4de306f28c3b66e8bb0419b574930bbce43ae47d",
       "pluginName": "external-skills",
       "installedAt": "2026-05-03T01:10:14.298Z",
-      "updatedAt": "2026-05-09T09:24:49.019Z"
+      "updatedAt": "2026-07-06T08:04:09.711Z"
     },
     "kf-g-docker-container-dev-workflow-rules": {
       "source": "melumuccu/ai",
@@ -178,52 +179,7 @@
       "skillFolderHash": "0c68e873b3e83bca88ba1e756f227361367b9ff6",
       "pluginName": "kf-skills",
       "installedAt": "2026-06-21T13:28:56.425Z",
-      "updatedAt": "2026-06-21T13:28:56.425Z"
-    },
-    "genshijin": {
-      "source": "InterfaceX-co-jp/genshijin",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/InterfaceX-co-jp/genshijin.git",
-      "skillPath": "skills/genshijin/SKILL.md",
-      "skillFolderHash": "72f240dbddbb4e216840f4d6aa5a4b575b37203b",
-      "installedAt": "2026-06-26T02:21:41.460Z",
-      "updatedAt": "2026-06-26T02:21:41.460Z"
-    },
-    "genshijin-commit": {
-      "source": "InterfaceX-co-jp/genshijin",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/InterfaceX-co-jp/genshijin.git",
-      "skillPath": "skills/genshijin-commit/SKILL.md",
-      "skillFolderHash": "78a9133d5239e206400ddabea807352689f1d883",
-      "installedAt": "2026-06-26T02:21:41.466Z",
-      "updatedAt": "2026-06-26T02:21:41.466Z"
-    },
-    "genshijin-compress": {
-      "source": "InterfaceX-co-jp/genshijin",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/InterfaceX-co-jp/genshijin.git",
-      "skillPath": "skills/genshijin-compress/SKILL.md",
-      "skillFolderHash": "74b4d1320f8360d32700a003f3de02799a6ca856",
-      "installedAt": "2026-06-26T02:21:41.466Z",
-      "updatedAt": "2026-06-26T02:21:41.466Z"
-    },
-    "genshijin-help": {
-      "source": "InterfaceX-co-jp/genshijin",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/InterfaceX-co-jp/genshijin.git",
-      "skillPath": "skills/genshijin-help/SKILL.md",
-      "skillFolderHash": "04602c6fc8aac1f5e46f651810bea652961fb43c",
-      "installedAt": "2026-06-26T02:21:41.467Z",
-      "updatedAt": "2026-06-26T02:21:41.467Z"
-    },
-    "genshijin-stats": {
-      "source": "InterfaceX-co-jp/genshijin",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/InterfaceX-co-jp/genshijin.git",
-      "skillPath": "skills/genshijin-stats/SKILL.md",
-      "skillFolderHash": "135651e262f271df6203b9e697c6981583644122",
-      "installedAt": "2026-06-26T02:21:41.468Z",
-      "updatedAt": "2026-06-26T02:21:41.468Z"
+      "updatedAt": "2026-07-06T08:04:20.092Z"
     },
     "kf-g-code-comment-why-only": {
       "source": "melumuccu/ai",
@@ -233,7 +189,7 @@
       "skillFolderHash": "12308bbb6e6b48a919d082a8a6ddaf41ab03eb66",
       "pluginName": "kf-skills",
       "installedAt": "2026-07-03T10:40:44.978Z",
-      "updatedAt": "2026-07-03T10:40:44.978Z"
+      "updatedAt": "2026-07-06T08:04:16.175Z"
     },
     "kf-g-git-commit-staged-only-rules": {
       "source": "melumuccu/ai",
@@ -243,7 +199,7 @@
       "skillFolderHash": "94484f0f2afb7855140f2596384c84a9a72a8591",
       "pluginName": "kf-skills",
       "installedAt": "2026-07-03T10:40:44.984Z",
-      "updatedAt": "2026-07-03T10:40:44.984Z"
+      "updatedAt": "2026-07-06T08:04:20.970Z"
     },
     "kf-g-dependency-library-selection-policy": {
       "source": "melumuccu/ai",
@@ -253,7 +209,117 @@
       "skillFolderHash": "f533d88d2eb8e676d00ab3b6f5151c39056b329b",
       "pluginName": "kf-skills",
       "installedAt": "2026-07-03T10:40:44.985Z",
-      "updatedAt": "2026-07-03T10:40:44.985Z"
+      "updatedAt": "2026-07-06T08:04:19.653Z"
+    },
+    "genshijin": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/genshijin/SKILL.md",
+      "skillFolderHash": "72f240dbddbb4e216840f4d6aa5a4b575b37203b",
+      "pluginName": "external-skills",
+      "installedAt": "2026-07-06T08:04:10.599Z",
+      "updatedAt": "2026-07-06T08:04:10.599Z"
+    },
+    "genshijin-commit": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/genshijin-commit/SKILL.md",
+      "skillFolderHash": "78a9133d5239e206400ddabea807352689f1d883",
+      "pluginName": "external-skills",
+      "installedAt": "2026-07-06T08:04:11.034Z",
+      "updatedAt": "2026-07-06T08:04:11.034Z"
+    },
+    "genshijin-compress": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/genshijin-compress/SKILL.md",
+      "skillFolderHash": "74b4d1320f8360d32700a003f3de02799a6ca856",
+      "pluginName": "external-skills",
+      "installedAt": "2026-07-06T08:04:11.462Z",
+      "updatedAt": "2026-07-06T08:04:11.462Z"
+    },
+    "genshijin-crew": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/genshijin-crew/SKILL.md",
+      "skillFolderHash": "89ca5a244584dec1c93b9324aa2e240128d907f8",
+      "pluginName": "external-skills",
+      "installedAt": "2026-07-06T08:04:11.923Z",
+      "updatedAt": "2026-07-06T08:04:11.923Z"
+    },
+    "genshijin-help": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/genshijin-help/SKILL.md",
+      "skillFolderHash": "04602c6fc8aac1f5e46f651810bea652961fb43c",
+      "pluginName": "external-skills",
+      "installedAt": "2026-07-06T08:04:12.352Z",
+      "updatedAt": "2026-07-06T08:04:12.352Z"
+    },
+    "genshijin-review": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/genshijin-review/SKILL.md",
+      "skillFolderHash": "7d13ef7df249b273a996b3c50b013eacee82120d",
+      "pluginName": "external-skills",
+      "installedAt": "2026-07-06T08:04:12.792Z",
+      "updatedAt": "2026-07-06T08:04:12.792Z"
+    },
+    "genshijin-stats": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/genshijin-stats/SKILL.md",
+      "skillFolderHash": "135651e262f271df6203b9e697c6981583644122",
+      "pluginName": "external-skills",
+      "installedAt": "2026-07-06T08:04:13.226Z",
+      "updatedAt": "2026-07-06T08:04:13.226Z"
+    },
+    "svelte-code-writer": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/svelte-code-writer/SKILL.md",
+      "skillFolderHash": "d1fe3546e88768cc3bb8bbf052a059fc195f180b",
+      "pluginName": "external-skills",
+      "installedAt": "2026-07-06T08:04:14.476Z",
+      "updatedAt": "2026-07-06T08:04:14.476Z"
+    },
+    "svelte-core-bestpractices": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/svelte-core-bestpractices/SKILL.md",
+      "skillFolderHash": "dc5e4f0dc9844316967acca220d313780ed452b1",
+      "pluginName": "external-skills",
+      "installedAt": "2026-07-06T08:04:14.917Z",
+      "updatedAt": "2026-07-06T08:04:14.917Z"
+    },
+    "kf-g-sveltekit-architecture-separation-rules": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-sveltekit-architecture-separation-rules/SKILL.md",
+      "skillFolderHash": "6593d12ea4fb0730cb4251102435cb612b1e4305",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-07-06T08:04:22.292Z",
+      "updatedAt": "2026-07-06T08:04:22.292Z"
+    },
+    "kf-g-sveltekit-docs": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-sveltekit-docs/SKILL.md",
+      "skillFolderHash": "bfb8040cbe1c4aa5f4e06d23b19e02b459e74e5a",
+      "pluginName": "kf-skills",
+      "installedAt": "2026-07-06T08:04:22.729Z",
+      "updatedAt": "2026-07-06T08:04:22.729Z"
     }
   },
   "dismissed": {

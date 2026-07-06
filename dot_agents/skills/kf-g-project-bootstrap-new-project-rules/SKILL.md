@@ -9,6 +9,16 @@ description: Use this skill when starting a new project and defining baseline re
 まず devcontainer と mise を土台に置き、その上で frontend は pnpm + Vite+ + kiso.css を標準にします。
 加えて、secret scan は gitleaks を GitHub Action と pre-commit framework の両方で組み込みます。
 
+## 使用するサービス
+
+- mise
+- pnpm
+- Vite+
+- Svelte / SvelteKit
+- kiso.css
+- gitleaks
+- pre-commit
+
 ## この skill を使う場面
 
 - 新しい PJ を作る
@@ -24,6 +34,7 @@ description: Use this skill when starting a new project and defining baseline re
 1. tools と日常コマンドの中心は `mise.toml` に集約する。
 1. frontend の package manager は pnpm に固定する。
 1. frontend の build / dev / check / test は Vite+ の流れに寄せる。
+1. Svelte / SvelteKit を採用する場合は、最新の安定版を使う。
 1. reset css は kiso.css を pnpm で導入する。
 1. secret scan は gitleaks を GitHub Action と pre-commit framework の両方で組み込む。
 
@@ -38,6 +49,7 @@ description: Use this skill when starting a new project and defining baseline re
 1. `references/sample-files/` に該当するサンプルがあるか確認し、初期ファイル作成の起点にする。
 1. gitleaks の GitHub Action と `.pre-commit-config.yaml` を追加する。
 1. Vite+ を前提に scaffold と日常コマンドを決める。
+1. Svelte / SvelteKit を採用する場合は、最新安定版を前提に依存関係と scaffold を確認する。
 1. kiso.css を導入し、エントリ側で最初に読み込む。
 1. `mise run hooks-install` で `pre-commit` と `pre-push` の local hook を有効化する。
 1. `pre-commit validate-config` と `pre-commit run --hook-stage pre-push` で hook 設定を検証する。
@@ -157,6 +169,8 @@ onlyBuiltDependencies: []
 - frontend の scaffold は、まず Vite+ で組めるかを確認する。
 - 新規作成の標準フローは `vp create` `vp install` `vp dev` `vp check` `vp test` `vp build` `vp run` を基本にする。
 - framework を選ぶときは、Vite plugin として自然に乗るものを優先する。
+- Svelte / SvelteKit を選ぶ場合は、リリース種別を確認し、最新の安定版を採用する。
+- preview / next / rc などの不安定版は、明確な採用理由がある場合だけ使う。
 - lint / format / type-check / test / build は、Vite+ が前提にしている toolchain を優先し、無関係な tool をむやみに混在させない。
 - `mise` task も Vite+ のコマンド群を包む形で定義する。
 - Vite+ に乗らない構成を採る場合は、採用理由を先に明確にする。
@@ -204,4 +218,5 @@ frontend を含む新規 PJ では、少なくとも次を用意する。
 - frontend なら package manager が pnpm に固定されているか。
 - `pnpm-workspace.yaml` に `minimumReleaseAge: 10080` を入れたか。
 - Vite+ のコマンド群に寄せた構成になっているか。
+- Svelte / SvelteKit を採用する場合、最新安定版を使っているか。
 - kiso.css を pnpm で導入しているか。
