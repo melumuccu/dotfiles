@@ -31,3 +31,4 @@ tmp/
 *.pem
 *.crt
 cookies.*
+credentials

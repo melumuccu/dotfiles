@@ -10,6 +10,7 @@ if status is-interactive
     abbr --add gaa 'git add -A'
     abbr --add gcm 'git commit'
     abbr --add gca 'git commit --amend'
+    abbr --add gce 'git commit --allow-empty -m ""'
     abbr --add grih 'my_git_rebase_interactive_head'
     abbr --add grc 'git rebase --continue'
     abbr --add gps 'git push'

@@ -185,6 +185,7 @@
         "Catchcopy",
         "cdate",
         "chezmoi",
+        "chokidar",
         "cloudflared",
         "codegen",
         "coderabbitai",
@@ -201,6 +202,7 @@
         "Donan",
         "dotenv",
         "elif",
+        "esbuild",
         "esthe",
         "ETHUSDT",
         "Eyecatch",
@@ -261,6 +263,7 @@
         "shadcn",
         "shansui",
         "stylelint",
+        "Subdeps",
         "Suica",
         "supabase",
         "tanstack",
@@ -269,11 +272,16 @@
         "VARCHAR",
         "vite",
         "webp",
+        "workerd",
         "worktree",
         "XRPUSDT"
     ],
     "css.validate": false,
     "csv.enabled": false,
+    "cursor.cpp.disabledLanguages": [
+        "plaintext",
+        "scminput"
+    ],
     "debug.console.wordWrap": false,
     "dev.containers.copyGitConfig": false, // ホストの Git 設定をコンテナにコピーしない（dotfiles repo から取得するため不要）
     "dev.containers.defaultExtensions": [
@@ -318,6 +326,7 @@
     "editor.formatOnSaveMode": "file",
     "editor.gotoLocation.multipleDeclarations": "goto",
     "editor.guides.bracketPairs": true,
+    "editor.hover.delay": 1000, // gitlens の line blame (コード行のcommit履歴) に hover した時のポップアップ表示がこの設定に連動しているため遅延させる(すぐ表示されて邪魔になることが多いから)
     "editor.inlineSuggest.enabled": true,
     "editor.linkedEditing": true,
     "editor.minimap.enabled": false,
@@ -490,8 +499,7 @@
             "path": "zsh"
         }
     },
-    "terminal.integrated.scrollback": 50000,
-    "terminal.integrated.sendKeybindingsToShell": false, // true にすると fish でペーストできない問題が発生する
+    "terminal.integrated.scrollback": 50000, // true にすると fish でペーストできない問題が発生する
     "terminal.integrated.tabs.enabled": true,
     "todohighlight.keywords": [
         {
@@ -517,6 +525,7 @@
     ],
     "turboConsoleLog.delimiterInsideMessage": "=>",
     "turboConsoleLog.insertEmptyLineAfterLogMessage": true,
+    "window.autoDetectColorScheme": true,
     "window.commandCenter": true,
     "window.zoomLevel": 2,
     "workbench.activityBar.location": "top",
@@ -535,5 +544,6 @@
     "workbench.editor.openPositioning": "last",
     "workbench.editor.splitInGroupLayout": "vertical",
     "workbench.editor.tabSizing": "shrink",
-    "xml.format.legacy": true
+    "xml.format.legacy": true,
+    "cursor.composer.usageSummaryDisplay": "always"
 }
