@@ -356,6 +356,15 @@
       "skillFolderHash": "9956763705011ab998e8f430cf789ff9c5251c1d",
       "installedAt": "2026-07-07T22:25:30.144Z",
       "updatedAt": "2026-07-09T02:31:21.011Z"
+    },
+    "kf-g-github-actions-self-hosted-ci-cache": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-g-github-actions-self-hosted-ci-cache/SKILL.md",
+      "skillFolderHash": "6d295e7e9bb46aee36b19a4e34ddb0809e798725",
+      "installedAt": "2026-07-11T05:01:15.201Z",
+      "updatedAt": "2026-07-11T05:01:15.201Z"
     }
   },
   "dismissed": {

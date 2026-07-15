@@ -545,5 +545,8 @@
     "workbench.editor.splitInGroupLayout": "vertical",
     "workbench.editor.tabSizing": "shrink",
     "xml.format.legacy": true,
-    "cursor.composer.usageSummaryDisplay": "always"
+    "cursor.composer.usageSummaryDisplay": "always",
+    "cursor.general.glassShowWarningNotifications": true,
+    "cursor.composer.shouldChimeAfterChatFinishes": true,
+    "cursor.worktreeMaxCount": 10
 }
