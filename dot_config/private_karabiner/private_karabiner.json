@@ -4,6 +4,74 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "左コマンドで英数、右コマンドでかな ＆ Option+TabとCommand+Tabの入れ替え（統合版）",
+                        "manipulators": [
+                            {
+                                "description": "左コマンド単体で英数 / Tabと同時押しでOption+Tabにする",
+                                "from": {
+                                    "key_code": "left_command",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
+                                "to": [
+                                    {
+                                        "key_code": "left_command",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "japanese_eisuu" }],
+                                "to_if_other_key_pressed": [
+                                    {
+                                        "other_keys": [
+                                            {
+                                                "key_code": "tab",
+                                                "modifiers": { "optional": ["any"] }
+                                            }
+                                        ],
+                                        "to": [{ "key_code": "left_option" }]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "右コマンド単体でかな",
+                                "from": {
+                                    "key_code": "right_command",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
+                                "to": [
+                                    {
+                                        "key_code": "right_command",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "japanese_kana" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Option+TabをCommand+Tabにする",
+                                "from": {
+                                    "key_code": "left_option",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_option" }],
+                                "to_if_other_key_pressed": [
+                                    {
+                                        "other_keys": [
+                                            {
+                                                "key_code": "tab",
+                                                "modifiers": { "optional": ["any"] }
+                                            }
+                                        ],
+                                        "to": [{ "key_code": "left_command" }]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "却下: 日本語変換使いづらくなる → 日本語入力（かなモード）のとき、スペースキーで半角スペースを入力",
                         "enabled": false,
                         "manipulators": [
@@ -29,7 +97,8 @@
                         ]
                     },
                     {
-                        "description": "Option+TabとCommand+Tabの入れ替え",
+                        "description": "統合版に移行: (左コマンドで英数が効かなくなるため) Option+TabとCommand+Tabの入れ替え",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -72,7 +141,8 @@
                         ]
                     },
                     {
-                        "description": "左コマンドで英数、右コマンドでかな（単独押し時のみ）",
+                        "description": "統合版に移行: (左コマンドで英数が効かなくなるため) 左コマンドで英数、右コマンドでかな（単独押し時のみ）",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -80,7 +150,12 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
-                                "to": [{ "key_code": "left_command" }],
+                                "to": [
+                                    {
+                                        "key_code": "left_command",
+                                        "lazy": true
+                                    }
+                                ],
                                 "to_if_alone": [{ "key_code": "japanese_eisuu" }],
                                 "type": "basic"
                             },
@@ -90,7 +165,12 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
-                                "to": [{ "key_code": "right_command" }],
+                                "to": [
+                                    {
+                                        "key_code": "right_command",
+                                        "lazy": true
+                                    }
+                                ],
                                 "to_if_alone": [{ "key_code": "japanese_kana" }],
                                 "type": "basic"
                             }
