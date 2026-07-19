@@ -11,6 +11,8 @@
 - `.pre-commit-config.yaml` で `pre-commit` 用 hook と `pre-push` 用 hook の `stages` を明示したか。
 - `mise run hooks-install` で `pre-commit install` と `pre-commit install --hook-type pre-push` の両方を実行できるか。
 - `pre-commit validate-config` と `pre-commit run --hook-stage pre-push` で hook 設定を検証したか。
+- pre-push 全テストを **適用** とした場合、`.pre-commit-config.yaml` に `test-pre-push` hook（`entry: mise run test`, `stages: [pre-push]`）を追加したか。
+- pre-push 全テストを **適用** とした場合、`mise run test` が PJ 内の全テストを実行し、`pre-commit run test-pre-push --hook-stage pre-push` で動作確認したか。
 - GitHub Action に `GITHUB_TOKEN` を渡し、`GITLEAKS_LICENSE` を不要な既定値として扱っているか。
 - frontend なら package manager が pnpm に固定されているか。
 - `pnpm-workspace.yaml` に `minimumReleaseAge: 10080` を入れたか。

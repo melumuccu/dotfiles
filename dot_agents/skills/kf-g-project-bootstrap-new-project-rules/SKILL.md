@@ -1,6 +1,6 @@
 ---
 name: kf-g-project-bootstrap-new-project-rules
-description: Use this skill when starting a new project and defining baseline repository rules, especially for optional devcontainer setup, mise-first tooling, pnpm security settings, Vite+ workflows, kiso.css adoption, and project-local post-edit lint/format hooks that run after AI agent file edits.
+description: Use this skill when starting a new project and defining baseline repository rules, especially for optional devcontainer setup, mise-first tooling, pnpm security settings, Vite+ workflows, kiso.css adoption, pre-push test gates, and project-local post-edit lint/format hooks that run after AI agent file edits.
 ---
 
 # 新規プロジェクト立ち上げルール
@@ -18,6 +18,7 @@ description: Use this skill when starting a new project and defining baseline re
 - pnpm の supply chain 対策を初期設定へ組み込みたい
 - secret scan を初期設定へ組み込みたい
 - AI エージェント編集後の lint/fmt 自動実行を初期設定へ組み込みたい
+- push 前に全テスト実行で品質ゲートを掛けたい
 
 ## 入口フロー
 
@@ -107,6 +108,7 @@ description: Use this skill when starting a new project and defining baseline re
 | サンプルファイル起点   | 汎用                        | [devcontainer-mise.md](references/devcontainer-mise.md)     | `references/sample-files/` を初期ファイルの起点にする                |
 | gitleaks               | 汎用                        | [gitleaks-pre-commit.md](references/gitleaks-pre-commit.md) | secret scan を GitHub Action と pre-commit の両方で導入              |
 | pre-commit / pre-push  | 汎用                        | [gitleaks-pre-commit.md](references/gitleaks-pre-commit.md) | `pre-commit`, `gitleaks` を mise 管理。local hook を有効化           |
+| pre-push 全テスト       | コード編集あり              | [pre-push-test.md](references/pre-push-test.md)             | push 前に `mise run test` で全テスト実行。1 件でも失敗したら push 拒否 |
 | pnpm 固定              | frontend あり               | [frontend-pnpm.md](references/frontend-pnpm.md)             | package manager を pnpm に固定                                       |
 | pnpm supply chain      | frontend あり               | [frontend-pnpm.md](references/frontend-pnpm.md)             | `pnpm-workspace.yaml` にセキュリティ設定                             |
 | Vite+                  | frontend あり               | [frontend-vite-plus.md](references/frontend-vite-plus.md)   | build / dev / check / test を Vite+ 流儀に寄せる                     |

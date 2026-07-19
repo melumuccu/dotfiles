@@ -21,3 +21,11 @@ repos:
         always_run: true
         stages:
           - pre-push
+      - id: test-pre-push
+        name: Run all tests before push
+        entry: mise run test
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages:
+          - pre-push
