@@ -1,0 +1,4 @@
+GH_TOKEN=github_pat_xxx
+AI_AGENT_GITHUB_CLIENT_ID=xxx
+AI_AGENT_GITHUB_INSTALLATION_ID=xxx
+AI_AGENT_GITHUB_PRIVATE_KEY_PATH=.agents/credentials/github/ai-agent-melumuccu.xxxxxxx.private-key.pem

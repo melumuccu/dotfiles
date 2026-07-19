@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "hooks": {
+    "<after-agent-edit-event>": [
+      {
+        "command": "scripts/lint-fmt-edited-file.sh"
+      }
+    ],
+    "<after-tab-edit-event-if-available>": [
+      {
+        "command": "scripts/lint-fmt-edited-file.sh"
+      }
+    ]
+  }
+}
