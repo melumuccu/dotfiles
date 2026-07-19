@@ -548,5 +548,5 @@
     "cursor.composer.usageSummaryDisplay": "always",
     "cursor.general.glassShowWarningNotifications": true,
     "cursor.composer.shouldChimeAfterChatFinishes": true,
-    "cursor.worktreeMaxCount": 10
+    "cursor.worktreeMaxCount": 5
 }

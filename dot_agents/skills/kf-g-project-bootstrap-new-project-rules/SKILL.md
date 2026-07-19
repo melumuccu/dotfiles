@@ -1,23 +1,13 @@
 ---
 name: kf-g-project-bootstrap-new-project-rules
-description: Use this skill when starting a new project and defining baseline repository rules, especially for devcontainer setup, mise-first tooling, pnpm security settings, Vite+ workflows, and kiso.css adoption.
+description: Use this skill when starting a new project and defining baseline repository rules, especially for optional devcontainer setup, mise-first tooling, pnpm security settings, Vite+ workflows, kiso.css adoption, and project-local post-edit lint/format hooks that run after AI agent file edits.
 ---
 
 # 新規プロジェクト立ち上げルール
 
-この skill は、PJ を新規に立ち上げるときの初期方針を揃えるためのものです。
-まず devcontainer と mise を土台に置き、その上で frontend は pnpm + Vite+ + kiso.css を標準にします。
-加えて、secret scan は gitleaks を GitHub Action と pre-commit framework の両方で組み込みます。
+この SKILL.md は**入口**。詳細は `references` 配下の該当ファイルを読む。
 
-## 使用するサービス
-
-- mise
-- pnpm
-- Vite+
-- Svelte / SvelteKit
-- kiso.css
-- gitleaks
-- pre-commit
+**重要**: 新規 PJ のファイル作成・scaffold は、本 skill の [入口フロー](#入口フロー) を完了し、ユーザがルール適用表を承認するまで開始しない。
 
 ## この skill を使う場面
 
@@ -27,196 +17,132 @@ description: Use this skill when starting a new project and defining baseline re
 - frontend の標準 toolchain を決める
 - pnpm の supply chain 対策を初期設定へ組み込みたい
 - secret scan を初期設定へ組み込みたい
+- AI エージェント編集後の lint/fmt 自動実行を初期設定へ組み込みたい
 
-## 基本方針
+## 入口フロー
 
-1. 開発環境は必ず devcontainer を作る。
-1. tools と日常コマンドの中心は `mise.toml` に集約する。
-1. frontend の package manager は pnpm に固定する。
-1. frontend の build / dev / check / test は Vite+ の流れに寄せる。
-1. Svelte / SvelteKit を採用する場合は、最新の安定版を使う。
-1. reset css は kiso.css を pnpm で導入する。
-1. secret scan は gitleaks を GitHub Action と pre-commit framework の両方で組み込む。
+新規 PJ 立ち上げは、次の 4 フェーズを順に進める。フェーズ 4 の承認前に devcontainer 作成・scaffold・設定ファイル追加などの実 작業を始めない。
 
-## 作業手順
+### フェーズ 1: PJ 概要の把握
 
-1. PJ に frontend が含まれるか確認する。
-1. VS Code の user settings.json にある `dev.containers.*`, `dotfiles.*` を確認する。
-1. user settings で既に効いている値と、PJ 固有で必要な値を切り分ける。
-1. `.devcontainer/` と `mise.toml` を先に設計する。
-1. frontend がある場合は `pnpm-workspace.yaml` を作り、pnpm のセキュリティ設定を先に入れる。
-1. `pre-commit` と `gitleaks` は `mise.toml` の `[tools]` へ入れ、`mise install` で導入する。
-1. `references/sample-files/` に該当するサンプルがあるか確認し、初期ファイル作成の起点にする。
-1. gitleaks の GitHub Action と `.pre-commit-config.yaml` を追加する。
-1. Vite+ を前提に scaffold と日常コマンドを決める。
-1. Svelte / SvelteKit を採用する場合は、最新安定版を前提に依存関係と scaffold を確認する。
-1. kiso.css を導入し、エントリ側で最初に読み込む。
-1. `mise run hooks-install` で `pre-commit` と `pre-push` の local hook を有効化する。
-1. `pre-commit validate-config` と `pre-commit run --hook-stage pre-push` で hook 設定を検証する。
-1. 最後に `mise run` 系 task で install / dev / check / test / build を揃える。
+ユーザから PJ 概要をヒアリングする。プロンプトに既に含まれていれば、それを起点に不足分だけ確認する。
 
-## PJ全体
+最低限、次を把握する（未記載なら選択肢から選択させる形でユーザに質問する）:
 
-### 1. devcontainer を必須にする
+| 項目            | 例                                                        |
+| --------------- | --------------------------------------------------------- |
+| PJ 名 / 目的    | 社内ダッシュボード、CLI ツール、API サーバ                |
+| リポジトリ種別  | 新規 / 既存空リポジトリ / monorepo 追加                   |
+| 提供形態        | Web UI / API のみ / CLI / ライブラリ / 複合               |
+| 主要言語・FW    | TypeScript, Go, Python など                               |
+| frontend の有無 | ブラウザ向け UI を提供するか                              |
+| frontend FW     | SvelteKit / React / なし など                             |
+| devcontainer    | 利用するか（**デフォルト: なし**）                        |
+| 開発環境        | CI 先（GitHub Actions 等）、ローカル runtime 管理方針   |
+| 特記事項        | monorepo 構成、既存 toolchain 継続、Vite+ 非採用理由 など |
 
-- `.devcontainer/devcontainer.json` を必ず作る。
-- runtime や package manager の版管理は devcontainer 内に分散させず、原則 `mise.toml` を正本にする。
-- devcontainer では `mise install` を実行して、PJ が要求する tool 群を揃える。
-- `postCreateCommand` や同等の初期化処理は、`mise install` と `mise run` を中心に組む。
-- apt, brew, curl などで個別に runtime を入れるのは、mise で扱えない OS パッケージに限る。
+### フェーズ 2: ルール適用表の作成
 
-### 2. user settings の dev.containers・dotfiles 設定を先に確認する
+[ルール一覧](#ルール一覧) を全件走査し、PJ 概要に基づいて各ルールの**推奨**（適用 / 不適用 / 要確認）を決める。
 
-- まず user settings.json の `dev.containers.*`, `dotfiles.*` を確認する。
-- 既に user settings にある値は、devcontainer 側へ重複して書かない。
-- 特に `dev.containers.defaultExtensions` に含まれる拡張は、PJ 固有の理由がない限り `.devcontainer/devcontainer.json` の `customizations.vscode.extensions` へ重複追加しない。
-- `dev.containers.copyGitConfig` のような user 方針も、PJ 側で上書きが必要なときだけ明示する。
-- override が必要な場合は、なぜ user 設定ではなく PJ 側に置くのかを説明できる状態にする。
-- `dotfiles.repository` で指定されたリポジトリの dotfiles は devcontainer 内で常に効く前提で、PJ 固有の devcontainer 設定を考える。
+- **適用**: 条件を満たし、標準方針どおり導入する
+- **不適用**: 条件を満たさない、または PJ 方針上不要
+- **要確認**: 条件付きルールで、ユーザ判断が必要
 
-### 3. mise をフル活用する
+推奨を決めたら、次の形式で**ルール適用表**を提示する。
 
-`mise.toml` は単なる version 指定ファイルとしてではなく、PJ の開発基盤の中心として扱う。
+```markdown
+## ルール適用表（確認用）
 
-必須方針:
+| ルール        | 条件 | 推奨 | 理由               |
+| ------------- | ---- | ---- | ------------------ |
+| devcontainer  | オプション | 不適用 | デフォルトはローカル開発。必要時のみ導入 |
+| mise 中心運用 | 汎用 | 適用 | tools / tasks 集約 |
+| ...           | ...  | ...  | ...                |
 
-- `[tools]` で runtime と主要 CLI を管理する。
-- `[env]` で PJ 固有の環境変数を管理する。
-- `[tasks]` で install / dev / check / test / build などの日常コマンドを管理する。
-- コマンド実行は `mise run <task>` または `mise exec -- <command>` を優先する。
-- README や devcontainer の手順も `mise` ベースで統一する。
-- CI でもローカルと同じ `mise` task 名を使い、コマンド定義を二重化しない。
+### 要確認項目
 
-活用観点:
-
-- runtime の version は `[tools]` に寄せる。
-- `.env` 読み込みが必要なら `[env]` の `_.file` を使う。
-- `node_modules/.bin` や独自 bin を通したいなら `[env]` の `_.path` を使う。
-- 必須 secret や接続先は `required = true` で明示する。
-- OS 依存や install 順依存がある tool は `os` と `depends` を使って `mise.toml` に閉じ込める。
-
-### 4. devcontainer と mise の役割分担
-
-- devcontainer は「実行場所」を揃える。
-- mise は「PJ が必要とする tools / env / tasks」を揃える。
-- 同じ version 情報を Dockerfile と `mise.toml` の両方に持たない。
-- Dockerfile へ version を直書きするのは、base image の都合で避けられない場合だけにする。
-- 日常コマンドは shell script の散在より `mise run` を優先する。
-
-### 5. サンプルファイルを初期ファイルの起点にする
-
-- `references/sample-files/` 配下は、新規 PJ に置く設定ファイルのサンプルとして扱う。
-- 生成対象と同じ相対パスや同じファイル名のサンプルがある場合は、まずその内容を読む。
-- サンプルがあるファイルは、ゼロから書き起こさず、サンプルを起点に PJ 固有の値だけ調整する。
-- サンプルの内容と本文ルールが食い違う場合は、本文ルールを優先し、必要ならサンプル側の更新も検討する。
-- サンプルがないファイルは、この skill の基本方針に従って新規作成する。
-
-### 6. secret scan は gitleaks で標準化する
-
-- GitHub Action と pre-commit の設定は、`gitleaks/gitleaks` の README を参照して組む。
-- `pre-commit` と `gitleaks` は brew ではなく `mise` で入れる。`mise install` を導入の基準にする。
-- `GITLEAKS_LICENSE` は個人アカウント利用を前提に不要とし、既定では設定しない。Organization 向け要件が明確な場合だけ別途検討する。
-- local の macOS でも `mise install` を前提にし、devcontainer 環境でも同じ `mise` の導線で入るように整える。
-
-pre-commit framework の運用:
-
-- commit 前の検査と push 前の検査は分ける。
-- `.pre-commit-config.yaml` では、gitleaks hook を `pre-commit` 専用にする。
-- push 前に実行する hook は `pre-push` 専用にする。
-- 各 hook の `stages` を明示し、`pre-push` で同じ gitleaks が 2 回走らないようにする。
-- gitleaks hook は `stages: [pre-commit]` を基本にする。
-- push 用 hook は `stages: [pre-push]` を基本にする。
-- local hook の導入は、`pre-commit install` と `pre-commit install --hook-type pre-push` の両方を実行する。
-- hook 導入手順は `mise run hooks-install` にまとめる。
-- hook 設定の検証は `pre-commit validate-config` と `pre-commit run --hook-stage pre-push` で行う。
-
-## フロントエンド
-
-### 1. package manager は pnpm 固定
-
-- Node.js 系の package manager は pnpm だけを使う。
-- npm / yarn / bun を併用しない。
-- lockfile は `pnpm-lock.yaml` のみを正本にする。
-- `package.json` の `packageManager` は pnpm に固定する。
-- pnpm 自体の導入も `mise.toml` の `[tools]` で管理する。
-
-### 2. pnpm の supply chain ルールを最初に入れる
-
-pnpm の security 設定は `pnpm-workspace.yaml` へ置く。single package 構成でも、このファイルを作って設定を入れる。
-
-初期値:
-
-```yaml
-minimumReleaseAge: 10080
-strictDepBuilds: true
-blockExoticSubdeps: true
-trustPolicy: no-downgrade
-onlyBuiltDependencies: []
+- Vite+: frontend あり → 適用推奨。React 採用のため Svelte / SvelteKit は不適用でよいか
 ```
 
-運用ルール:
+**要確認** がある場合は、適用表提示と同時にユーザへ質問する。回答を反映して表を更新する。
 
-- `minimumReleaseAge` は 7日間、つまり `10080` 分で固定する。
-- lifecycle script を実行させる package は、`onlyBuiltDependencies` に明示的に許可したものだけにする。
-- install 時に未承認 script が出たら、その package が本当に必要かをレビューしてから allowlist へ追加する。
-- `strictDepBuilds: true` にして、未承認 script を CI で見逃さない。
-- `blockExoticSubdeps: true` にして、推移的依存の git / tarball URL を遮断する。
-- `trustPolicy: no-downgrade` にして、公開経路の信頼性低下を検知する。
-- project local の `.npmrc` に機密情報や token helper を置かない。
+### フェーズ 3: ユーザ確認・調整
 
-### 3. Vite+ の ecosystem に乗る
+ルール適用表を提示し、次を求める。
 
-- frontend の scaffold は、まず Vite+ で組めるかを確認する。
-- 新規作成の標準フローは `vp create` `vp install` `vp dev` `vp check` `vp test` `vp build` `vp run` を基本にする。
-- framework を選ぶときは、Vite plugin として自然に乗るものを優先する。
-- Svelte / SvelteKit を選ぶ場合は、リリース種別を確認し、最新の安定版を採用する。
-- preview / next / rc などの不安定版は、明確な採用理由がある場合だけ使う。
-- lint / format / type-check / test / build は、Vite+ が前提にしている toolchain を優先し、無関係な tool をむやみに混在させない。
-- `mise` task も Vite+ のコマンド群を包む形で定義する。
-- Vite+ に乗らない構成を採る場合は、採用理由を先に明確にする。
+1. 推奨どおりでよいか
+2. **適用 / 不適用** を変更したいルールがあるか
+3. 表にない例外・追加要件があるか
 
-### 4. reset css は kiso.css を採用する
+ユーザが変更を示したら表を更新し、再度提示する。**全ルールについて適用 / 不適用が確定するまでフェーズ 3 を繰り返す。**
 
-- reset css は kiso.css を標準採用する。
-- 導入は `pnpm add kiso.css` で行う。
-- app の entry stylesheet か main entry から、project 固有の style より先に読み込む。
-- CDN 参照や vendor copy を既定にせず、pnpm 経由で依存管理する。
-- 日本語向け設計、低い詳細度、accessibility 配慮、モダン HTML/CSS 対応を前提に採用する。
+確認手段:
 
-## 最低限そろえる対象
+- 表全体への明示的な承認（「この表で進めて」等）
+- 個別ルールの変更指示
+- 不明点があれば `AskQuestion` 等で構造化して確認してよい
 
-frontend を含む新規 PJ では、少なくとも次を用意する。
+### フェーズ 4: 承認後に作成開始
 
-- `.devcontainer/devcontainer.json`
-- `.github/workflows/gitleaks.yml`
-- `mise.toml`
-- `.pre-commit-config.yaml`
-- `pnpm-workspace.yaml`
-- `package.json` の `packageManager`
-- kiso.css を読み込む entry 側の style または import
-- `mise run` で叩ける install / dev / check / test / build / hooks-install task
+ユーザがルール適用表を承認したら、初めて実装作業に入る。
+
+1. 承認済み表の **適用** 行に対応する参照ファイルを読み、実装する（[読み進め方](#読み進め方)）
+2. **不適用** とされたルールに該当するファイル・設定は作らない
+3. 完了前に [checklist.md](references/checklist.md) を、承認済みルールに合わせて確認する
+
+承認済み表は作業ログとして短く残す（どのルールを適用 / 不適用にしたか）。
+
+---
+
+## ルール一覧
+
+全ルールを列挙する。フェーズ 2 ではこの表をベースに、PJ ごとの適用 / 不適用を決める。
+
+| ルール                 | 条件                        | 参照                                                        | 概要                                                                 |
+| ---------------------- | --------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------- |
+| devcontainer           | オプション（デフォルト: 不適用） | [devcontainer-mise.md](references/devcontainer-mise.md)     | 利用時のみ `.devcontainer/devcontainer.json` を作成。実行場所を統一  |
+| mise 中心運用          | 汎用                        | [devcontainer-mise.md](references/devcontainer-mise.md)     | `mise.toml` に tools / env / tasks を集約                            |
+| user settings 確認     | devcontainer 適用時         | [devcontainer-mise.md](references/devcontainer-mise.md)     | `dev.containers.*`, `dotfiles.*` を確認し重複設定を避ける            |
+| サンプルファイル起点   | 汎用                        | [devcontainer-mise.md](references/devcontainer-mise.md)     | `references/sample-files/` を初期ファイルの起点にする                |
+| gitleaks               | 汎用                        | [gitleaks-pre-commit.md](references/gitleaks-pre-commit.md) | secret scan を GitHub Action と pre-commit の両方で導入              |
+| pre-commit / pre-push  | 汎用                        | [gitleaks-pre-commit.md](references/gitleaks-pre-commit.md) | `pre-commit`, `gitleaks` を mise 管理。local hook を有効化           |
+| pnpm 固定              | frontend あり               | [frontend-pnpm.md](references/frontend-pnpm.md)             | package manager を pnpm に固定                                       |
+| pnpm supply chain      | frontend あり               | [frontend-pnpm.md](references/frontend-pnpm.md)             | `pnpm-workspace.yaml` にセキュリティ設定                             |
+| Vite+                  | frontend あり               | [frontend-vite-plus.md](references/frontend-vite-plus.md)   | build / dev / check / test を Vite+ 流儀に寄せる                     |
+| Svelte / SvelteKit     | frontend + Svelte 採用      | [frontend-vite-plus.md](references/frontend-vite-plus.md)   | 最新安定版を使用                                                     |
+| kiso.css               | frontend UI あり            | [frontend-vite-plus.md](references/frontend-vite-plus.md)   | reset CSS を pnpm で導入し entry で最初に読み込む                    |
+| Oxlint / Oxfmt         | frontend あり               | [lint-fmt-hooks.md](references/lint-fmt-hooks.md)           | frontend の linter / formatter。未対応時は代替を調査                 |
+| lint / format コマンド | コード編集あり              | [lint-fmt-hooks.md](references/lint-fmt-hooks.md)           | `package.json` scripts と `mise run` task に載せる                   |
+| 編集後 lint/fmt hooks  | コード編集あり              | [lint-fmt-hooks.md](references/lint-fmt-hooks.md)           | AI エージェント編集後に project hooks で lint/fmt 実行               |
+| Tab 補完後 hook        | コード編集あり + ツール対応 | [lint-fmt-hooks.md](references/lint-fmt-hooks.md)           | 利用ツールが対応していれば設定（任意）                               |
+| mise 日常 task 一式    | 汎用                        | [devcontainer-mise.md](references/devcontainer-mise.md)     | install / dev / check / test / build / lint / format / hooks-install |
+
+### 条件の読み方
+
+| 条件                        | 適用判定                                                                |
+| --------------------------- | ----------------------------------------------------------------------- |
+| 汎用                        | 原則すべての新規 PJ で適用推奨                                          |
+| オプション（デフォルト: 不適用） | 標準では不適用。ユーザが明示的に利用を選んだ場合のみ適用           |
+| devcontainer 適用時         | devcontainer ルールが **適用** と確定している場合のみ適用               |
+| frontend あり               | ブラウザ向け UI または frontend パッケージを含む                        |
+| frontend UI あり            | ユーザー向け画面・スタイルを提供する frontend                           |
+| frontend + Svelte 採用      | frontend があり、Svelte / SvelteKit を採用する                          |
+| コード編集あり              | ソースコードをリポジトリで管理・編集する                                |
+| コード編集あり + ツール対応 | 編集後 lint/fmt hooks を適用し、かつ Cursor 等が Tab 補完後 hook を提供 |
+
+frontend なし PJ では pnpm / Vite+ / kiso.css / Oxlint・Oxfmt 等 frontend 向けルールは**不適用**。lint / format コマンド・編集後 hooks は backend 言語に合わせて選定して適用する。
+
+## 読み進め方
+
+承認後の実装手順は `references` 側が正本。SKILL.md は入口とルール選定のみ担う。
+
+1. [入口フロー](#入口フロー) を完了する。
+2. [ルール一覧](#ルール一覧) で **適用** となった各行の「参照」列のファイルを読み、実装する。
+3. 完了前に [checklist.md](references/checklist.md) を、承認済みルールに合わせて確認する。
 
 ## 出力方針
 
-- 実際に新規 PJ を作る依頼では、方針説明だけで止めずに必要ファイルを作る。
-- user settings から再利用した `dev.containers.*`, `dotfiles.*` と、PJ 側で追加した差分を短く説明する。
-- pnpm の allowlist に package を追加した場合は、その理由を残す。
-- Vite+ に乗らない例外を選んだ場合は、理由を明記する。
-
-## 最終チェック
-
-- devcontainer を作成したか。
-- user settings の `dev.containers.*`, `dotfiles.*` を確認したか。
-- `mise.toml` が tools / env / tasks の中心になっているか。
-- `mise.toml` の `[tools]` に `pre-commit` と `gitleaks` を載せているか。
-- `references/sample-files/` の該当サンプルを確認したか。
-- `.github/workflows/gitleaks.yml` で公式 gitleaks action を設定したか。
-- `.pre-commit-config.yaml` で `pre-commit` 用 hook と `pre-push` 用 hook の `stages` を明示したか。
-- `mise run hooks-install` で `pre-commit install` と `pre-commit install --hook-type pre-push` の両方を実行できるか。
-- `pre-commit validate-config` と `pre-commit run --hook-stage pre-push` で hook 設定を検証したか。
-- GitHub Action に `GITHUB_TOKEN` を渡し、`GITLEAKS_LICENSE` を不要な既定値として扱っているか。
-- frontend なら package manager が pnpm に固定されているか。
-- `pnpm-workspace.yaml` に `minimumReleaseAge: 10080` を入れたか。
-- Vite+ のコマンド群に寄せた構成になっているか。
-- Svelte / SvelteKit を採用する場合、最新安定版を使っているか。
-- kiso.css を pnpm で導入しているか。
+- 入口フロー完了前は、方針説明とルール適用表の提示に留める。ファイル作成は始めない。
+- 承認後は方針説明だけで止めず、承認済みルールに対応するファイルを作る。
+- 承認済みルール適用表を短く残す。
