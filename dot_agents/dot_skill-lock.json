@@ -336,10 +336,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/melumuccu/ai.git",
       "skillPath": ".agents/skills/kf-g-github-issue-worktree-management/SKILL.md",
-      "skillFolderHash": "94f06a9ae39068c577126a4bbf4642c6806b94d1",
-      "pluginName": "kf-skills",
+      "skillFolderHash": "ca028ebb6b221d9b1c079916af0599c50cfaef6f",
       "installedAt": "2026-07-07T22:25:29.352Z",
-      "updatedAt": "2026-07-19T07:43:03.758Z"
+      "updatedAt": "2026-07-19T07:50:17.405Z"
     },
     "kf-g-github-operations-bot-workflow": {
       "source": "melumuccu/ai",

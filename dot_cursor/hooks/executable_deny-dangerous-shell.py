@@ -1,97 +1,85 @@
 #!/usr/bin/env python3
-"""beforeShellExecution hook: strict allow-list + deny patterns."""
+"""beforeShellExecution hook: deny-list + deny patterns (default allow)."""
 
 import json
 import re
 import shlex
 import sys
 
-ALLOW_CMDS = frozenset(
+DENY_CMDS = frozenset(
     {
-        # read / explore
-        "ls",
-        "cat",
-        "head",
-        "tail",
-        "less",
-        "more",
-        "file",
-        "stat",
-        "wc",
-        "tree",
-        "find",
-        "grep",
-        "rg",
-        "ag",
-        "fd",
-        "which",
-        "type",
-        "pwd",
-        "echo",
-        "printf",
-        "test",
-        "true",
-        "false",
-        # version control (sub-patterns denied below)
-        "git",
-        # build / run
-        "node",
-        "npm",
-        "npx",
-        "pnpm",
-        "yarn",
-        "bun",
-        "python",
-        "python3",
-        "pip",
-        "pip3",
-        "uv",
-        "cargo",
-        "go",
-        "make",
-        "cmake",
-        "mise",
-        "direnv",
-        # test / lint
-        "vitest",
-        "jest",
-        "pytest",
-        "ruff",
-        "eslint",
-        "prettier",
-        "biome",
-        "shellcheck",
-        "tsc",
-        "svelte-check",
-        # containers (sub-patterns denied below)
-        "docker",
-        "docker-compose",
-        # utilities
-        "jq",
-        "sed",
-        "awk",
-        "sort",
-        "uniq",
-        "diff",
-        "patch",
-        "cp",
-        "mv",
-        "mkdir",
-        "touch",
-        "chmod",
-        "ln",
-        "readlink",
-        "realpath",
-        "basename",
-        "dirname",
-        "date",
-        "sleep",
-        "timeout",
-        "xargs",
-        # GitHub CLI (sub-patterns denied below)
-        "gh",
+        # privilege escalation
+        "sudo",
+        "su",
+        "doas",
+        # shell interpreters
+        "bash",
+        "sh",
+        "dash",
+        "zsh",
+        "fish",
+        "ksh",
+        # network clients
+        "curl",
+        "wget",
+        "http",
+        "httpie",
+        "nc",
+        "netcat",
+        "nmap",
+        # remote access
+        "ssh",
+        "scp",
+        "sftp",
+        "telnet",
+        # disk / system destruction
+        "dd",
+        "mkfs",
+        "mkfs.ext4",
+        "mkfs.xfs",
+        "wipefs",
+        "parted",
+        "fdisk",
+        "diskutil",
+        # system power / services
+        "shutdown",
+        "reboot",
+        "halt",
+        "poweroff",
     }
 )
+
+DB_CLIENT_CMDS = frozenset(
+    {
+        "psql",
+        "mysql",
+        "mariadb",
+        "mongosh",
+        "mongo",
+        "redis-cli",
+        "sqlite3",
+    }
+)
+
+SQL_PAYLOAD_FLAGS = frozenset(
+    {
+        "-c",
+        "-e",
+        "--execute",
+        "--eval",
+        "-q",
+        "--query",
+    }
+)
+
+DANGEROUS_SQL_PATTERNS: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(r"\bDROP\s+(DATABASE|SCHEMA|TABLE)\b", re.I), "SQL DROP"),
+    (re.compile(r"\bTRUNCATE(\s+TABLE)?\b", re.I), "SQL TRUNCATE"),
+    (re.compile(r"\bALTER\s+(DATABASE|TABLE)\b.*\bDROP\b", re.I), "SQL ALTER DROP"),
+    (re.compile(r"\bdropDatabase\s*\(", re.I), "MongoDB dropDatabase"),
+    (re.compile(r"\bdb\.[A-Za-z_][\w$]*\.drop\s*\(", re.I), "MongoDB collection drop"),
+    (re.compile(r"\bFLUSH(ALL|DB)\b", re.I), "Redis flush"),
+]
 
 DENY_PATTERNS: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"rm\s+-[a-zA-Z]*r[a-zA-Z]*f|rm\s+-[a-zA-Z]*f[a-zA-Z]*r"), "recursive rm"),
@@ -113,10 +101,7 @@ DENY_PATTERNS: list[tuple[re.Pattern[str], str]] = [
         re.compile(r"bash\s+<\(curl|bash\s+<\(wget|source\s+<\(curl|source\s+<\(wget"),
         "process substitution remote exec",
     ),
-    (re.compile(r"\beval\s+", re.I), "eval"),
-    (re.compile(r"DROP\s+(DATABASE|TABLE)", re.I), "SQL DROP"),
-    (re.compile(r"TRUNCATE\s+TABLE", re.I), "SQL TRUNCATE"),
-    (re.compile(r"redis-cli\s+.*FLUSH", re.I), "redis flush"),
+    (re.compile(r"(?<![-\w])eval\s+", re.I), "eval"),
     (re.compile(r"docker\s+system\s+prune", re.I), "docker system prune"),
     (re.compile(r"docker\s+volume\s+(rm|prune)", re.I), "docker volume delete"),
     (re.compile(r"docker\s+compose\s+down\s+.*-v", re.I), "docker compose down -v"),
@@ -198,6 +183,62 @@ def first_command_name(segment: str) -> str | None:
     return None
 
 
+def extract_db_client_payloads(segment: str, client: str) -> list[str]:
+    try:
+        tokens = shlex.split(segment, posix=True)
+    except ValueError:
+        return []
+
+    payloads: list[str] = []
+    index = 0
+    while index < len(tokens):
+        token = tokens[index]
+
+        if token in SQL_PAYLOAD_FLAGS:
+            if index + 1 < len(tokens):
+                payloads.append(tokens[index + 1])
+            index += 2
+            continue
+
+        if token.startswith("--execute=") or token.startswith("--eval="):
+            payloads.append(token.split("=", 1)[1])
+            index += 1
+            continue
+
+        index += 1
+
+    if client == "redis-cli":
+        for token in tokens[1:]:
+            if token.startswith("-"):
+                continue
+            if token in SQL_PAYLOAD_FLAGS:
+                continue
+            payloads.append(token)
+
+    if client == "sqlite3":
+        positional = [token for token in tokens[1:] if not token.startswith("-")]
+        if len(positional) >= 2:
+            payloads.append(positional[-1])
+
+    return payloads
+
+
+def dangerous_sql_reason(segment: str) -> str | None:
+    client = first_command_name(segment)
+    if client not in DB_CLIENT_CMDS:
+        return None
+
+    texts = extract_db_client_payloads(segment, client)
+    texts.append(segment)
+
+    for text in texts:
+        for pattern, reason in DANGEROUS_SQL_PATTERNS:
+            if pattern.search(text):
+                return reason
+
+    return None
+
+
 MANUAL_EXECUTION_AGENT_INSTRUCTIONS = """\
 このシェルコマンドはセキュリティフックによってブロックされており再試行は許可されていません。
 
@@ -260,8 +301,11 @@ def main() -> None:
         name = first_command_name(segment)
         if name is None:
             deny("unparseable command segment", segment)
-        if name not in ALLOW_CMDS:
-            deny(f"command not on allow list ({name})", command)
+        if name in DENY_CMDS:
+            deny(f"command on deny list ({name})", command)
+        sql_reason = dangerous_sql_reason(segment)
+        if sql_reason is not None:
+            deny(sql_reason, command)
 
     allow()
 

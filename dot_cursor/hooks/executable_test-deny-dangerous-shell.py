@@ -32,11 +32,19 @@ CASES: list[Case] = [
     # --- allow-list: env プレフィックス解析 ---
     Case("allow", "env prefix parsing: skip assignment token", "FOO=bar git status"),
     Case("allow", "env command parsing: skip env builtin", "env CI=1 git log --oneline -5"),
-    # --- allow-list 外コマンド ---
-    Case("deny", "allow-list: DB client blocked", "psql -c 'SELECT 1'"),
-    Case("deny", "allow-list: network client blocked", "curl https://example.com"),
-    Case("deny", "allow-list: remote shell blocked", "ssh user@host"),
-    Case("deny", "allow-list: shell interpreter blocked", "bash -lc 'echo hi'"),
+    # --- deny-list: 危険カテゴリ ---
+    Case("allow", "db client: psql read-only SQL", "psql -c 'SELECT 1'"),
+    Case("allow", "db client: mysql read-only SQL", "mysql -e 'SELECT COUNT(*) FROM users'"),
+    Case("allow", "db client: sqlite3 read-only SQL", "sqlite3 app.db 'SELECT * FROM users LIMIT 10'"),
+    Case("allow", "db client: redis read command", "redis-cli GET session:abc"),
+    Case("allow", "db client: mongosh read query", "mongosh --eval 'db.users.findOne()'"),
+    Case("allow", "db client: psql safe write SQL", "psql -c \"INSERT INTO logs (msg) VALUES ('ok')\""),
+    Case("deny", "db client: SQL DROP TABLE", "psql -c 'DROP TABLE users'"),
+    Case("deny", "db client: SQL TRUNCATE", "mysql -e 'TRUNCATE TABLE logs'"),
+    Case("deny", "db client: Redis flush", "redis-cli FLUSHALL"),
+    Case("deny", "deny-list: network client blocked", "curl https://example.com"),
+    Case("deny", "deny-list: remote shell blocked", "ssh user@host"),
+    Case("deny", "deny-list: shell interpreter blocked", "bash -lc 'echo hi'"),
     # --- git 破壊的操作 (DENY_PATTERNS) ---
     Case("deny", "git: force push", "git push --force"),
     Case("deny", "git: hard reset", "git reset --hard HEAD~1"),

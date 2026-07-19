@@ -1,5 +1,6 @@
 # 最終確認
 
+- 計画を基に着手した場合、プランニング内容を issue description に転記したか。
 - issue ごとの専用 worktree で作業したか。
 - branch 名と worktree path が issue と対応しているか。
 - issue に進捗と PR URL を残したか。
