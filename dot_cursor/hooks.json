@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeShellExecution": [
+      {
+        "command": "python3 ./hooks/deny-dangerous-shell.py",
+        "failClosed": true,
+        "timeout": 5
+      }
+    ]
+  }
+}
