@@ -398,7 +398,27 @@
       "skillPath": ".agents/skills/kf-command-do-pr-rev-comment/SKILL.md",
       "skillFolderHash": "d46f7ef1ea74dcc48550fcc306e4d259bd4b9d7d",
       "installedAt": "2026-07-19T13:57:01.709Z",
-      "updatedAt": "2026-07-19T13:57:01.709Z"
+      "updatedAt": "2026-07-19T14:00:38.476Z"
+    },
+    "kf-command-do-pr-rev-comment": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-command-do-issue-planning/SKILL.md",
+      "skillFolderHash": "becfd119bb53ca7ee8df5636a3e9d861a697b0f3",
+      "pluginName": "kf-commands",
+      "installedAt": "2026-07-19T14:03:14.857Z",
+      "updatedAt": "2026-07-19T14:07:21.255Z"
+    },
+    "kf-command-do-issue-planning": {
+      "source": "melumuccu/ai",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/melumuccu/ai.git",
+      "skillPath": ".agents/skills/kf-command-do-pr-rev-comment/SKILL.md",
+      "skillFolderHash": "7b0dce08f22d88390f7457ed1c0d417fa51e2275",
+      "pluginName": "kf-commands",
+      "installedAt": "2026-07-19T14:07:20.866Z",
+      "updatedAt": "2026-07-19T14:07:20.866Z"
     }
   },
   "dismissed": {
