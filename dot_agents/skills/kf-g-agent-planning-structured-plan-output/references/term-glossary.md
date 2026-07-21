@@ -97,6 +97,16 @@
 | Zero Trust | 境界less 認可モデル |
 | WAF custom rule | アプリ層フィルタ |
 | split-horizon DNS | 内部外部で異なる解決 |
+| spoof 対策 | クライアントが内部専用ヘッダ等を偽装して認可をすり抜ける脅威への対策。計画文脈では strip → 信頼境界側再注入を指す |
+| 内部ヘッダ / trusted header | Worker 等の信頼境界でのみ set し、クライアント入力を strip してから DO 等へ渡すヘッダ |
+
+### GitDoc / 本リポジトリ (計画の主題)
+
+| 用語 | 補足の方向性 |
+|------|-------------|
+| spoof 対策 | WS upgrade 等で `X-Gitdoc-*` 等の内部ヘッダ偽装を strip し、Worker 認可結果のみ再注入 |
+| initial-seed | 空 Y.Doc への重複 seed 防止プロトコル |
+| DocumentRoom | PartyKit / y-partyserver 上の DO ルーム |
 
 ### SvelteKit / ランタイム (ややニッチ)
 

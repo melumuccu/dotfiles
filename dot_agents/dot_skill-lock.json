@@ -336,10 +336,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/melumuccu/ai.git",
       "skillPath": ".agents/skills/kf-g-github-issue-worktree-management/SKILL.md",
-      "skillFolderHash": "ca028ebb6b221d9b1c079916af0599c50cfaef6f",
-      "pluginName": "kf-skills",
+      "skillFolderHash": "747bc989fb647998f1da9f18c0f470d7442d2dd4",
       "installedAt": "2026-07-07T22:25:29.352Z",
-      "updatedAt": "2026-07-19T13:56:54.659Z"
+      "updatedAt": "2026-07-20T23:44:21.095Z"
     },
     "kf-g-github-operations-bot-workflow": {
       "source": "melumuccu/ai",
@@ -391,34 +390,23 @@
       "installedAt": "2026-07-19T13:56:54.658Z",
       "updatedAt": "2026-07-19T13:56:54.658Z"
     },
-    "do-pr-rev-comment": {
-      "source": "melumuccu/ai",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/melumuccu/ai.git",
-      "skillPath": ".agents/skills/kf-command-do-pr-rev-comment/SKILL.md",
-      "skillFolderHash": "d46f7ef1ea74dcc48550fcc306e4d259bd4b9d7d",
-      "installedAt": "2026-07-19T13:57:01.709Z",
-      "updatedAt": "2026-07-19T14:00:38.476Z"
-    },
     "kf-command-do-pr-rev-comment": {
       "source": "melumuccu/ai",
       "sourceType": "github",
       "sourceUrl": "https://github.com/melumuccu/ai.git",
-      "skillPath": ".agents/skills/kf-command-do-issue-planning/SKILL.md",
-      "skillFolderHash": "becfd119bb53ca7ee8df5636a3e9d861a697b0f3",
-      "pluginName": "kf-commands",
+      "skillPath": ".agents/skills/kf-command-do-pr-rev-comment/SKILL.md",
+      "skillFolderHash": "0d3f0add1787514dbb7bc9d7a4f7e0e97a6d57de",
       "installedAt": "2026-07-19T14:03:14.857Z",
-      "updatedAt": "2026-07-19T14:07:21.255Z"
+      "updatedAt": "2026-07-21T00:47:05.819Z"
     },
     "kf-command-do-issue-planning": {
       "source": "melumuccu/ai",
       "sourceType": "github",
       "sourceUrl": "https://github.com/melumuccu/ai.git",
-      "skillPath": ".agents/skills/kf-command-do-pr-rev-comment/SKILL.md",
+      "skillPath": ".agents/skills/kf-command-do-issue-planning/SKILL.md",
       "skillFolderHash": "7b0dce08f22d88390f7457ed1c0d417fa51e2275",
-      "pluginName": "kf-commands",
       "installedAt": "2026-07-19T14:07:20.866Z",
-      "updatedAt": "2026-07-19T14:07:20.866Z"
+      "updatedAt": "2026-07-21T00:45:48.260Z"
     }
   },
   "dismissed": {
