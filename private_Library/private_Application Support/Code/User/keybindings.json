@@ -500,5 +500,13 @@
   {
     "key": "cmd+g cmd+l",
     "command": "gitlens.toggleLineBlame"
+  },
+  {
+    "key": "cmd+k s",
+    "command": "workbench.action.files.saveWithoutFormatting"
+  },
+  {
+    "key": "cmd+r s",
+    "command": "-workbench.action.files.saveWithoutFormatting"
   }
 ]
