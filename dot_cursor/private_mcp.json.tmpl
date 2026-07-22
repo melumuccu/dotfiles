@@ -1,0 +1,38 @@
+{
+	"mcpServers": {
+		"google-docs": {
+			"url": "https://docsmcp.googleapis.com/mcp/v1",
+			"auth": {
+				"CLIENT_ID": "{{ (bitwarden "item" "72afc6e3-3093-428a-ae78-b48f00e3dca3").login.password }}",
+				"CLIENT_SECRET": "{{ (bitwarden "item" "3f1501e7-2d15-4803-a154-b48f00e4034e").login.password }}",
+				"scopes": [
+					"https://www.googleapis.com/auth/documents",
+					"https://www.googleapis.com/auth/drive.file"
+				]
+			}
+		},
+		"google-sheets": {
+			"url": "https://sheetsmcp.googleapis.com/mcp/v1",
+			"auth": {
+				"CLIENT_ID": "{{ (bitwarden "item" "72afc6e3-3093-428a-ae78-b48f00e3dca3").login.password }}",
+				"CLIENT_SECRET": "{{ (bitwarden "item" "3f1501e7-2d15-4803-a154-b48f00e4034e").login.password }}",
+				"scopes": [
+					"https://www.googleapis.com/auth/spreadsheets",
+					"https://www.googleapis.com/auth/drive.file"
+				]
+			}
+		},
+		"google-gmail": {
+			"url": "https://gmailmcp.googleapis.com/mcp/v1",
+			"auth": {
+				"CLIENT_ID": "{{ (bitwarden "item" "72afc6e3-3093-428a-ae78-b48f00e3dca3").login.password }}",
+				"CLIENT_SECRET": "{{ (bitwarden "item" "3f1501e7-2d15-4803-a154-b48f00e4034e").login.password }}",
+				"scopes": [
+					"https://www.googleapis.com/auth/gmail.readonly",
+					"https://www.googleapis.com/auth/gmail.compose",
+					"https://www.googleapis.com/auth/gmail.modify"
+				]
+			}
+		}
+	}
+}
