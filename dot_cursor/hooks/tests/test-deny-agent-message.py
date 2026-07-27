@@ -3,7 +3,7 @@ import json
 import subprocess
 from pathlib import Path
 
-hook = Path(__file__).with_name("deny-dangerous-shell.py")
+hook = Path(__file__).resolve().parent.parent / "deny-dangerous-shell.py"
 proc = subprocess.run(
     ["python3", str(hook)],
     input=json.dumps({"command": "psql -c 'SELECT 1'"}),

@@ -7,7 +7,7 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-HOOK = Path(__file__).with_name("deny-dangerous-shell.py")
+HOOK = Path(__file__).resolve().parent.parent / "deny-dangerous-shell.py"
 
 
 @dataclass(frozen=True)
