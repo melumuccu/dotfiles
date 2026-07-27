@@ -11,6 +11,7 @@ fish_add_path -g --append /opt/homebrew/bin
 fish_add_path -g --append $PNPM_HOME
 fish_add_path -g --append /Users/fujisawakoki/.cache/lm-studio/bin
 fish_add_path -g --append /Users/fujisawakoki/.antigravity/antigravity/bin
+fish_add_path $HOME/.local/bin
 
 if status is-interactive
     if command -q mise
