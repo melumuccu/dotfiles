@@ -549,5 +549,7 @@
     "cursor.general.glassShowWarningNotifications": true,
     "cursor.composer.shouldChimeAfterChatFinishes": true,
     "cursor.worktreeMaxCount": 5,
-    "update.releaseTrack": "dev"
+    "update.releaseTrack": "dev",
+    "cursor.cpp.enablePartialAccepts": true,
+    "workbench.editor.enablePreview": false
 }

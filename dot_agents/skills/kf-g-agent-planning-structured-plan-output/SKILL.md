@@ -22,7 +22,6 @@ AI agent が設計・実装・移行・段階投入などの**計画**を書く�
 
 1. 専門用語の要否は [references/term-glossary.md](references/term-glossary.md) で判定
 1. フットノート記法は [references/footnote-formats.md](references/footnote-formats.md) に従う
-1. **GitHub 転記前**に [references/plan-footnote-checklist.md](references/plan-footnote-checklist.md) を実行
 
 ## 構成方針
 
@@ -49,7 +48,6 @@ AI agent が設計・実装・移行・段階投入などの**計画**を書く�
 - 同一内容を概要表と本文段落に重複
 - 全見出し下に 1 行説明だけ置く (表に統合)
 - 未検証の mermaid を詳細すぎる粒度で描く
-- `spoof 対策` / `改ざん対策` / `内部ヘッダ` 等、**計画の主題となるセキュリティパターン名**を footnote なしで初出する
 
 ## フットノート方針
 
@@ -66,7 +64,5 @@ AI agent が設計・実装・移行・段階投入などの**計画**を書く�
 - [ ] 表または mermaid が計画の中心か
 - [ ] 標準用語に不要なフットノートが無いか
 - [ ] 製品固有用語に初出フットノートがあるか
-- [ ] `term-glossary.md` の「フットノート推奨」語で、計画本文に出たものを漏れなく footnote 化したか
-- [ ] セキュリティ / 認可 / 信頼境界のラベル（例: spoof 対策、内部ヘッダ）を初出 footnote したか
 - [ ] 出力先に合った記法か (Cursor=HTML / ローカル MD=`[^label]` / GitHub=`[^n]`)
 - [ ] GitHub 転記前にフットノート変換済みか
