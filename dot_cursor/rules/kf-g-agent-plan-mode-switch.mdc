@@ -1,0 +1,12 @@
+---
+description: Switch to Plan mode before planning or analysis work
+alwaysApply: true
+---
+
+# Plan mode 切替
+
+プランニング、方針策定、比較分析、設計検討、調査開始時は次を守る。
+
+1. 現在 Plan mode でなければ `SwitchMode` でユーザーに問う
+2. ユーザー判断前に調査・検討を進めない
+3. すでに Plan mode なら切替の質問は不要
