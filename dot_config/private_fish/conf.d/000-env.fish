@@ -1,6 +1,9 @@
 set -gx HOMEBREW_NO_AUTO_UPDATE 1
 
-set -gx PNPM_HOME /Users/fujisawakoki/Library/pnpm
+set -gx PNPM_HOME "/Users/fujisawakoki/Library/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
 
 # fish_add_path の既定は prepend で、--append と混在させると
 # 記述順と実際の PATH 優先順がずれやすい。

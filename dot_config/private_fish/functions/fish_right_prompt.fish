@@ -3,4 +3,12 @@ function fish_right_prompt
     # set_color magenta
     # fish_vcs_prompt
     # set_color normal
+
+    if test -n (commandline -b)
+        return
+    end
+
+    set_color brblack
+    echo -n '⌃G AI  ⌃R history'
+    set_color normal
 end
