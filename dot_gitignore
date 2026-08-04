@@ -16,6 +16,7 @@ Desktop.ini
 *.log
 *.tmp
 *.temp
+**/__pycache__/*
 
 # ビルド成果物・依存関係など
 bin/
