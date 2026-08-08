@@ -102,6 +102,10 @@ def error_diagnostics(diagnostics: list[dict[str, Any]]) -> list[dict[str, Any]]
     return [item for item in diagnostics if item.get("severity") == "error"]
 
 
+def warn_diagnostics(diagnostics: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [item for item in diagnostics if item.get("severity") == "warn"]
+
+
 def format_diagnostics_block(diagnostics: list[dict[str, Any]]) -> str:
     lines: list[str] = []
     for item in diagnostics:
@@ -120,4 +124,14 @@ def format_stop_followup(errors: list[dict[str, Any]]) -> str:
         "kf-lint detected lint errors in the working tree. Fix them before finishing:\n"
         f"{body}\n\n"
         "Re-run kf-lint locally with `kf-lint verify <paths>` and apply the suggested fixes."
+    )
+
+
+def format_stop_warnings_followup(warnings: list[dict[str, Any]]) -> str:
+    body = format_diagnostics_block(warnings)
+    return (
+        "kf-lint reported warnings in the working tree (到達性 warn など). "
+        "Agent is not blocked; user confirmation fallback is OK if needed:\n"
+        f"{body}\n\n"
+        "Re-run kf-lint locally with `kf-lint verify <paths>` to review warnings."
     )

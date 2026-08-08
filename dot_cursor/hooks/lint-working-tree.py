@@ -38,6 +38,7 @@ def main() -> None:
         hook_io.empty()
 
     all_errors: list[dict] = []
+    all_warnings: list[dict] = []
     for root in roots:
         if not isinstance(root, str) or not root.strip():
             continue
@@ -52,9 +53,12 @@ def main() -> None:
             hook_io.empty()
         diagnostics, _exit_code = result
         all_errors.extend(kf_lint.error_diagnostics(diagnostics))
+        all_warnings.extend(kf_lint.warn_diagnostics(diagnostics))
 
     if all_errors:
         hook_io.followup(kf_lint.format_stop_followup(all_errors))
+    elif all_warnings:
+        hook_io.followup(kf_lint.format_stop_warnings_followup(all_warnings))
     hook_io.empty()
 
 

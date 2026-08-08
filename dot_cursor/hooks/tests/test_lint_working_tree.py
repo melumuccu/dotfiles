@@ -73,7 +73,7 @@ class WorkingTreeHookTests(unittest.TestCase):
         self.assertIn("followup_message", out)
         self.assertIn(str(path), out["followup_message"])
 
-    def test_warn_only_returns_empty(self) -> None:
+    def test_warn_only_returns_followup(self) -> None:
         self.repo.write(
             "Dockerfile",
             "FROM node:24-slim AS base\nFROM base AS runtime\n",
@@ -88,7 +88,31 @@ class WorkingTreeHookTests(unittest.TestCase):
             self.env,
         )
         self.assertEqual(code, 0)
-        self.assertEqual(out, {})
+        self.assertIn("followup_message", out)
+        self.assertIn("到達性 warn", out["followup_message"])
+        self.assertIn("user confirmation fallback", out["followup_message"])
+        self.assertIn("docker/layer-heading", out["followup_message"])
+
+    def test_error_takes_priority_over_warn_followup(self) -> None:
+        self.repo.write("styles/bad.css", BAD_CSS)
+        self.repo.write(
+            "Dockerfile",
+            "FROM node:24-slim AS base\nFROM base AS runtime\n",
+        )
+        code, out = run_hook(
+            WORKING_TREE_HOOK,
+            {
+                "status": "completed",
+                "loop_count": 0,
+                "workspace_roots": [str(self.repo.root)],
+            },
+            self.env,
+        )
+        self.assertEqual(code, 0)
+        self.assertIn("followup_message", out)
+        self.assertIn("css/no-vw-vh", out["followup_message"])
+        self.assertIn("Fix them before finishing", out["followup_message"])
+        self.assertNotIn("到達性 warn", out["followup_message"])
 
     def test_fixture_path_skipped(self) -> None:
         self.repo.write("packages/kf-lint/fixtures/css/phase1-bad.css", BAD_CSS)
