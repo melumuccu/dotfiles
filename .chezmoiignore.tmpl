@@ -1,10 +1,24 @@
-**/.DS_Store
+//============== chezmoi のソースリポジトリ直下のファイル・ディレクトリを無視
+// ファイル・ディレクトリを無視
 README.md
-/.github/
-/.pre-commit-hooks/
-/.pre-commit-config.yaml
-/mise.toml
-__pycache__/
+.github
+.pre-commit-hooks
+.pre-commit-config.yaml
+mise.toml
+
+// ディレクトリ配下を再帰的に無視
+.github/**
+.pre-commit-hooks/**
+
+//==============
+// ファイル・ディレクトリを無視
+**/.DS_Store
+**/.git
+**/__pycache__
+
+// ディレクトリ配下を再帰的に無視
+**/.git/**
+**/__pycache__/**
 
 {{- if ne .chezmoi.os "darwin" }}
 Application Support/
