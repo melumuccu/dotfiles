@@ -17,6 +17,8 @@ Desktop.ini
 *.tmp
 *.temp
 **/__pycache__/*
+artifacts
+.wrangler
 
 # ビルド成果物・依存関係など
 bin/

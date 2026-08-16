@@ -395,15 +395,9 @@
         "scss": true,
         "yaml": true
     },
-    "github.copilot.nextEditSuggestions.enabled": true, // preview: NES
-    "gitlens.ai.model": "vscode",
-    "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+    "github.copilot.nextEditSuggestions.enabled": true,
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.scopes": [],
-    "gitlens.views.commits.files.layout": "list",
-    "gitlens.views.commits.pullRequests.enabled": false,
-    "gitlens.views.commits.pullRequests.showForBranches": false,
-    "gitlens.views.commits.showBranchComparison": false,
     "gitlens.views.showRelativeDateMarkers": false,
     "hediet.vscode-drawio.resizeImages": null,
     "html.format.enable": false,
@@ -552,5 +546,25 @@
     "cursor.worktreeMaxCount": 5,
     "update.releaseTrack": "dev",
     "cursor.cpp.enablePartialAccepts": true,
-    "workbench.editor.enablePreview": false
+    "workbench.editor.enablePreview": false,
+    "cursor.general.gitGraphIndexing": "enabled",
+    "gitlens.views.scm.grouped.hiddenViews": {
+        "commits": false,
+        "worktrees": false,
+        "branches": false,
+        "remotes": true,
+        "stashes": false,
+        "tags": true,
+        "contributors": true,
+        "repositories": true,
+        "fileHistory": false,
+        "launchpad": true,
+        "searchAndCompare": false
+    },
+    "gitlens.views.commits.avatars": false,
+    "gitlens.views.commits.pullRequests.showForBranches": false,
+    "gitlens.views.commits.files.compact": false,
+    "gitlens.views.formats.commits.label": "${message}",
+    "gitlens.views.commits.showBranchComparison": false,
+    "gitlens.views.commits.pullRequests.enabled": false
 }
