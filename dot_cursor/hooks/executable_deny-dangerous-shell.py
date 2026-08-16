@@ -81,17 +81,21 @@ DANGEROUS_SQL_PATTERNS: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"\bFLUSH(ALL|DB)\b", re.I), "Redis flush"),
 ]
 
+# Branch names like issue-22-feature-preview-deploy embed "-f" mid-token; token-start matching avoids false positives.
+_GIT_FORCE_FLAG = r"(?:^|\s)(?:--force(?:-with-lease)?|-[a-zA-Z]*f[a-zA-Z]*)(?:\s|$)"
+_GIT_FORCE_PUSH = re.compile(rf"git\s+push\b.*{_GIT_FORCE_FLAG}")
+
 DENY_PATTERNS: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"rm\s+-[a-zA-Z]*r[a-zA-Z]*f|rm\s+-[a-zA-Z]*f[a-zA-Z]*r"), "recursive rm"),
     (re.compile(r"\brm\s+-rf\b"), "rm -rf"),
     (re.compile(r"find\s+.*-delete"), "find -delete"),
     (re.compile(r"xargs\s+rm\b"), "xargs rm"),
-    (re.compile(r"git\s+push\s+.*(-f|--force)"), "git force push"),
+    (_GIT_FORCE_PUSH, "git force push"),
     (re.compile(r"git\s+reset\s+--hard"), "git reset --hard"),
     (re.compile(r"git\s+clean\s+-f"), "git clean -f"),
     (re.compile(r"git\s+branch\s+-D"), "git branch -D"),
     (re.compile(r"git\s+filter-(branch|repo)"), "git history rewrite"),
-    (re.compile(r"git\s+push\b.*\b(main|master)\b.*(-f|--force)"), "force push to main/master"),
+    (re.compile(rf"git\s+push\b.*\b(main|master)\b.*{_GIT_FORCE_FLAG}"), "force push to main/master"),
     (re.compile(r"--no-verify|--no-gpg-sign"), "hook bypass flag"),
     (re.compile(r"curl\s+.*\|\s*(ba)?sh\b"), "curl pipe to shell"),
     (re.compile(r"wget\s+.*\|\s*(ba)?sh\b"), "wget pipe to shell"),

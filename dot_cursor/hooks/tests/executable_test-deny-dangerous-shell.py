@@ -7,7 +7,17 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-HOOK = Path(__file__).resolve().parent.parent / "deny-dangerous-shell.py"
+_HOOK_DIR = Path(__file__).resolve().parent.parent
+for _hook_name in ("deny-dangerous-shell.py", "executable_deny-dangerous-shell.py"):
+    _hook_path = _HOOK_DIR / _hook_name
+    if _hook_path.is_file():
+        HOOK = _hook_path
+        break
+else:
+    raise FileNotFoundError(
+        f"hook not found in {_HOOK_DIR}: "
+        "expected deny-dangerous-shell.py or executable_deny-dangerous-shell.py"
+    )
 
 
 @dataclass(frozen=True)
@@ -27,6 +37,16 @@ CASES: list[Case] = [
     Case("allow", "allow-list: cat local config (no exfil pattern)", "cat .env"),
     # --- allow-list: 安全な git 操作 ---
     Case("allow", "allow-list + safe git: push without force", "git push origin feature/foo"),
+    Case(
+        "allow",
+        "git: push branch name containing -feature",
+        "git push origin issue-22-feature-preview-deploy",
+    ),
+    Case(
+        "allow",
+        "git: push -u branch name containing -feature",
+        "git push -u origin issue-22-feature-preview-deploy",
+    ),
     # --- allow-list: パイプ両端が許可コマンド ---
     Case("allow", "pipe: allowed commands on both sides", "git status | head"),
     # --- allow-list: env プレフィックス解析 ---
@@ -52,6 +72,8 @@ CASES: list[Case] = [
     Case("deny", "git: force branch delete", "git branch -D feature/old"),
     Case("deny", "git: hook bypass flag", "git commit --no-verify -m 'skip hooks'"),
     Case("deny", "git: force push to main", "git push -f origin main"),
+    Case("deny", "git: force push short cluster -uf", "git push -uf origin topic"),
+    Case("deny", "git: force push --force-with-lease to main", "git push --force-with-lease origin main"),
     # --- ファイルシステム破壊 ---
     Case("deny", "filesystem: recursive rm", "rm -rf /tmp/test-dir"),
     Case("deny", "filesystem: find -delete", "find . -name '*.tmp' -delete"),
