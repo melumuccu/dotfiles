@@ -17,14 +17,21 @@ open -a "bitwarden"
 osascript -e 'tell application "System Events" to keystroke "f" using command down' # ⌘F で検索バーにフォーカス
 osascript -e 'tell application "System Events" to keystroke "a" using command down' # ⌘A で全選択
 osascript -e 'tell application "System Events" to key code 51' # Backspaceキーで検索バーをクリア
-osascript -e 'tell application "System Events" to keystroke "LINE"' # LINEを検索
-osascript -e 'tell application "System Events" to key code 36' # Enterキー
+osascript -e 'tell application "System Events" to keystroke "LINE (main)"' # LINEを検索
+# osascript -e 'tell application "System Events" to key code 36' # Enterキー
 
 # LINEのパスワードをコピー
 osascript -e 'tell application "System Events" to key code 48' # Tabキー
 osascript -e 'tell application "System Events" to key code 48' # Tabキー
-osascript -e 'tell application "System Events" to key code 36' # EnterキーでLINEを選択
-osascript -e 'tell application "System Events" to keystroke "p" using command down' # ⌘Pでパスワードコピー
+osascript -e 'tell application "System Events" to key code 48' # Tabキー
+osascript -e 'tell application "System Events" to key code 48' # Tabキー
+osascript -e 'tell application "System Events" to key code 48' # Tabキー
+osascript -e 'tell application "System Events" to key code 48' # Tabキー
+osascript -e 'tell application "System Events" to key code 48' # Tabキー
+osascript -e 'tell application "System Events" to key code 36' # Enterキーでコピーボタンを選択
+osascript -e 'tell application "System Events" to key code 125' # ↓キーでパスワードボタンにフォーカス
+osascript -e 'tell application "System Events" to key code 36' # Enterキーでパスワードをコピー
+# osascript -e 'tell application "System Events" to keystroke "p" using command down' # ⌘Pでパスワードコピー
 
 # LINEを起動
 open -a "LINE"
