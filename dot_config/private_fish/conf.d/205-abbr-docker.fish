@@ -13,7 +13,7 @@ if status is-interactive
     abbr --add de-stub 'docker exec -it -w /var/www/html/stub stub /bin/bash'
     abbr --add dc 'docker compose'
     abbr --add dcb 'docker compose build'
-    abbr --add dcu 'docker compose up'
+    abbr --add dcu 'docker compose up -d'
     abbr --add dcd 'docker compose down'
     abbr --add dcr 'docker compose restart'
 end

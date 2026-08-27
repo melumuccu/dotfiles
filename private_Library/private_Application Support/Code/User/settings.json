@@ -159,6 +159,7 @@
     "cSpell.logLevel": "Warning",
     "cSpell.userWords": [
         "afplay",
+        "anthropics",
         "APIKEY",
         "APINAME",
         "APISECRET",
@@ -566,5 +567,7 @@
     "gitlens.views.commits.files.compact": false,
     "gitlens.views.formats.commits.label": "${message}",
     "gitlens.views.commits.showBranchComparison": false,
-    "gitlens.views.commits.pullRequests.enabled": false
+    "gitlens.views.commits.pullRequests.enabled": false,
+    "cursor.composer.conversationDensity": "compact-ungrouped",
+    "cursor.general.reduceTransparency": true
 }

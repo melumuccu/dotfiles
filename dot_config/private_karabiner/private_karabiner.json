@@ -4,6 +4,74 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "⌘C 2回押しで ⌘⇧⌥^D (Easydict) を起動",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "cmd_c_pressed",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": { "mandatory": ["command"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "d",
+                                        "modifiers": ["command", "shift", "option", "control"]
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "cmd_c_pressed",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": { "mandatory": ["command"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "c",
+                                        "modifiers": ["command"]
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "cmd_c_pressed",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "cmd_c_pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "cmd_c_pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "左コマンドで英数、右コマンドでかな ＆ Option+TabとCommand+Tabの入れ替え（統合版）",
                         "manipulators": [
                             {
