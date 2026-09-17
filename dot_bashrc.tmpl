@@ -1,0 +1,458 @@
+# chezmoi 管理 (~/.bashrc)
+
+case $- in
+*i*) ;;
+*) return ;;
+esac
+
+# ==================================================================================================
+# 環境変数・PATH
+# ==================================================================================================
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+export PNPM_HOME="/Users/fujisawakoki/Library/pnpm"
+
+__bash_path_append() {
+  case ":$PATH:" in
+    *":$1:"*) ;;
+    *) PATH="${PATH:+$PATH:}$1" ;;
+  esac
+}
+
+__bash_path_append /opt/homebrew/bin
+__bash_path_append "$PNPM_HOME/bin"
+__bash_path_append /Users/fujisawakoki/.cache/lm-studio/bin
+__bash_path_append /Users/fujisawakoki/.antigravity/antigravity/bin
+__bash_path_append "$HOME/.local/bin"
+export PATH
+unset -f __bash_path_append
+
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate bash)"
+fi
+
+if [[ -d /opt/homebrew/bin ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# ==================================================================================================
+# 関数
+# ==================================================================================================
+
+my_bw_session_is_valid() {
+  [[ -n "${BW_SESSION:-}" ]] || return 1
+  bw --nointeraction --session "$BW_SESSION" list items --search __bw_session_probe__ >/dev/null 2>&1
+}
+
+my_bw_unlock() {
+  local session
+  session=$(bw unlock --raw) || return 1
+  export BW_SESSION="$session"
+}
+
+my_bw_ensure_session() {
+  my_bw_session_is_valid && return 0
+  my_bw_unlock || return 1
+  my_bw_session_is_valid
+}
+
+my_chezmoi() {
+  my_bw_ensure_session || return 1
+  chezmoi "$@"
+}
+
+my_cdls() {
+  builtin cd "$@" || return 1
+  ls
+}
+
+my_cd_child_dir() {
+  local dir
+  dir=$(find . -mindepth 1 -maxdepth 1 -type d -print 2>/dev/null | sed 's#^\./##' | fzf) || return 1
+  [[ -n "$dir" ]] || return 1
+  builtin cd -- "$dir"
+}
+
+my_npm_run_script() {
+  local script
+  script=$(jq -r '.scripts | keys[]' package.json | sort | fzf) || return 1
+  npm run "$script"
+}
+
+my_git_checkout_branch() {
+  local selected branch
+  selected=$(git for-each-ref refs/heads --sort=refname --format='%(refname:short)	%(objectname:short)	%(upstream:short)	%(subject)' | fzf +m) || return 1
+  branch=$(printf '%s\n' "$selected" | cut -f1)
+  [[ -n "$branch" ]] || return 1
+  git checkout "$branch"
+}
+
+my_git_checkout_branch_fzf() {
+  local branch
+  branch=$(git branch --format='%(refname:short)' | fzf) || return 1
+  [[ -n "$branch" ]] || return 1
+  git checkout "$branch" || return 1
+  git pull
+}
+
+my_git_checkout_commit() {
+  local selected commit
+  selected=$(git log --pretty=oneline --abbrev-commit --reverse | fzf --tac +s +m -e) || return 1
+  [[ -n "$selected" ]] || return 1
+  commit="${selected%% *}"
+  git checkout "$commit"
+}
+
+my_git_delete_branch_fzf() {
+  local branch
+  branch=$(git branch --format='%(refname:short)' | fzf) || return 1
+  [[ -n "$branch" ]] || return 1
+  git branch -d -- "$branch"
+}
+
+my_git_rebase_interactive_head() {
+  if [[ $# -ne 1 ]]; then
+    echo 'Usage: grih <count>'
+    return 1
+  fi
+  git rebase -i "HEAD~$1"
+}
+
+my_git_stash_apply_fzf() {
+  local selected stash_ref
+  selected=$(git stash list | fzf) || return 1
+  stash_ref="${selected%%:*}"
+  [[ -n "$stash_ref" ]] || return 1
+  git stash apply "$stash_ref"
+}
+
+my_git_stash_checkout_fzf() {
+  local selected stash_ref
+  selected=$(git stash list | fzf) || return 1
+  stash_ref="${selected%%:*}"
+  [[ -n "$stash_ref" ]] || return 1
+  git checkout "$stash_ref"
+}
+
+my_git_stash_drop_fzf() {
+  local selected stash_ref
+  selected=$(git stash list | fzf) || return 1
+  stash_ref="${selected%%:*}"
+  [[ -n "$stash_ref" ]] || return 1
+  git stash drop "$stash_ref"
+}
+
+my_git_stash_show_fzf() {
+  local selected stash_ref
+  selected=$(git stash list | fzf) || return 1
+  stash_ref="${selected%%:*}"
+  [[ -n "$stash_ref" ]] || return 1
+  git stash show "$stash_ref"
+}
+
+my_docker_rm_fzf() {
+  local selected container_id
+  selected=$(docker ps -a --format '{{.Names}} {{.ID}}' | fzf) || return 1
+  container_id="${selected##* }"
+  [[ -n "$container_id" ]] || return 1
+  docker rm -f "$container_id"
+}
+
+my_docker_rmi_fzf() {
+  local selected image_id
+  selected=$(docker images --format '{{.Repository}}:{{.Tag}} {{.ID}}' | fzf) || return 1
+  image_id="${selected##* }"
+  [[ -n "$image_id" ]] || return 1
+  docker rmi "$image_id"
+}
+
+my_convert_heic_to_jpeg() {
+  if [[ $# -ne 1 ]]; then
+    echo 'Usage: ch <path_to_file>'
+    return 1
+  fi
+
+  local input_file dirname basename filename extension output_file
+  input_file=$1
+  dirname=$(dirname "$input_file")
+  basename=$(basename "$input_file")
+  filename="${basename%.*}"
+  extension=$(printf '%s' "${basename##*.}" | tr '[:upper:]' '[:lower:]')
+
+  if [[ "$extension" != heic ]]; then
+    echo 'The file is not a HEIC format.'
+    return 1
+  fi
+
+  output_file="$dirname/$filename.jpeg"
+  magick convert "$input_file" "$output_file" || {
+    echo "Failed to convert $input_file to jpeg."
+    return 1
+  }
+
+  echo "$input_file has been converted to"
+  echo "$output_file"
+}
+
+my_convert_webp() {
+  if [[ $# -ne 1 ]]; then
+    echo '使い方: cw <path_to_file>'
+    return 1
+  fi
+
+  local input=$1
+
+  if [[ -d "$input" ]]; then
+    find "$input" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' \) -exec bash -c '
+      for file; do
+        dirname=$(dirname "$file")
+        basename=$(basename "$file")
+        filename="${basename%.*}"
+        output="$dirname/$filename.webp"
+
+        if [ "${file##*.}" = "webp" ]; then
+          echo "$file は既にwebp形式です。"
+        else
+          cwebp "$file" -o "$output"
+          if [ $? -eq 0 ]; then
+            rm "$file"
+            echo "$file をwebpに変換しました。"
+          else
+            echo "$file のwebp変換に失敗しました。"
+          fi
+        fi
+      done
+    ' _ {} +
+    return $?
+  fi
+
+  local dirname basename filename extension output
+  dirname=$(dirname "$input")
+  basename=$(basename "$input")
+  filename="${basename%.*}"
+  extension=$(printf '%s' "${basename##*.}" | tr '[:upper:]' '[:lower:]')
+
+  if [[ -z "$extension" || "$basename" == "$filename" ]]; then
+    echo 'ファイルの拡張子が特定できませんでした。'
+    return 1
+  fi
+
+  if [[ "$extension" == webp ]]; then
+    echo "$input は既にwebp形式です。"
+    return 1
+  fi
+
+  output="$dirname/$filename.webp"
+  cwebp "$input" -o "$output" || {
+    echo "$input のwebp変換に失敗しました。"
+    return 1
+  }
+
+  rm "$input"
+  echo "$input をwebpに変換しました。"
+}
+
+my_mov_to_gif() {
+  if [[ $# -ne 1 ]]; then
+    echo 'Usage: movtogif <path_to_file>'
+    return 1
+  fi
+
+  local filepath dirpath filename output_dir output_file
+  filepath=$1
+  dirpath=$(dirname "$filepath")
+  filename=$(basename "$filepath" .mov)
+  output_dir="$dirpath/output"
+  output_file="$output_dir/$filename.gif"
+
+  if [[ ! -d "$output_dir" ]]; then
+    mkdir -p "$output_dir"
+  fi
+
+  ffmpeg -i "$filepath" -r 12 "$output_file" || return 1
+  open -a '/Applications/Google Chrome.app' "$output_file"
+}
+
+my_width_height_convert() {
+  if [[ $# -lt 2 ]]; then
+    echo 'Usage: wh <path_to_image> <width> [height]'
+    return 1
+  fi
+
+  local input_file width height aspect_ratio scaled_height
+  input_file=$1
+  width=$2
+
+  if [[ $# -ge 3 ]]; then
+    height=$3
+    magick convert "$input_file" -resize "${width}x${height}!" "$input_file" || return 1
+    return 0
+  fi
+
+  aspect_ratio=$(identify -format '%[fx:h/w]' "$input_file") || return 1
+  scaled_height=$(awk -v w="$width" -v r="$aspect_ratio" 'BEGIN { printf "%.0f", w * r }')
+  height=$scaled_height
+
+  magick convert "$input_file" -resize "${width}x${height}" "$input_file" || {
+    echo "Failed to resize $input_file."
+    return 1
+  }
+}
+
+# ==================================================================================================
+# プロンプト
+# ==================================================================================================
+
+if [[ -f "$HOME/.bash/.git-prompt.sh" ]]; then
+  # shellcheck source=/dev/null
+  source "$HOME/.bash/.git-prompt.sh"
+  export GIT_PS1_SHOWDIRTYSTATE=1
+  export GIT_PS1_SHOWUNTRACKEDFILES=1
+  export GIT_PS1_SHOWUPSTREAM=auto
+  export GIT_PS1_SHOWCOLORHINTS=1
+  export GIT_PS1_STATESEPARATOR=' '
+fi
+
+__my_bash_prompt() {
+  local pwd_display git_info
+  pwd_display="${PWD/#$HOME/\~}"
+
+  printf '\n'
+  printf '\033[35m┬─[ \033[36m%s\033[35m ]\033[0m\n' "$pwd_display"
+
+  if declare -f __git_ps1 >/dev/null 2>&1; then
+    git_info="$(__git_ps1 '%s')"
+    git_info="${git_info# }"
+    if [[ -n "$git_info" ]]; then
+      printf '\033[35m├─[ \033[33m%s\033[35m ]\033[0m\n' "$git_info"
+    fi
+  fi
+
+  PS1=$'\033[35m╰─>\033[0m '
+}
+
+PROMPT_COMMAND=__my_bash_prompt
+
+# ==================================================================================================
+# alias
+# ==================================================================================================
+
+alias ls='eza --oneline --long --no-time --no-user --binary --git --almost-all --header --group-directories-first --ignore-glob .DS_Store'
+alias cd='my_cdls'
+alias make='mise run'
+
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --bash)"
+fi
+
+alias so='. "$HOME/.bashrc"'
+alias net='networkQuality'
+alias fcd='my_cd_child_dir'
+
+alias b='brew'
+alias bi='brew install'
+alias bui='brew uninstall'
+alias bu='brew update'
+alias bug='brew upgrade'
+alias bl='brew list'
+alias bs='brew search'
+alias bbd='brew bundle dump'
+
+alias mr='command mise run'
+mise() {
+  if [[ $# -eq 0 ]]; then
+    command mise run start
+  else
+    command mise "$@"
+  fi
+}
+
+alias ni='pnpm install'
+alias nui='pnpm uninstall'
+alias nr='pnpm run'
+alias npx='pnpm dlx'
+alias fnr='my_npm_run_script'
+
+alias gc='git checkout'
+alias _gc='my_git_checkout_branch_fzf'
+alias gcb='git checkout -b'
+alias fgc='my_git_checkout_branch'
+alias fgcc='my_git_checkout_commit'
+alias gb='git branch'
+alias gba='git fetch --prune && git branch -a'
+alias _gbd='my_git_delete_branch_fzf'
+# gi → my_git_init_repo: fish / zsh / repo 内に実体なし
+alias gaa='git add -A'
+alias gcm='git commit'
+alias gca='git commit --amend'
+alias gce='git commit --allow-empty -m'
+alias gf='git history fixup --reedit-message'
+alias grih='my_git_rebase_interactive_head'
+alias grc='git rebase --continue'
+alias gps='git push'
+alias gpl='git symbolic-ref --short HEAD | xargs -I {} git pull origin {}'
+alias gs='git stash -u'
+alias gsp='git stash pop'
+alias _gsa='my_git_stash_apply_fzf'
+alias _gsaf='my_git_stash_checkout_fzf'
+alias _gsd='my_git_stash_drop_fzf'
+alias gsl='git stash list'
+alias _gss='my_git_stash_show_fzf'
+alias gp='git remote prune origin'
+alias guisw='git update-index --skip-worktree'
+alias guinsw='git update-index --no-skip-worktree'
+alias guils='git ls-files -t | grep ^S'
+alias grs='git reset --soft HEAD^'
+alias gcp='git cherry-pick'
+alias gl='git log --oneline'
+alias gm='git merge'
+
+alias d='docker'
+alias db='docker build'
+alias di='docker images -a'
+alias dr='docker run'
+alias dps='docker ps -a'
+alias _drm='my_docker_rm_fzf'
+alias _drmi='my_docker_rmi_fzf'
+alias de='docker exec -it'
+alias de-app='docker exec -it -w /home/www-data/laravel/push-batch/ app /bin/sh'
+alias de-local='docker exec -it localstack /bin/bash'
+alias de-mongo='docker exec -it mongodb /bin/bash'
+alias de-stub='docker exec -it -w /var/www/html/stub stub /bin/bash'
+alias dc='docker compose'
+alias dcb='docker compose build'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+alias dcr='docker compose restart'
+
+alias bwul='my_bw_unlock'
+
+alias cz='my_chezmoi'
+alias czad='my_chezmoi add'
+alias czre='my_chezmoi re-add'
+alias czap='my_chezmoi apply'
+alias czed='my_chezmoi edit --apply'
+alias czdi='my_chezmoi diff'
+alias czps='my_chezmoi git -- push'
+alias czpl='my_chezmoi update'
+alias czrm='my_chezmoi forget'
+
+alias movtogif='my_mov_to_gif'
+alias cw='my_convert_webp'
+alias ch='my_convert_heic_to_jpeg'
+alias wh='my_width_height_convert'
+
+# ==================================================================================================
+# gcloud CLI
+# ==================================================================================================
+
+if [[ -f '/Users/fujisawakoki/Downloads/google-cloud-sdk/path.bash.inc' ]]; then
+  # shellcheck source=/dev/null
+  source '/Users/fujisawakoki/Downloads/google-cloud-sdk/path.bash.inc'
+fi
+
+# ==================================================================================================
+# API KEY
+# ==================================================================================================
+
+export GROQ_API_KEY='{{ (bitwarden "item" "e79a6e8f-3dd0-40f9-97f2-b426005176e3").login.password }}'
