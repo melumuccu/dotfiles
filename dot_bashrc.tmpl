@@ -1,5 +1,6 @@
 # chezmoi 管理 (~/.bashrc)
 
+# スクリプト等から source される非対話 bash に alias / PROMPT_COMMAND を載せると副作用が出るため、対話シェルのみ続行
 case $- in
 *i*) ;;
 *) return ;;
